@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_03_27_084215) do
     t.string "content", limit: 200
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "parent_id"
   end
 
   create_table "notifications", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
