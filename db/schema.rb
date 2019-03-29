@@ -62,12 +62,12 @@ ActiveRecord::Schema.define(version: 2019_03_27_084215) do
 
   create_table "users", id: :integer, default: nil, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 100
-    t.integer "password"
     t.string "email", limit: 50
     t.string "avatar", limit: 100
     t.integer "user_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest", limit: 200
   end
 
 end
