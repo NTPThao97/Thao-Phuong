@@ -1,0 +1,21 @@
+# default:
+#   toolbar:
+#     - styleselect | media | bold italic |  undo redo | uploadimage | link , alignleft aligncenter alignright bullist numlist | outdent indent
+#   plugins:
+#     - link
+#     - media
+#     - lists
+#     - uploadimage
+#   uploadimage: false
+default:
+  toolbar:
+    - uploadimage
+  plugins:
+    - uploadimage
+  uploadimage: false
+# alternate:
+#   <<: *default
+#   selector: textarea.table-editor
+#   toolbar: styleselect | bold italic | undo redo | table
+#   plugins:
+#     - table

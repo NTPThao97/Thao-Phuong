@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-md-8">
+    <% if @user.posts.any? %>
+      <h3>Microposts (<%= @user.posts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @posts %>
+      </ol>
+    <% end %>
+  </div>
+</div>

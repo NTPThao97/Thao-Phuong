@@ -1,33 +1,50 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  button_labels:
+    create: Create %{item_name}
+    update: Update %{item_name}
+    delete: Delete %{item_name}
+    sign_in: Sign In
+    sign_up: Sign Up
+    languge: English
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: about one hour ago
+        other: about %{count} hours ago
+      about_x_months:
+        one: about one month ago
+        other: about %{count} months ago
+      about_x_years:
+        one: about one year ago
+        other: about  %{count} years ago
+      almost_x_years:
+        one: almost one year ago
+        other: almost %{count} years ago
+      half_a_minute: half a minute ago
+      less_than_x_minutes:
+        zero: just minutes ago
+        one: less than one minute ago
+        other: less  than %{count} minutes ago
+      less_than_x_seconds:
+        zero: just seconds ago
+        one: less than one second ago
+        other: less than %{count} seconds ago
+      over_x_years:
+        one: over one year ago
+        other: over %{count} year ago
+      x_days:
+        one: 1 day ago
+        other: "%{count} day ago"
+      x_minutes:
+        one: 1 minute ago
+        other: "%{count} minutes ago"
+      x_months:
+        one: 1 month ago
+        other: "%{count} months ago"
+      x_years:
+        one: 1 year ago
+        other: "%{count} years ago"
+      x_seconds:
+        one: 1 second ago
+        other: "%{count} seconds ago"
+

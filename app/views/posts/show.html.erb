@@ -1,0 +1,31 @@
+<%= render "shared/right" %>
+<div class="row">
+  <div class="col-md-8">
+      <ol class="microposts">
+        <li id="micropost-<%= @post.id %>">
+          <% if @user.avatar.attached? %>
+            <div class="profile-userpic">
+              <%= image_tag @user.avatar  %>
+              <span class="user"><%= link_to @post.user.name, @post.user %></span>
+            </div>
+          <% else %>
+            <div class="profile-userpic">
+              <%= image_tag "" %>
+              <span class="user"><%= link_to @post.user.name, @post.user %></span>
+            </div>
+          <% end %>
+          <span class="timestamp">
+            <h3><span class="user"><%= link_to @post.title, @post %></span></h3>
+            <br><%= link_to "Edit", edit_post_path(@post) %>
+            <%= link_to "Delete", @post, method: :delete, data: {confirm: "Are you sure?"}%>
+            Posted <%= time_ago_in_words(@post.created_at) %> ago.
+          </span>
+          <span class="content">
+          <div><%= @post.content.html_safe  %></div>
+          <u><%= link_to "Perious", root_path %></u>
+          </span>
+        </li>
+      </ol>
+  </div>
+</div>
+<%= render "comments/index"%>

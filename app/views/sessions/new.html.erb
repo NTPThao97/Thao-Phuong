@@ -3,7 +3,7 @@
     <div class="login-panel panel panel-default">
       <div class="panel-heading">Sign in</div>
       <div class="panel-body">
-        <%= form_for :session, url: signin_path do |f| %>
+        <%= form_for :session, url: sign_in_path do |f| %>
           <fieldset>
             <div class="form-group">
               <%= f.label :email %>
@@ -18,9 +18,9 @@
                 <input name="remember" type="checkbox" value="Remember Me">Remember Me
               </label>
             </div>
-            <%= f.submit "Sign In", class: "btn btn-primary" %>
+            <%= f.submit t("button_labels.sign_in"), class: "btn btn-primary" %>
             </fieldset>
-            <p> New user? <%= link_to "Sign up now!" , signup_path %> </p>
+            <p> New user? <%= link_to t("button_labels.sign_up") , sign_up_path %> </p>
         <% end %>
       </div>
     </div>

@@ -1,0 +1,12 @@
+vi:
+  activerecord:
+      model: "User"
+      attributes:
+        user: 'Người dùng'
+        name: 'Tên'
+        email: 'Địa chỉ mail'
+        show: 'Xem chi tiết'
+        edit: 'Chinh sửa'
+        destroy: 'Xóa'
+        new_user: 'Thêm người dùng'
+        date: 'Ngày tạo'

@@ -10,11 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery.easy-pie-chart
-//= require bootstrap-datepicker
+//= require jquery3
 //= require_tree ./lib
+//= require tinymce
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+tinyMCE.init({
+  selector: 'textarea.tinymce',
+  toolbar: 'image'
+});

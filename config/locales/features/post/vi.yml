@@ -1,0 +1,9 @@
+vi:
+  activerecord:
+    model: 'Post'
+    attributes:
+      title: 'Tieu de'
+      post_type: "Loai bai viet"
+      content: "Noi dung bai viet"
+      created_at: "Ngay tao"
+      updated_at: "Ngay sua"

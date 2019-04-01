@@ -3,7 +3,7 @@
     <div class="login-panel panel panel-default">
       <div class="panel-heading">Sign Up</div>
       <div class="panel-body">
-        <%= form_for @user, url: signup_path do |f| %>
+        <%= form_for @user, url: sign_up_path do |f| %>
           <%= render "shared/error_messages" %>
           <fieldset>
             <div class="form-group">
@@ -22,13 +22,8 @@
               <%= f.label :password_confirmation %>
               <%= f.text_field :password_confirmation, class: "form-control", placeholder: "Password", type: "password" %>
             </div>
-            <div class="checkbox">
-              <label>
-                <input name="remember" type="checkbox" value="Remember Me">Remember Me
-              </label>
-            </div>
-            <%= f.submit "Sign Up", class: "btn btn-primary" %>
-            <p> You had acount <%= link_to "Sign In!" , signin_path %> </p>
+            <%= f.submit t("button_labels.sign_in"), class: "btn btn-primary" %>
+            <p> You had acount <%= link_to t("button_labels.sign_in") , signin_path %> </p>
             </fieldset>
         <% end %>
       </div>

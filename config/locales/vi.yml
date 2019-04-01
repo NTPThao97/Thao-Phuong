@@ -1,0 +1,49 @@
+vi:
+  button_labels:
+    create: Tao moi %{item_name}
+    update: Cap nhat %{item_name}
+    delete: Xoa %{item_name}
+    sign_in: Dang Nhap
+    sign_up: Dang Ki
+    languge: VietNamese
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: mot gio truoc
+        other: "%{count} gio truoc"
+      about_x_months:
+        one: khoang mot thang truoc
+        other: khoang %{count} thang truoc
+      about_x_years:
+        one: khoang mot nam truoc
+        other: khoang %{count} nam truoc
+      almost_x_years:
+        one: gan mot nam truoc
+        other: gan %{count} nam truoc
+      half_a_minute: nua phut truoc
+      less_than_x_minutes:
+        zero: vua xong
+        one: hon mot phut truoc
+        other: hon %{count} phut truoc
+      less_than_x_seconds:
+        zero: vua xong
+        one: kem mot giay truoc
+        other: kem %{count} giay truoc
+      over_x_years:
+        one: hon mot nam truoc
+        other: hon %{count} nam truoc
+      x_days:
+        one: 1 ngay truoc
+        other: "%{count} ngay truoc"
+      x_minutes:
+        one: 1 phut truoc
+        other: "%{count} phut truoc"
+      x_months:
+        one: 1 thang truoc
+        other: "%{count} thang truoc"
+      x_years:
+        one: 1 nam truoc
+        other: "%{count} nam truoc"
+      x_seconds:
+        one: 1 giay truoc
+        other: "%{count} giay truoc"

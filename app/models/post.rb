@@ -3,4 +3,5 @@ class Post < ApplicationRecord
   has_many :comments
   belongs_to :post_type
   before_save {self.title = title.upcase}
+  scope :order_created_at,  -> {order("created_at desc")}
 end

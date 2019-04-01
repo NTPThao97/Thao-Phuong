@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    model: Post
+    attributes:
+      title: Title
+      post_type: Post Type
+      content: Content
+

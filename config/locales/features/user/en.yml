@@ -1,0 +1,13 @@
+en:
+  users:
+    activerecord:
+      model: "User"
+      attributes:
+        user: 'Users'
+        name: 'Name'
+        email: 'Email'
+        show: 'Show'
+        edit: 'Edit'
+        destroy: 'Destroy'
+        new_user: 'New User'
+        date: 'Create date'
