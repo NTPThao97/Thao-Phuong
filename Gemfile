@@ -18,7 +18,9 @@ gem 'bootstrap-datepicker-rails'
 gem "jquery-rails"
 gem 'easy_as_pie'
 gem 'bcrypt',         '3.1.12'
-
+gem 'tinymce-rails'
+gem 'tinymce-rails-imageupload'
+gem 'closure_tree'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

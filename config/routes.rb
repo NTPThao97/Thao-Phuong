@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root "homes#index"
   resources :homes
   resources :users
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:create, :destroy]
+  end
 
   get "/sign_up" , to: "users#new"
   post "/sign_up" , to: "users#create"
@@ -12,7 +14,5 @@ Rails.application.routes.draw do
   post "/sign_in" , to: "sessions#create"
 
   post "/tinymce_assets", to: "tinymce_assets#create"
-  resources :comments, only: [:index, :create]
-  get '/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
 
 end

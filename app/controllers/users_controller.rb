@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       log_in @user
       redirect_to user_url(@user)
     else
-      redirect_to signup_path
+      redirect_to sign_up_path
     end
   end
   def edit

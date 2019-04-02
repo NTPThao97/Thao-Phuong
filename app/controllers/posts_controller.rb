@@ -8,7 +8,8 @@ class PostsController < ApplicationController
 
   def show
     @user = @current_user if log_in?
-    @comments = Comment.hash_tree(limit_depth: 2)
+    @comment = Comment.new
+    @comments = @post.comments.hash_tree(limit_depth: 2)
   end
 
   def new

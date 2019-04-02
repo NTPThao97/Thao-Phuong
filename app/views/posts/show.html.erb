@@ -26,6 +26,11 @@
           </span>
         </li>
       </ol>
+    <span>
+      <%= render "comments/form_comment", post: @post, parent_id: nil, comment_new: @comment %>
+      <%= comments_tree_for @comments,
+          @post, @comment %>
+    </span>
   </div>
 </div>
-<%= render "comments/index"%>
+

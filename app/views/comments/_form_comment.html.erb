@@ -1,0 +1,18 @@
+<% if log_in? %>
+<div class="row">
+  <div class="col-md-8">
+      <ol class="microposts">
+        <span id="form-comment">
+          <%= form_for [post, comment_new] do |f| %>
+            <%= f.hidden_field :parent_id, value: parent_id %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.text_area :content, placeholder: "Content...",
+              required: true, class: "form-control" %>
+            <%= f.submit "Comment", class: "btn btn-xs btn-custom2" %>
+          <% end %>
+        </span>
+      <% end %>
+    </ol>
+  </div>
+</div>
