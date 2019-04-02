@@ -7,10 +7,19 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.create! comment_params
-    respond_to do |format|
-      format.html{redirect_to post_path(@comment.post_id)}
-      format.js
+    if params[:comment][:parent_id].to_i > 0
+      parent = Comment.find_by id: params[:comment].delete(:parent_id)
+      @comment = parent.children.build comment_params
+    else
+      @comment = Comment.new comment_params
+    end
+
+    if @comment.save
+      # @comment = Comment.create! comment_params
+      respond_to do |format|
+        format.html{redirect_to post_path(@comment.post_id)}
+        format.js
+      end
     end
   end
 

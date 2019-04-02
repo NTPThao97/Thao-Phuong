@@ -1,4 +1,5 @@
 module CommentsHelper
+
   def comments_tree_for comments, post, comment_new
     safe_join(comments.map do |comment, nested_comments|
       render(comment, post: post,
@@ -12,4 +13,5 @@ module CommentsHelper
         comments_tree_for(nested_comments, post, Comment.new), class: "replies"
     end
   end
+
 end

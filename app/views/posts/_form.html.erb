@@ -17,7 +17,7 @@
               <%= f.text_area :content,placeholder: post.content, class: "tinymce", rows: 10, cols: 10 %>
             </div>
             <%= f.submit button_text, class: "btn btn-primary" %>
-            <%= link_to "Previous", root_path, class: "btn btn-primary" %>
+            <%= link_to t("button_labels.previous"), root_path, class: "btn btn-primary" %>
             </fieldset>
         <% end %>
       </div>

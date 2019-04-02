@@ -3,6 +3,6 @@ en:
     model: Post
     attributes:
       title: Title
-      post_type: Post Type
+      post_type: Post type
       content: Content
 

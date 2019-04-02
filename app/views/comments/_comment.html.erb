@@ -1,25 +1,33 @@
 <div id="form-comment<%= post.id %>">
   <div class="row">
-    <div class="profile-userpic">
-      <% if @user.avatar.attached? %>
+    <div class="col-md-8">
+    <% if @current_user.avatar.attached? %>
+      <div class="profile-userpic">
         <%= image_tag comment.user.avatar  %>
-      <% else %>
-        <%= image_tag ""  %>
-      <% end %>
-      <span class="user"><%= link_to comment.user.name, user_path(comment.user_id) %></span>
+      </div>
+    <% else %>
+      <div class="profile-userpic">
+        <%= image_tag comment.user.avatar  %>
+      </div>
+    <% end %>
+    <span class="user">
+      <%= link_to comment.user.name, user_path(comment.user_id) %>
+    </span><br><br>
+    <span><%= comment.content %></span>
     </div>
-    <div class="col-md-11">
+    <div class="col-md-8">
       <span class="timestamp">
-        Commented <%= time_ago_in_words(comment.created_at) %> ago.
+        <%= link_to  t("button_labels.delete"), post_comment_path(post, comment),
+            method: :delete,
+            data: {confirm: t("text.confirm")} %>
+        <%= t("text.comment") %>
+        <%= time_ago_in_words(comment.created_at) %>.
       </span><br/>
-      <p><%= comment.content %><p>
-        <%= link_to "Delete", post_comment_path(post, comment),
-          method: :delete,
-          data: {confirm: "Are you sure?"} %>
     </div>
   </div>
 </div>
 <div class="row">
+  <div class="col-md-1"></div>
   <div class="col-md-11">
     <%= render "comments/form_comment", post: post, parent_id: comment.id,
       comment_new: comment_new %>

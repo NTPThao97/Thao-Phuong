@@ -11,9 +11,10 @@
       <% end %>
       <div class="profile-usertitle">
         <div class="profile-usertitle-name"><%= @current_user.name %></div>
-        <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+        <div class="profile-usertitle-status">
+          <span class="indicator label-success"></span>Online
+        </div>
       </div>
-      <div class="clear"></div>
     </div>
     <div class="divider"></div>
     <form role="search">
@@ -22,23 +23,23 @@
       </div>
     </form>
     <ul class="nav menu">
-      <li class="active"><%= link_to  "Home" , root_path %> </li>
-      <li><%= link_to  "Profile" , user_path(@current_user) %></li>
-      <li><%= link_to  "List Friends" , users_path %></li>
-      <li><%= link_to  "Notications" , root_path %></li>
-      <li class="parent "><%= link_to "Setting" , "#" %></li>
-        <ul class="children collapse" id="sub-item-1">
-          <li><a class="" href="#">
-            <span class="fa fa-arrow-right">&nbsp;</span> Sub Item 1
-          </a></li>
-          <li><a class="" href="#">
-            <span class="fa fa-arrow-right">&nbsp;</span> Sub Item 2
-          </a></li>
-          <li><a class="" href="#">
-            <span class="fa fa-arrow-right">&nbsp;</span> Sub Item 3
-          </a></li>
-        </ul>
+      <li class="active">
+        <%= link_to  t("button_labels.home") , root_path %>
       </li>
-      <li><em></em> <%= link_to "Logout", sign_in_path %></li>
+      <li>
+        <%= link_to  t("button_labels.profile") , user_path(@current_user) %>
+      </li>
+      <li>
+        <%= link_to  t("button_labels.list") , users_path %>
+      </li>
+      <li>
+        <%= link_to  t("button_labels.notify") , root_path %>
+      </li>
+      <li class="parent ">
+        <%= link_to t("button_labels.set") , "#" %>
+      </li>
+      <li><em></em>
+        <%= link_to t("button_labels.log_out"), sign_in_path %>
+      </li>
     </ul>
-  </div>
+</div>

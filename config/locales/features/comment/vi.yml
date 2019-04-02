@@ -1,0 +1,5 @@
+vi:
+  activerecord:
+    model: Comment
+    attributes:
+      content: Noi dung

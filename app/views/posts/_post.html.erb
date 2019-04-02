@@ -1,23 +1,33 @@
 <li id="micropost-<%= post.id %>">
-  <% if @user.avatar.attached? %>
-    <div class="profile-userpic">
-      <%= image_tag @user.avatar  %>
-      <span class="user"><%= link_to post.user.name, post.user %></span>
-    </div>
+  <% if User.find_by(id: post[:user_id]).avatar.attached? %>
+   <div class="profile-userpic">
+    <%= image_tag User.find_by(id: post[:user_id]).avatar  %>
+    <span class="user"><%= link_to post.user.name, post.user %></span>
+   </div>
   <% else %>
-    <div class="profile-userpic">
-      <%= image_tag "" %>
-      <span class="user"><%= link_to post.user.name, post.user %></span>
-    </div>
+   <div class="profile-userpic">
+    <%= image_tag "" %>
+    <span class="user"><%= link_to post.user.name, post.user %></span>
+   </div>
   <% end %>
   <span class="timestamp">
-    <h3><span class="user"><%= link_to post.title, post %></span></h3>
-    <br><%= link_to "Edit", edit_post_path(post) %>
-    <%= link_to "Delete", post, method: :delete, data: {confirm: "Are you sure?"}%>
-    Posted <%= time_ago_in_words(post.created_at) %> ago.
+   <h3>
+    <span class="user">
+      <%= link_to post.title, post %>
+    </span>
+   </h3>
+   <br>
+   <%= link_to t("button_labels.edit"), edit_post_path(  post) %>
+   <%= link_to t("button_labels.delete"), post, method: :delete, data: {confirm: t("text.confirm")}%>
+   <%= t("text.posted")%>
+   <%= time_ago_in_words( post.created_at) %> ago.
   </span>
-  <span class="content">
-  <div class="overflow"><%= post.content.html_safe  %></div>
-  <u><%= link_to "Read more", post_path(post) %></u>
-  </span>
+   <span class="content">
+    <div class="overflow">
+      <%=  post.content.html_safe  %>
+    </div>
+    <u>
+      <%= link_to button_text, post_path(  post) %>
+    </u>
+   </span>
 </li>

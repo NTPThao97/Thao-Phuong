@@ -1,0 +1,6 @@
+en:
+  activerecord:
+    model: Comment
+    attributes:
+      content: Content
+

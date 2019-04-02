@@ -58,4 +58,5 @@ class PostsController < ApplicationController
   def load_support
     @support = PostSupport.new
   end
+
 end

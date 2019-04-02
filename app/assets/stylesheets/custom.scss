@@ -1,8 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* mixins, variables, etc. */
-
 $gray-medium-light: #eaeaea;
 
 @mixin box_sizing {
@@ -50,7 +48,6 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
-/* miscellaneous */
 
 .debug_dump {
   clear: both;
@@ -59,7 +56,6 @@ p {
   margin-top: 45px;
   @include box_sizing;
 }
-/* sidebar */
 
 aside {
   section.user_info {
@@ -135,7 +131,6 @@ input {
     color: $state-danger-text;
   }
 }
-/* microposts */
 
 .microposts {
   list-style: none;
@@ -185,5 +180,6 @@ span.picture {
   height: 200px;
   overflow: hidden;
 }
+
 .replies {margin-left: 50px;}
 .replies .replies .replies .replies .replies {margin-left: 0;}

@@ -1,13 +1,25 @@
 <%= render "shared/right" %>
 <h1> <%= @user.name  %></h1>
 <% if @user.avatar.attached? %>
-  <li > <div class="profile-userpic">
-  <%= image_tag @user.avatar  %>
-  </div></li>
+  <li >
+    <div class="profile-userpic">
+      <%= image_tag @user.avatar  %>
+    </div>
+  </li>
 <% else %>
-  <li > <div class="profile-userpic">
-  <%= image_tag "" %>
-  </div></li>
+  <li >
+    <div class="profile-userpic">
+      <%= image_tag "" %>
+    </div>
+  </li>
 <% end %>
-<li><%= @user.email %></li>
-<%= link_to "Edit", edit_user_path(@user) %>
+<li>
+  <%= @user.email %>
+</li>
+<%= link_to t("button_labels.edit"), edit_user_path(@user) %>
+<% if @current_user.posts.any? %>
+  <h3>Microposts (<%= @current_user.posts.count %>)</h3>
+    <ol class="microposts">
+      <%= render @posts, button_text: t("button_labels.read_more") %>
+    </ol>
+<% end %>

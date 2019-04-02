@@ -1,50 +1,75 @@
 en:
   button_labels:
-    create: Create %{item_name}
-    update: Update %{item_name}
-    delete: Delete %{item_name}
+    create: Create
+    update: Update
+    delete: Delete
+    edit: Edit
     sign_in: Sign In
     sign_up: Sign Up
-    languge: English
+    language_en: English
+    language_vi: VietNamese
+    comment: Comment
+    previous: Previous
+    read_more: View mores
+    home: Home
+    profile: Profile
+    list: List Friends
+    set: Setting
+    notify: Notifications
+    log_out: Log Out
+  text:
+    comment: "Commented"
+    confirm: Are you sure?
+    posted: Posted
+    remember: Remember me
+    text: The form contains
+    text2: You had account
+    text1: to welcome your Blog
+    content: Content...
+    password: Password
+    password_confirm: Password Confirmation
+    name: User
+    email: Email
+    avatar: Avatar
   datetime:
     distance_in_words:
       about_x_hours:
-        one: about one hour ago
-        other: about %{count} hours ago
+        one:     about one hour ago
+        other:     about %{count} hours ago
       about_x_months:
-        one: about one month ago
-        other: about %{count} months ago
+        one:     about one month ago
+        other:     about %{count} months ago
       about_x_years:
-        one: about one year ago
-        other: about  %{count} years ago
+        one:     about one year ago
+        other:     about  %{count} years ago
       almost_x_years:
-        one: almost one year ago
-        other: almost %{count} years ago
-      half_a_minute: half a minute ago
+        one:     almost one year ago
+        other:     almost %{count} years ago
+      half_a_minute:     half a minute ago
       less_than_x_minutes:
-        zero: just minutes ago
-        one: less than one minute ago
-        other: less  than %{count} minutes ago
+        zero:     just minutes ago
+        one:     less than one minute ago
+        other:     less  than %{count} minutes ago
       less_than_x_seconds:
-        zero: just seconds ago
-        one: less than one second ago
-        other: less than %{count} seconds ago
+        zero:     just seconds ago
+        one:     less than one second ago
+        other:     less than %{count} seconds ago
       over_x_years:
-        one: over one year ago
-        other: over %{count} year ago
+        one:     over one year ago
+        other:     over %{count} year ago
       x_days:
-        one: 1 day ago
-        other: "%{count} day ago"
+        one:     1 day ago
+        other:     "%{count} day ago"
       x_minutes:
-        one: 1 minute ago
-        other: "%{count} minutes ago"
+        one:     1 minute ago
+        other:     "%{count} minutes ago"
       x_months:
-        one: 1 month ago
-        other: "%{count} months ago"
+        one:     1 month ago
+        other:     "%{count} months ago"
       x_years:
-        one: 1 year ago
-        other: "%{count} years ago"
+        one:     1 year ago
+        other:     "%{count} years ago"
       x_seconds:
-        one: 1 second ago
-        other: "%{count} seconds ago"
+        one:     1 second ago
+        other:     "%{count} seconds ago"
 
