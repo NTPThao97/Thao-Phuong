@@ -2,11 +2,17 @@ Rails.application.routes.draw do
   resources :active_storage_blobs
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "homes#index"
-  resources :homes
-  resources :users
+  resources :homes do
+    resources :notifications, only: [:show]
+  end
+  resources :users do
+    resources :notifications, only: [:show]
+  end
   resources :posts do
     resources :comments, only: [:create, :destroy]
+    resources :notifications, only: [:show]
   end
+  resources :notifications, only: [:index]
 
   get "/sign_up" , to: "users#new"
   post "/sign_up" , to: "users#create"

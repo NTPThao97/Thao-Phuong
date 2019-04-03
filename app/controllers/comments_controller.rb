@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     end
 
     if @comment.save
-      # @comment = Comment.create! comment_params
+      SymbNotificationService.new(comment: @comment).create_notification
       respond_to do |format|
         format.html{redirect_to post_path(@comment.post_id)}
         format.js
@@ -39,4 +39,8 @@ class CommentsController < ApplicationController
   def set_comment
     @comment = Comment.find_by id: params[:id]
   end
+  # def params
+  #   params.require(:notification).permit :target_id, :des_id, :target_type, :des_type
+  # end
+
 end

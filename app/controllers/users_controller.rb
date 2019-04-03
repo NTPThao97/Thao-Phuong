@@ -6,17 +6,20 @@ class UsersController < ApplicationController
     if log_in?
       @users = User.all
       @user = @current_user
+      @notifications = @current_user.notifications.limit(7)
     else
       redirect_to root_path
     end
   end
 
   def show
-    @current_user = @user if log_in?
+    @user = @current_user  if log_in?
+    @notifications = @current_user.notifications.limit(7)
   end
 
   def new
     @user = User.new
+    @notifications = @current_user.notifications.limit(7)
   end
 
   def create
@@ -30,7 +33,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit;  end
+  def edit
+    @notifications = @current_user.notifications.limit(7)
+  end
 
   def update
     @user.update user_params

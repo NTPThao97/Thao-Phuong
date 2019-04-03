@@ -1,3 +1,5 @@
 class Notification < ApplicationRecord
-  has_many :people_notices
+  belongs_to :target, class_name: User.name
+  belongs_to :des, class_name: User.name
+  scope :order_by_created, (->{order created_at: :desc})
 end

@@ -1,0 +1,10 @@
+<div class="message-body">
+  <small class="pull-right"><%= time_ago_in_words(notification.created_at)%></small>
+  <a href="#">
+    <strong><%= User.find_by(id: notification.target_id).name%></strong>
+    <%= notification.target_type %> from <%= notification.des_type%>
+    <strong><%= User.find_by(id: notification.des_id).name%></strong>.
+  </a>
+  <br />
+  <small class="text-muted"><%= notification.created_at %></small>
+</div>

@@ -31,6 +31,7 @@ vi:
     name: Ten nguoi dung
     email: Tai khoan email
     avatar: Anh dai dien
+    title: Tieu de...
   datetime:
     distance_in_words:
       about_x_hours:

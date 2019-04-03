@@ -10,10 +10,12 @@ class PostsController < ApplicationController
     @user = @current_user if log_in?
     @comment = Comment.new
     @comments = @post.comments.hash_tree(limit_depth: 2)
+    @notifications = @current_user.notifications.limit(7)
   end
 
   def new
     @post = Post.new
+    @notifications = @current_user.dess.limit(7)
   end
 
   def create
@@ -27,7 +29,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit;  end
+  def edit
+   @notifications = @current_user.notifications.limit(7)
+  end
 
   def update
     if @post.update post_params

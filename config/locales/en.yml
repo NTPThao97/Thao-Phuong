@@ -31,6 +31,7 @@ en:
     name: User
     email: Email
     avatar: Avatar
+    title: Title...
   datetime:
     distance_in_words:
       about_x_hours:
