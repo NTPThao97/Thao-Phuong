@@ -11,12 +11,12 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem "font-awesome-rails"
+# gem "font-awesome-rails"
 gem 'bootstrap-sass', '~> 3.4.1'
-gem 'sassc-rails', '>= 2.1.0'
-gem 'bootstrap-datepicker-rails'
-gem "jquery-rails"
-gem 'easy_as_pie'
+# gem 'sassc-rails', '>= 2.1.0'
+# gem 'bootstrap-datepicker-rails'
+# gem "jquery-rails"
+# gem 'easy_as_pie'
 gem 'bcrypt',         '3.1.12'
 gem 'tinymce-rails'
 gem 'tinymce-rails-imageupload'
@@ -24,6 +24,7 @@ gem 'closure_tree'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry'
 end
 
 group :development do

@@ -20,7 +20,7 @@
    <%= link_to t("button_labels.edit"), edit_post_path(  post) %>
    <%= link_to t("button_labels.delete"), post, method: :delete, data: {confirm: t("text.confirm")}%>
    <%= t("text.posted")%>
-   <%= time_ago_in_words( post.created_at) %> ago.
+   <%= time_ago_in_words( post.created_at) %>.
   </span>
    <span class="content">
     <div class="overflow">

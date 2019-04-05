@@ -1,4 +1,5 @@
 class NotificationsController < ApplicationController
+  before_action :new_notifications_count, only: [:index]
 
   def index
     if log_in?
@@ -6,7 +7,10 @@ class NotificationsController < ApplicationController
     end
   end
 
-  def show;  end
+  def show
+  end
+
+  def update;  end
 
   def destroy
     find_notification

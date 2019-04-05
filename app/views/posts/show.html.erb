@@ -1,14 +1,15 @@
-<%= render "shared/right" %>
-<div class="row">
-  <div class="col-md-8">
-      <ol class="microposts">
-        <%= render @post , button_text: "" %>
-        <span>
-          <%= render "comments/form_comment", post: @post, parent_id: nil, comment_new: @comment %>
-          <%= comments_tree_for @comments,
-              @post, @comment %>
-        </span>
-      </ol>
+<%= render "shared/left"%>
+<div class="panel panel-container">
+  <div class="row">
+    <div class="col-md-12">
+        <ol class="microposts">
+          <%= render @post , button_text: "" %>
+          <span>
+            <%= render "comments/form_comment", post: @post, parent_id: nil, comment_new: @comment %>
+            <%= comments_tree_for @comments,
+                @post, @comment %>
+          </span>
+        </ol>
+    </div>
   </div>
 </div>
-

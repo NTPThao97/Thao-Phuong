@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :passive_relations, class_name: "Relation",
                                                   foreign_key: :followed_id, dependent: :destroy
   has_many :notifications, class_name: "Notification",
-                                                  foreign_key: :target_id, dependent: :destroy
+                                                  foreign_key: :des_id, dependent: :destroy
   has_many :following, through: :active_relations , source: :followed
   has_many :followers ,through: :passive_relations, source: :follower
   has_one_attached :avatar

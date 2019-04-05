@@ -1,26 +1,32 @@
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-    <% if log_in? %>
-      <div>
-        <li id="noti_Container">
-          <div id="noti_Counter"></div>
-          <%= hidden_field_tag :notification, @notifications.count, id: 'noti_count' %>
-          <div id="noti_Button"></div>
-          <div id="notifications">
-            <h3>Notifications</h3>
-              <div style="height:300px;">
-              <%=  render "notifications/show" %>
-              </div>
-            <div class="seeAll"><a href="#">See All</a></div>
-          </div>
-        </li>
-      </div>
-    <% else %>
-      <ul class="nav navbar-top-links navbar-right">
-        <%= link_to "Sun Blog", root_path, class: "navbar-brand" %>
-      </ul>
-    <% end %>
+      <a class="navbar-brand" href="#"><span>Sun</span>Blog</a>
+      <% if log_in? %>
+        <ul class="nav navbar-top-links navbar-right">
+          <li class="dropdown", id="noti_Button">
+            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+            <em class="fa fa-envelope"></em>
+            <span class="label label-danger", id= "noti_Counter"><%= @new_notifications_count.count %></span>
+            </a>
+            <ul class="dropdown-menu dropdown-messages", id= "notifications">
+              <li>
+                <%= render "notifications/show" %>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <div class="all-button"><a href="#">
+                  <em class="fa fa-inbox"></em> <strong>All Notifications</strong>
+                </a></div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      <% else %>
+        <ul class="nav navbar-top-links navbar-right">
+          <%= link_to t("button_laybels.sign_up"), sign_up_path, class: "navbar-brand" %>
+        </ul>
+      <% end %>
     </div>
-  </div>
+  </div><!-- /.container-fluid -->
 </nav>

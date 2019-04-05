@@ -1,10 +1,15 @@
-<div class="message-body">
-  <small class="pull-right"><%= time_ago_in_words(notification.created_at)%></small>
-  <a href="#">
-    <strong><%= User.find_by(id: notification.target_id).name%></strong>
-    <%= notification.target_type %> from <%= notification.des_type%>
-    <strong><%= User.find_by(id: notification.des_id).name%></strong>.
+<div class="dropdown-messages-box">
+  <div class="profile-userpic">
+    <%= image_tag notification.target.avatar , class: "pull-left" %>
+  </div>
   </a>
-  <br />
-  <small class="text-muted"><%= notification.created_at %></small>
+    <div class="message-body">
+      <small class="pull-right"><%= time_ago_in_words(notification.created_at)%></small>
+      <strong>
+        <%= link_to notification.target_name, user_path(notification.target_id) %>
+      </strong>
+      <%= notification.target_type %>
+      <strong>your <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %> </strong>.
+      <br /><small class="text-muted"><%= notification.created_at %></small>
+    </div>
 </div>

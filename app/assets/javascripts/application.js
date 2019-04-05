@@ -9,13 +9,11 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
-//= require_tree ./lib
 //= require tinymce
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery
+//= require_tree ./lib
 //= require_tree .
 tinyMCE.init({
   selector: 'textarea.tinymce',
@@ -43,7 +41,7 @@ $(document).ready(function () {
 
             $('#noti_Counter').fadeOut('slow');     // HIDE THE COUNTER.
 
-            return false;
+            // return false;
         });
 
         // HIDE NOTIFICATIONS WHEN CLICKED ANYWHERE ON THE PAGE.
@@ -57,7 +55,7 @@ $(document).ready(function () {
             }
         });
 
-        $('#notifications').click(function () {
-            return false;       // DO NOTHING WHEN CONTAINER IS CLICKED.
-        });
+        // $('#notifications').click(function () {
+        //     return false;       // DO NOTHING WHEN CONTAINER IS CLICKED.
+        // });
     });

@@ -17,6 +17,7 @@ en:
     set: Setting
     notify: Notifications
     log_out: Log Out
+    create_post: Create Post
   text:
     comment: "Commented"
     confirm: Are you sure?

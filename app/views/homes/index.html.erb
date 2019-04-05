@@ -1,6 +1,4 @@
 <% if log_in? %>
-  <%= render "shared/right" %>
-  <%= link_to t("button_labels.create "), new_post_path, class: "btn btn-primary" %>
   <%= render "posts/index" %>
 <% else %>
   <h1>

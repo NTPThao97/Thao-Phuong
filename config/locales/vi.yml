@@ -17,6 +17,7 @@ vi:
     set: Cai dat
     notify: Thong bao
     log_out: Dang xuat
+    create_post: Tao bai viet moi
   text:
     comment: Da binh luan
     confirm: Ban co chac chan khong?

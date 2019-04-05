@@ -1,25 +1,21 @@
 class UsersController < ApplicationController
   before_action :set_user_type, only: [ :create, :update]
   before_action :find_user, only: [:show, :edit, :update, :destroy]
+  before_action :new_notifications_count, only: [:index, :show, :edit]
 
   def index
     if log_in?
       @users = User.all
       @user = @current_user
-      @notifications = @current_user.notifications.limit(7)
     else
       redirect_to root_path
     end
   end
 
-  def show
-    @user = @current_user  if log_in?
-    @notifications = @current_user.notifications.limit(7)
-  end
+  def show;  end
 
   def new
     @user = User.new
-    @notifications = @current_user.notifications.limit(7)
   end
 
   def create
@@ -33,9 +29,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @notifications = @current_user.notifications.limit(7)
-  end
+  def edit;  end
 
   def update
     @user.update user_params
