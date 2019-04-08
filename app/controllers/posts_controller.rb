@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
   before_action :load_support, only: [:index, :new, :edit]
-  before_action :new_notifications_count, only: [:show, :new, :edit]
+  before_action :new_notifications_count, :notifications_limit, only: [:show, :new, :edit]
 
   def index
     @posts = Post.all
@@ -45,9 +45,12 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
-    flash[:success] = "Success!"
-    redirect_to root_path
+    if @post.destroy
+      Comment.find_by(post_id: @post.id).destroy
+      Notification.find_by(url: @post.id).destroy
+      flash[:success] = "Success!"
+      redirect_to root_path
+    end
   end
 
   private

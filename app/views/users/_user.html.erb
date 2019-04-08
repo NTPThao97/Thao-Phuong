@@ -26,18 +26,19 @@
               <%= f.label avatar %>
               <%= f.file_field :avatar %>
             </div>
+            <%= f.hidden_field :user_type, value: "1" %>
             <% if log_in?%>
               <%= f.submit t("button_labels.update"), class: "btn btn-primary" %>
               <p>
-                <%= link_to t("button_labels.previous") , sign_in_path, class: "btn btn-primary"%>
+                <%= link_to t("button_labels.previous") , user_path(@user), class: "btn btn-primary"%>
               </p>
-            <%else%>
+            <% else %>
               <%= f.submit t("button_labels.create"), class: "btn btn-primary" %>
               <p>
                 <%= t("text.text2")%>
                 <%= link_to t("button_labels.sign_in") , sign_in_path %>
               </p>
-            <%end%>
+            <% end %>
             </fieldset>
         <% end %>
       </div>

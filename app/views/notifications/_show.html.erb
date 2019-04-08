@@ -1,3 +1,7 @@
-<% @new_notifications_count.each do |notification| %>
+<% @notifications.each do |notification| %>
   <%= render notification %>
 <% end %>
+<li class="divider"></li>
+<li>
+  <strong><%= link_to "All Notifications", notifications_path , class: "all-button, fa fa-inbox " %></strong>
+</li>

@@ -1,18 +1,23 @@
 class UsersController < ApplicationController
-  before_action :set_user_type, only: [ :create, :update]
   before_action :find_user, only: [:show, :edit, :update, :destroy]
-  before_action :new_notifications_count, only: [:index, :show, :edit]
+  before_action :new_notifications_count, :notifications_limit, only: [:index, :show, :edit]
 
   def index
     if log_in?
       @users = User.all
       @user = @current_user
+      @posts = Post.order_created_at
+      @decentralizations = Decentralization.all
     else
       redirect_to root_path
     end
   end
 
-  def show;  end
+  def show
+    @users = User.all
+    @user = @current_user
+    @posts = Post.order_created_at
+  end
 
   def new
     @user = User.new
@@ -49,10 +54,6 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find_by id: params[:id]
-  end
-
-  def set_user_type
-    params[:user_type] ||= "1"
   end
 
 end

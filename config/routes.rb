@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     resources :notifications, only: [:update]
   end
-  resources :notifications
+  resources :notifications, only: [:index, :destroy]
+  resources :decentralizations, only: [:index, :edit, :update, :destroy]
 
   get "/sign_up" , to: "users#new"
   post "/sign_up" , to: "users#create"

@@ -1,2 +1,4 @@
 <%= render "shared/left"%>
-<%= render @user, _name: @user.name, _email: @user.email, _password: @user.password, _password_confirmation: @user.password_confirmation, name: t("text.name"), email: t("text.email"), password: t("text.password"), password_confirmation: t("text.password_confirm"), avatar: t("text.avatar"), header: t("button_labels.update")%>
+<div class="panel panel-container">
+  <%= render @user, _name: @user.name, _email: @user.email, _password: @user.password, _password_confirmation: @user.password_confirmation, name: t("text.name"), email: t("text.email"), password: t("text.password"), password_confirmation: t("text.password_confirm"), avatar: t("text.avatar"), header: t("button_labels.update")%>
+</div>

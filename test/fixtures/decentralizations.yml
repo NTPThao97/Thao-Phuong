@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  describe: MyText
+  number_acount: 1
+  active: false
+
+two:
+  name: MyText
+  describe: MyText
+  number_acount: 1
+  active: false

@@ -9,7 +9,14 @@
         <%= link_to notification.target_name, user_path(notification.target_id) %>
       </strong>
       <%= notification.target_type %>
-      <strong>your <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %> </strong>.
-      <br /><small class="text-muted"><%= notification.created_at %></small>
+      <% if notification.opened_at == nil %>
+        <strong>your
+          <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %>
+        </strong>.
+      <% else %>
+        your <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %>
+      <% end %>
+      <br />
+      <small class="text-muted"><%= notification.created_at %></small>
     </div>
 </div>

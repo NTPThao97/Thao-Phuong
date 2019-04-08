@@ -18,4 +18,9 @@ module SessionsHelper
     @current_user = nil
   end
 
+  def admin_user
+    return @current_user.user_type == 0
+    flash[:warning] = "m"
+  end
+
 end

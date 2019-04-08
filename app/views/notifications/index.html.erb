@@ -1,0 +1,15 @@
+<%= render "shared/left" %>
+<div class="panel panel-container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Notifications</h1>
+      <% @notifications.each do |notification| %>
+        <li>
+          <%= render notification %>
+        </li>
+        <%= link_to t("button_laybels.delete"), notification_path(notification) %>
+      <% end%>
+      <li class="divider"></li>
+    </div>
+  </div>
+</div>

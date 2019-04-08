@@ -2,6 +2,7 @@ class User < ApplicationRecord
   before_save {self.email = email.downcase}
   has_many :posts, dependent: :destroy
   has_many :comments
+  belongs_to :decentralization
   has_many :active_relations, class_name: "Relation",
                                                   foreign_key: :follower_id, dependent: :destroy
   has_many :passive_relations, class_name: "Relation",
@@ -41,4 +42,5 @@ class User < ApplicationRecord
     update_columns reset_digest: User.digest(password_reset_token)
     update_columns reset_send_at: Time.zone.now
   end
+
 end

@@ -1,19 +1,48 @@
 <%= render "shared/left"%>
-<h1> <%= @user.name  %></h1>
-<% if @user.avatar.attached? %>
-  <li >
-    <div class="profile-userpic">
-      <%= image_tag @user.avatar  %>
+<div class="panel panel-container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body tabs">
+          <ul class="nav nav-tabs">
+            <li class="active"><%= link_to "Timeline", "#Timeline", data: { toggle: "tab"} %></li>
+            <li><%= link_to "About", "#About", data: { toggle: "tab"} %></li>
+            <li><%= link_to "Friends", "#Friends", data: { toggle: "tab"} %></li>
+            <li><%= link_to "Photos", "#Photos", data: { toggle: "tab"} %></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade in active" id="Timeline">
+            <%= render "posts/index"%>
+            </div>
+            <div class="tab-pane fade" id="About">
+              <h1> <%= @user.name  %></h1>
+              <% if @user.avatar.attached? %>
+                <div class="profile-userpic">
+                  <%= image_tag @user.avatar  %>
+                </div>
+              <% else %>
+                <div class="profile-userpic">
+                  <%= image_tag "" %>
+                </div>
+              <% end %>
+              <li>
+                <%= @user.email %>
+              </li>
+              <%= link_to t("button_labels.edit"), edit_user_path(@user) %>
+            </div>
+            <div class="tab-pane fade" id="Friends">
+              <h4>ALL FRIENDS</h4>
+              <% @users.each do |user| %>
+                <li>
+                  <%= link_to user.name , user_path(user) %> -
+                  <%= link_to t("button_labels.edit"), edit_user_path(user) %>
+                </li>
+              <% end %>
+            </div>
+            <div class="tab-pane fade" id="Photos">
+            </div>
+        </div>
+      </div><!--/.panel-->
     </div>
-  </li>
-<% else %>
-  <li >
-    <div class="profile-userpic">
-      <%= image_tag "" %>
-    </div>
-  </li>
-<% end %>
-<li>
-  <%= @user.email %>
-</li>
-<%= link_to t("button_labels.edit"), edit_user_path(@user) %>
+  </div>
+</div>

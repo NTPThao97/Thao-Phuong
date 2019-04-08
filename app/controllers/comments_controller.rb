@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     end
 
     if @comment.save
-      SymbNotificationService.new(target_id: @comment.user_id, des_id: @comment.post.user_id, target_type: "Commented", des_type: "Post", url: @comment.post_id).create_notification
+      CreateNotificationService.new(target_id: @comment.user_id, des_id: @comment.post.user_id, target_type: "Commented", des_type: "Post", url: @comment.post_id).create_notification
       respond_to do |format|
         format.html{redirect_to post_path(@comment.post_id)}
         format.js

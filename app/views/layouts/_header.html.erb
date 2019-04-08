@@ -6,7 +6,7 @@
         <ul class="nav navbar-top-links navbar-right">
           <li class="dropdown", id="noti_Button">
             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-            <em class="fa fa-envelope"></em>
+            <em class="fa fa-bell"></em>
             <span class="label label-danger", id= "noti_Counter"><%= @new_notifications_count.count %></span>
             </a>
             <ul class="dropdown-menu dropdown-messages", id= "notifications">
@@ -14,11 +14,6 @@
                 <%= render "notifications/show" %>
               </li>
               <li class="divider"></li>
-              <li>
-                <div class="all-button"><a href="#">
-                  <em class="fa fa-inbox"></em> <strong>All Notifications</strong>
-                </a></div>
-              </li>
             </ul>
           </li>
         </ul>
