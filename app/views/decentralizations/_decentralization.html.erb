@@ -1,1 +1,15 @@
-
+<tr>
+  <td class="active-id"><%=  decentralization.id %></td>
+  <td><%= decentralization.name %></td>
+  <td><%= decentralization.describe %></td>
+  <td><%= decentralization.number_acount %></td>
+  <td>
+    <% if decentralization.active %>
+      <input type="checkbox" class="active-check" click="activeClick()" name="active"  checked />
+    <% else %>
+      <input type="checkbox" class="active-check" click="activeClick()" name="active" />
+    <% end %>
+  </td>
+  <td><%= link_to t("button_labels.edit"), edit_user_decentralization_path(@user.id,decentralization),  data:{toggle: "modal", target: "#myModal" }%>/
+  <%= link_to t("button_labels.delete") , decentralization, method: :delete, data: {confirm: t("text.confirm")} %></td>
+</tr>

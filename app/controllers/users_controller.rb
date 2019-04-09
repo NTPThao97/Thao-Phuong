@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :verify_authenticity_token
   before_action :find_user, only: [:show, :edit, :update, :destroy]
   before_action :new_notifications_count, :notifications_limit, only: [:index, :show, :edit]
 

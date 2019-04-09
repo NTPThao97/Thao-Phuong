@@ -59,7 +59,3 @@ $(document).ready(function () {
         //     return false;       // DO NOTHING WHEN CONTAINER IS CLICKED.
         // });
     });
-$('#dtBasicExample').mdbEditor({
-mdbEditor: true
-});
-$('.dataTables_length').addClass('bs-select');

@@ -9,6 +9,7 @@
         <%= image_tag "" %>
       </div>
     <% end %>
+    <%= hidden_field :id, @current_user.id , id: "user_id" %>
     <div class="profile-usertitle-name"><%=@current_user.name%></div>
     <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
     <div class="clear"></div>

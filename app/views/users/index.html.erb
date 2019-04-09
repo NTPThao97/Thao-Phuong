@@ -34,7 +34,14 @@
                   <td><%= link_to user.name , user_path(user) %></td>
                   <td><%= user.email %></td>
                   <td>
-                    <%= user.user_type %>
+                    <div class="form-group">
+                      <select class="form-control">
+                        <option selected="selected"> <%#= Decentralization.find_by(id: user[:user_type]) %> </option>
+                        <%= @decentralizations.each do |f|%>
+                          <option><%= f.name %></option>
+                        <% end %>
+                      </select>
+                  </div>
                   </td>
                   <td></td>
                   <td><%#= link_to t("button_labels.edit"), edit_user_path(user) %></td>
@@ -46,6 +53,7 @@
             </div>
             <div class="tab-pane fade" id="User_decentralization">
               <%= render "decentralizations/index"%>
+              <%= render "decentralizations/edit" %>
             </div>
           </div>
         </div>

@@ -11,18 +11,6 @@
     </tr>
   </thead>
   <tbody>
-    <% @decentralizations.each do |decentralization| %>
-    <tr>
-      <td><%=  decentralization.id %></td>
-      <td><%= decentralization.name %></td>
-      <td><%= decentralization.describe %></td>
-      <td><%= decentralization.number_acount %></td>
-      <td>
-        <input type="checkbox" class="active-check" onclick="activeClick()" />
-      </td>
-      <td><%= link_to t("button_labels.edit"), edit_decentralization_path(decentralization)%>/
-      <%= link_to t("button_labels.delete") , decentralization, method: :delete, data: {confirm: t("text.confirm")} %></td>
-    </tr>
-  <% end %>
+    <%= render @decentralizations %>
   </tbody>
 </table>

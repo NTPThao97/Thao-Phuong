@@ -1,39 +1,44 @@
 class DecentralizationsController < ApplicationController
-  before_action :find_decenralization, only: [:edit, :update, :destroy]
+  before_action :find_decentralization, only: [:update, :destroy]
   def index
     @decenralizations = Decentralization.all
   end
 
   def new
-    @decenralization = Decentralization.new
+    @decentralization = Decentralization.new
   end
 
   def create
-    @decenralization = Decentralization.build decentralization_params
-    @decenralization.save
-    redirect_to decenralizations_path
+    @decentralization = Decentralization.build decentralization_params
+    @decentralization.save
+    redirect_to decentralizations_path
   end
 
   def edit
   end
 
   def update
-    @decenralization.update decentralization_params
-    redirect_to decenralizations_path
+    @decentralization.update active: params[:active]
+    respond_to do |format|
+        format.html {redirect_to users_path}
+        format.js
+      end
+    # @decenralization.update decentralization_params
+    # redirect_to decenralizations_path
   end
 
   def destroy
-    @decenralization.destroy
-    redirect_to decenralizations_path
+    @decentralization.destroy
+    redirect_to decentralizations_path
   end
 
   private
 
   def decentralization_params
-    params.require(:decenralizations).permit :name, :describe, :number_acount, :active
+    params.require(:decentralizations).permit :name, :describe, :number_acount, :active
   end
 
-  def find_decenralization
-    @decenralization = Decentralizations.find(params[:id]) if params[:id]
+  def find_decentralization
+    @decentralization = Decentralization.find(params[:id]) if params[:id]
   end
 end

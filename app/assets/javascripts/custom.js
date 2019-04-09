@@ -1,15 +1,21 @@
- $(document).ready(function(){
-   $(".active-check").click(function(event){
-    if $(".active-check").val() == true
+$(document).ready(function(){
+  $(".active-check").click(function(activeClick){
+    var active_id = $(activeClick.target).closest('tr').find('.active-id').html();
+    var active = activeClick.target.checked;
+    $.ajax(
     {
-      $(".active-check").val() = false;
-      alert("Thanks for visiting!");
-    }
-    else
-      {
-        $(".active-check").val() = true;
-        alert("Thanks for visiting!");
+      url: `/decentralizations/${active_id}`,
+      method: 'patch',
+      data: {
+        active_id,
+        active
+      },
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+      },
+      success: function(){
+        alert("success");
       }
-
-   });
- });
+    });
+  });
+});
