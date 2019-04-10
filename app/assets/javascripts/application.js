@@ -58,4 +58,7 @@ $(document).ready(function () {
         // $('#notifications').click(function () {
         //     return false;       // DO NOTHING WHEN CONTAINER IS CLICKED.
         // });
+          $('#myModal').on('shown.bs.modal', function () {
+              $('#myInput').focus()
+            })
     });

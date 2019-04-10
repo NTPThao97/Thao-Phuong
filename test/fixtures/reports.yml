@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  target_id: 1
+  des_id: 1
+  des_type: MyString
+  content: MyString
+
+two:
+  target_id: 1
+  des_id: 1
+  des_type: MyString
+  content: MyString

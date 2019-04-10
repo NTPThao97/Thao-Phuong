@@ -1,0 +1,28 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="panel-heading">New Report</div>
+          <div class="panel-body">
+            <%= form_for [obj, Report.new] do |f| %>
+              <fieldset>
+                <div class="form-group">
+                  <%= f.label :content %>
+                  <%= f.text_area :content, class: "form-control",placeholder: "Content..." %>
+                </div>
+                <%= f.hidden_field :target_id, value: @current_user.id %>
+                <%= f.hidden_field :des_id, value: user_id %>
+                <%= f.hidden_field :url, value: obj.id %>
+                <%= f.select :des_type, options_for_select(["Post", "User"]) , {}, class: "form-control" %>
+                <br>
+                <%= f.submit "Create", class: "btn btn-primary" %>
+                </fieldset>
+            <% end %>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -29,6 +29,7 @@
                 <%= @user.email %>
               </li>
               <%= link_to t("button_labels.edit"), edit_user_path(@user) %>
+              <%= link_to "Report", new_user_report_path(@user), data: {toggle: "modal", target: "#myModal", file: "my file 1"}, class: 'rename'  %>
             </div>
             <div class="tab-pane fade" id="Friends">
               <h4>ALL FRIENDS</h4>
@@ -46,3 +47,4 @@
     </div>
   </div>
 </div>
+<%= render "reports/new", obj: @user, user_id: @user.id%>

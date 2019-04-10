@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def show
     @users = User.all
     @user = @current_user
+    @report = Report.new
     @posts = Post.order_created_at
   end
 

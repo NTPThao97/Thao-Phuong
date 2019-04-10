@@ -18,8 +18,8 @@
                   <th>Name</th>
                   <th>Email</th>
                   <th>User Type</th>
-                  <th>Active</th>
-                  <th></th>
+                  <th>Status</th>
+                  <th>Activity</th>
                   <th></th>
                 </tr>
               </thead>
@@ -36,16 +36,28 @@
                   <td>
                     <div class="form-group">
                       <select class="form-control">
-                        <option selected="selected"> <%#= Decentralization.find_by(id: user[:user_type]) %> </option>
+                        <%= Decentralization.find_by(id: user.user_type).name %>
                         <%= @decentralizations.each do |f|%>
-                          <option><%= f.name %></option>
+                          <option value = "<%= f.id %>" ><%= f.name %></option>
                         <% end %>
                       </select>
                   </div>
                   </td>
+                  <% if user.status == true %>
+                  <td>
+                    <div class="profile-usertitle-status">
+                      <span class="indicator label-success"></span>Online
+                    </div>
+                  </td>
+                  <% else %>
+                  <td>
+                    <div class="profile-usertitle-status">
+                      <span class="badge"></span>Offline
+                    </div>
+                  </td>
+                  <% end %>
                   <td></td>
-                  <td><%#= link_to t("button_labels.edit"), edit_user_path(user) %></td>
-                  <td><%= link_to t("button_labels.delete") , user, method: :delete, data: {confirm: t("text.confirm")} %></td>
+                  <td><%= link_to t("button_labels.block") , user, method: :delete, data: {confirm: t("text.confirm")} %></td>
                 </tr>
               <% end %>
               </tbody>

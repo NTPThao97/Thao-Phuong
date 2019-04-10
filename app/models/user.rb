@@ -2,7 +2,8 @@ class User < ApplicationRecord
   before_save {self.email = email.downcase}
   has_many :posts, dependent: :destroy
   has_many :comments
-  belongs_to :decentralization
+  has_many :reports
+  belongs_to :decentralization, optional: true
   has_many :active_relations, class_name: "Relation",
                                                   foreign_key: :follower_id, dependent: :destroy
   has_many :passive_relations, class_name: "Relation",

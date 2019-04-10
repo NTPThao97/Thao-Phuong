@@ -1,6 +1,7 @@
 module SessionsHelper
   def log_in user
     session[:user_id] = user.id
+    user.update status: true
   end
 
   def log_in?
@@ -14,12 +15,13 @@ module SessionsHelper
   end
 
   def log_out
+    @current_user.update status: false
     session.delete :user_id
     @current_user = nil
   end
 
   def admin_user
-    return @current_user.user_type == 0
+    return @current_user.user_type == 1
     flash[:warning] = "m"
   end
 

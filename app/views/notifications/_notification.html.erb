@@ -2,21 +2,20 @@
   <div class="profile-userpic">
     <%= image_tag notification.target.avatar , class: "pull-left" %>
   </div>
-  </a>
-    <div class="message-body">
-      <small class="pull-right"><%= time_ago_in_words(notification.created_at)%></small>
-      <strong>
-        <%= link_to notification.target_name, user_path(notification.target_id) %>
-      </strong>
-      <%= notification.target_type %>
-      <% if notification.opened_at == nil %>
-        <strong>your
-          <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %>
-        </strong>.
-      <% else %>
-        your <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %>
-      <% end %>
-      <br />
-      <small class="text-muted"><%= notification.created_at %></small>
-    </div>
+  <div class="message-body">
+    <small class="pull-right"><%= time_ago_in_words(notification.created_at)%></small>
+    <strong>
+      <%= link_to notification.target_name, user_path(notification.target_id) %>
+    </strong>
+    <%= notification.target_type %>
+    <% if notification.opened_at == nil %>
+      <strong>your
+        <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %>
+      </strong>.
+    <% else %>
+      your <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %>
+    <% end %>
+    <br />
+    <small class="text-muted"><%= notification.created_at %></small>
+  </div>
 </div>

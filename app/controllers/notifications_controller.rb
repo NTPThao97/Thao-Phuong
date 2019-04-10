@@ -1,5 +1,5 @@
 class NotificationsController < ApplicationController
-  before_action :new_notifications_count, :notifications_limit, only: [:index]
+  before_action :new_notifications_count, :notifications_limit, :notifications, only: [:index]
 
   def index
   end
@@ -10,13 +10,13 @@ class NotificationsController < ApplicationController
   def update;  end
 
   def destroy
-    # find_notification
-    # @notification.destroy
-    # redirect_to post_path(@comment.post_id)
+    find_notification
+    @notification.update status: false
+    redirect_to notifications_path
   end
 
-  # private
-  # def find_notification
-  #   @notification = Notifications.find_by(id: params[:id]) if params[:id]
-  # end
+  private
+  def find_notification
+    @notification = Notification.find_by(id: params[:id])
+  end
 end

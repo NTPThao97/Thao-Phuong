@@ -1,6 +1,6 @@
 <% if log_in? %>
-<div class="content">
-  <div class="col-md-12">
+  <div class="content">
+    <div class="col-md-12">
       <ol class="microposts">
         <span id="form-comment">
           <%= form_for [post, comment_new] do |f| %>
@@ -12,7 +12,7 @@
             <%= f.submit t("button_labels.comment"), class: "btn btn-xs btn-custom2" %>
           <% end %>
         </span>
-      <% end %>
-    </ol>
+      </ol>
+    </div>
   </div>
-</div>
+<% end %>

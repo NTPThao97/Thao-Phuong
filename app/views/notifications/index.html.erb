@@ -7,7 +7,7 @@
         <li>
           <%= render notification %>
         </li>
-        <%= link_to t("button_laybels.delete"), notification_path(notification) %>
+        <%= link_to t("button_laybels.delete"), notification, method: :delete  %>
       <% end%>
       <li class="divider"></li>
     </div>

@@ -26,7 +26,7 @@
               <%= f.label avatar %>
               <%= f.file_field :avatar %>
             </div>
-            <%= f.hidden_field :user_type, value: "1" %>
+            <%= f.hidden_field :user_type, value: "2" %>
             <% if log_in?%>
               <%= f.submit t("button_labels.update"), class: "btn btn-primary" %>
               <p>

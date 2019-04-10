@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_080349) do
+ActiveRecord::Schema.define(version: 2019_04_10_085022) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_04_08_080349) do
     t.datetime "updated_at", null: false
     t.string "des_type"
     t.integer "url"
+    t.boolean "status"
     t.index ["des_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
     t.index ["target_type", "target_id"], name: "index_notifications_on_target_type_and_target_id"
   end
@@ -95,22 +96,14 @@ ActiveRecord::Schema.define(version: 2019_04_08_080349) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "subscriptions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "target_type", null: false
-    t.bigint "target_id", null: false
-    t.string "key", null: false
-    t.boolean "subscribing", default: true, null: false
-    t.boolean "subscribing_to_email", default: true, null: false
-    t.datetime "subscribed_at"
-    t.datetime "unsubscribed_at"
-    t.datetime "subscribed_to_email_at"
-    t.datetime "unsubscribed_to_email_at"
-    t.text "optional_targets"
+  create_table "reports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "target_id"
+    t.integer "des_id"
+    t.string "des_type"
+    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["key"], name: "index_subscriptions_on_key"
-    t.index ["target_type", "target_id", "key"], name: "index_subscriptions_on_target_type_and_target_id_and_key", unique: true
-    t.index ["target_type", "target_id"], name: "index_subscriptions_on_target_type_and_target_id"
+    t.integer "url"
   end
 
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -121,6 +114,7 @@ ActiveRecord::Schema.define(version: 2019_04_08_080349) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest", limit: 200
+    t.boolean "status"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

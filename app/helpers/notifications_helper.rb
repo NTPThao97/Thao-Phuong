@@ -5,6 +5,14 @@ module NotificationsHelper
     end
   end
   def notifications_limit
-    @notifications = @current_user.notifications.where("target_id != #{@current_user.id}").order_by_created.limit(8)
+    if log_in?
+      @notifications_limit = @current_user.notifications.where("target_id != #{@current_user.id}").order_by_created.limit(8)
+    end
+  end
+
+  def notifications
+    if log_in?
+      @notifications = @current_user.notifications.where("target_id != #{@current_user.id}").where("status = true").order_by_created
+    end
   end
 end
