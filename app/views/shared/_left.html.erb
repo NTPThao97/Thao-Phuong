@@ -36,23 +36,6 @@
     <li>
       <%= link_to "Activity Log", "#" %>
     </li>
-    <% if admin_user %>
-      <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-        <em class="fa fa-navicon">&nbsp;</em> Setting <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
-        </a>
-        <ul class="children collapse" id="sub-item-1">
-          <li>
-            <%= link_to "User management", users_path%>
-          </li>
-          <li>
-            <%= link_to "Post Management", posts_path %>
-          </li>
-          <li>
-            <%= link_to "Other Management", "#" %>
-          </li>
-        </ul>
-      </li>
-    <% end %>
     <li>
       <%= link_to t("button_labels.log_out"), sign_in_path %>
     </li>

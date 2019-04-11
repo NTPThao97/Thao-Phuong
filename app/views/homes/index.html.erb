@@ -1,5 +1,5 @@
 <% if log_in? %>
-  <%= render "posts/index" %>
+  <%= render "posts/index", posts: @posts%>
 <% else %>
   <h1>
     <%= link_to t("button_labels.sign_in") , sign_in_path %>

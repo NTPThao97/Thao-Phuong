@@ -1,18 +1,17 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
   before_action :load_support, only: [:index, :new, :edit]
-  before_action :new_notifications_count, :notifications_limit, only: [:index, :show, :new, :edit]
+  before_action :new_notifications_count, :notifications_limit, :reports, only: [:index, :show, :new, :edit]
 
-  def index
-    @posts = Post.all
-    @report = Report.new
-  end
+  def index;  end
 
   def show
       @user = @current_user if log_in?
       @comment = Comment.new
       @comments = @post.comments.hash_tree(limit_depth: 2)
       UpdateNotificationService.new(params).perform if params[:notification_id]
+      @report = Report.find_by(id: params[:report_id])
+      @report.update opened_at: Time.current if params[:report_id]
   end
 
   def new

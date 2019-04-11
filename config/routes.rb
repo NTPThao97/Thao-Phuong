@@ -6,15 +6,19 @@ Rails.application.routes.draw do
   resources :users do
     resources :decentralizations, only: [:edit]
     resources :reports, only: [:new, :create]
+    member do
+      get :following, :followers
+    end
   end
   resources :posts do
     resources :comments, only: [:create, :destroy]
-    resources :notifications, only: [:update]
     resources :reports, only: [:new, :create]
+    resources :notifications, only: [:update]
   end
   resources :notifications, only: [:index, :destroy]
   resources :decentralizations, only: [:index, :edit, :update, :destroy]
-  resources :reports, only: [:create]
+  resources :reports, only: [:index]
+  resources :relationships,       only: [:create, :destroy]
 
   get "/sign_up" , to: "users#new"
   post "/sign_up" , to: "users#create"

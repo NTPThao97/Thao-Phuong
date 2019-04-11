@@ -1,13 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  content: MyString
   target_id: 1
   des_id: 1
   des_type: MyString
-  content: MyString
+  url: 1
+  opened_at: 2019-04-11 11:37:14
 
 two:
+  content: MyString
   target_id: 1
   des_id: 1
   des_type: MyString
-  content: MyString
+  url: 1
+  opened_at: 2019-04-11 11:37:14

@@ -4,6 +4,15 @@ class ApplicationController < ActionController::Base
   include CommentsHelper
   include NotificationsHelper
   before_action :set_locale
+  def reports
+    if log_in?
+      if admin_user
+        @reports_count = Report.where("opened_at IS NULL").order_by_created
+        @reports_limit = Report.order_by_created.limit(8)
+        @reports = Report.order_by_created
+      end
+    end
+  end
 
   private
 

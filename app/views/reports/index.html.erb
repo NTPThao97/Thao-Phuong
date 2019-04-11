@@ -1,0 +1,15 @@
+<%= render "shared/left" %>
+<div class="panel panel-container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Reports</h1>
+      <% @reports.each do |report| %>
+        <li>
+          <%= render report %>
+        </li>
+        <%= link_to t("button_laybels.delete"), report, method: :delete  %>
+      <% end%>
+      <li class="divider"></li>
+    </div>
+  </div>
+</div>

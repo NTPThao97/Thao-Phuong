@@ -2,10 +2,9 @@
 <div class="panel panel-container">
   <div class="row">
     <div class="col-md-11">
-      <% if @posts.any? %>
-        <h3>Microposts (<%= @posts.count %>)</h3>
+      <% if posts.any? %>
         <ol class="microposts">
-          <%= render @posts, button_text: t("button_labels.read_more") %>
+          <%= render posts, button_text: t("button_labels.read_more") %>
         </ol>
       <% end %>
     </div>

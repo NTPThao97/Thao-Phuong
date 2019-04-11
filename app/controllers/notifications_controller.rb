@@ -1,5 +1,5 @@
 class NotificationsController < ApplicationController
-  before_action :new_notifications_count, :notifications_limit, :notifications, only: [:index]
+  before_action :new_notifications_count, :notifications_limit, :notifications, :reports, only: [:index]
 
   def index
   end

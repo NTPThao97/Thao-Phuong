@@ -1,49 +1,20 @@
-<div class="row">
-  <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
-    <div class="login-panel panel panel-default">
-      <div class="panel-heading"><%= header %></div>
-      <div class="panel-body">
-        <%= form_for @user do |f| %>
-          <%= render "shared/error_messages" %>
-          <fieldset>
-            <div class="form-group">
-              <%= f.label name %>
-              <%= f.text_field :name, placeholder: _name,  class: "form-control" %>
-            </div>
-            <div class="form-group">
-              <%= f.label email %>
-              <%= f.text_field :email, placeholder: _email ,class: "form-control",placeholder: "E-mail", type: "email" %>
-            </div>
-            <div class="form-group">
-              <%= f.label password %>
-              <%= f.text_field :password, placeholder: _password ,class: "form-control", placeholder: "Password",type: "password" %>
-            </div>
-            <div class="form-group">
-              <%= f.label password_confirmation %>
-              <%= f.text_field :password_confirmation, placeholder: _password_confirmation ,class: "form-control", placeholder: "Password", type: "password" %>
-            </div>
-            <div class="form-group">
-              <%= f.label avatar %>
-              <%= f.file_field :avatar %>
-            </div>
-            <%= f.hidden_field :user_type, value: "2" %>
-            <% if log_in?%>
-              <%= f.submit t("button_labels.update"), class: "btn btn-primary" %>
-              <p>
-                <%= link_to t("button_labels.previous") , user_path(@user), class: "btn btn-primary"%>
-              </p>
-            <% else %>
-              <%= f.submit t("button_labels.create"), class: "btn btn-primary" %>
-              <p>
-                <%= t("text.text2")%>
-                <%= link_to t("button_labels.sign_in") , sign_in_path %>
-              </p>
-            <% end %>
-            </fieldset>
-        <% end %>
+<div class="col-md-3">
+  <div>
+    <% if user.avatar.attached? %>
+      <%= image_tag user.avatar, class: "img-circle, imagefriend"%>
+    <% else %>
+      <%= image_tag " ", class: "img-circle, profile-userpic, imagefriend"%>
+    <% end %>
+    <div class="profile-usertitle-name"><%=link_to user.name, user_path(user)%></div>
+    <% if user.status == true %>
+      <div class="profile-usertitle-status">
+        <span class="indicator label-success"></span>Online
       </div>
-    </div>
+    <% else %>
+      <div class="profile-usertitle-status">
+        <span class="badge"></span>Offline
+      </div>
+    <% end %>
+    <div class="clear"></div>
   </div>
 </div>
-
-

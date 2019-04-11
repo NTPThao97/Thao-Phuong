@@ -10,11 +10,7 @@ class CreateNotificationService
   end
 
   def create_notification
-    Notification.create! target_id: @target_id,
-                                    des_id: @des_id,
-                                    target_type: @target_type,
-                                    des_type: @des_type,
-                                    url: @url
+    Notification.create! target_id: @target_id, des_id: @des_id, target_type: @target_type, des_type: @des_type, url: @url, status: true
     # create noti
     # return true / false
   end

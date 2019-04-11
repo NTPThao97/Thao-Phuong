@@ -7,7 +7,9 @@
           <li class="dropdown", id="noti_Button">
             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
             <em class="fa fa-bell"></em>
-            <span class="label label-danger", id= "noti_Counter"><%= @new_notifications_count.count %></span>
+            <span class="label label-danger", id= "noti_Counter">
+                <%= @new_notifications_count.count %>
+            </span>
             </a>
             <ul class="dropdown-menu dropdown-messages", id= "notifications">
               <li>
@@ -16,6 +18,42 @@
               <li class="divider"></li>
             </ul>
           </li>
+          <% if admin_user %>
+          <li class="dropdown", id="noti_Button">
+            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+            <em class="fa fa-envelope"></em>
+            <span class="label label-danger", id= "noti_Counter">
+                <%= @reports_count.count %>
+            </span>
+            </a>
+            <ul class="dropdown-menu dropdown-messages", id= "notifications">
+              <li>
+                <%= render "reports/show" %>
+              </li>
+              <li class="divider"></li>
+            </ul>
+          </li>
+          <li class="dropdown", id="noti_Button">
+            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+              <em class="fa fa-navicon"></em>
+            </a>
+            <ul class="dropdown-menu dropdown" >
+              <li class="divider"></li>
+              <li>
+                <%= link_to "User management", users_path%>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Report Management", posts_path %>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Other Management", "#" %>
+              </li>
+              <li class="divider"></li>
+            </ul>
+          </li>
+        <% end %>
         </ul>
       <% else %>
         <ul class="nav navbar-top-links navbar-right">

@@ -4,14 +4,14 @@ class User < ApplicationRecord
   has_many :comments
   has_many :reports
   belongs_to :decentralization, optional: true
-  has_many :active_relations, class_name: "Relation",
+  has_many :active_relationships, class_name: Relationship.name,
                                                   foreign_key: :follower_id, dependent: :destroy
-  has_many :passive_relations, class_name: "Relation",
+  has_many :passive_relationships, class_name: Relationship.name,
                                                   foreign_key: :followed_id, dependent: :destroy
-  has_many :notifications, class_name: "Notification",
+  has_many :notifications, class_name: Notification.name,
                                                   foreign_key: :des_id, dependent: :destroy
-  has_many :following, through: :active_relations , source: :followed
-  has_many :followers ,through: :passive_relations, source: :follower
+  has_many :following, through: :active_relationships , source: :followed
+  has_many :followers ,through: :passive_relationships, source: :follower
   has_one_attached :avatar
   has_secure_password
   validates :name , presence: true , length: {minimum: 5}
@@ -42,6 +42,18 @@ class User < ApplicationRecord
     self.password_reset_token = User.new_token
     update_columns reset_digest: User.digest(password_reset_token)
     update_columns reset_send_at: Time.zone.now
+  end
+
+  def follow (orther_user)
+    following << orther_user
+  end
+
+  def unfollow(orther_user)
+    following.delete orther_user
+  end
+
+  def following?(orther_user)
+    following.include?(orther_user)
   end
 
 end

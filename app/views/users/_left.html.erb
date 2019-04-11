@@ -1,0 +1,43 @@
+<div class="caption">
+  <p>Bio: "Lorem ipsum donec id elit non mi porta gravida at eget metus."</p>
+</div>
+<span>
+  <%= render 'follow_form' if log_in? %>
+</span>
+<% if @user.avatar.attached? %>
+  <%= image_tag @user.avatar, class: "img-circle, profile-userpic, imageavatar"%>
+<% else %>
+  <%= image_tag " ", class: "img-circle, profile-userpic, imageavatar"%>
+<% end %>
+<h4 style="text-align: center;"><strong><%= @user.name %></strong></h4>
+<br><br>
+<ul class="pull-right panel-settings panel-button-tab-right">
+  <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+    <em class="fa fa-cogs"></em>
+  </a>
+    <ul class="dropdown-menu dropdown-menu-right">
+      <li>
+        <ul class="dropdown-settings">
+          <li>
+          <%= link_to "UploadAvatar", "", class: "fa fa-cog", data: {toggle: "modal", target: "#myModal", file: "my file 1"}, class: 'rename, btn btn-danger' %>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to "Edit Imformation", "", class: "fa fa-cog", data: {toggle: "modal", target: "#myModal1", file: "my file 1"}, class: 'rename, btn btn-danger'%>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to "Edit Bio", "", class: "fa fa-cog", data: {toggle: "modal", target: "#myModal", file: "my file 1"}, class: 'rename, btn btn-danger' %>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to "Report", new_user_report_path(@user), data: {toggle: "modal", target: "#myModal", file: "my file 1"}, class: 'rename, btn btn-danger'  if current_user != @user %>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<%= render 'shared/stats' %>
+<%= render "users/edit" %>
+

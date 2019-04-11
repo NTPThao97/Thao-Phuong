@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_10_085022) do
+ActiveRecord::Schema.define(version: 2019_04_11_083521) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_085022) do
     t.string "des_type"
     t.integer "url"
     t.boolean "status"
+    t.integer "report"
     t.index ["des_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
     t.index ["target_type", "target_id"], name: "index_notifications_on_target_type_and_target_id"
   end
@@ -89,7 +90,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_085022) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "relations", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
     t.datetime "created_at", null: false
@@ -97,13 +98,14 @@ ActiveRecord::Schema.define(version: 2019_04_10_085022) do
   end
 
   create_table "reports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
     t.integer "target_id"
     t.integer "des_id"
     t.string "des_type"
-    t.string "content"
+    t.integer "url"
+    t.datetime "opened_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "url"
   end
 
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

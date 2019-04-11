@@ -13,7 +13,7 @@
                 <%= f.hidden_field :target_id, value: @current_user.id %>
                 <%= f.hidden_field :des_id, value: user_id %>
                 <%= f.hidden_field :url, value: obj.id %>
-                <%= f.select :des_type, options_for_select(["Post", "User"]) , {}, class: "form-control" %>
+                <%= f.select :des_type, options_for_select(["Post", "Account"]) , {}, class: "form-control" %>
                 <br>
                 <%= f.submit "Create", class: "btn btn-primary" %>
                 </fieldset>

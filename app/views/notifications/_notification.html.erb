@@ -9,11 +9,26 @@
     </strong>
     <%= notification.target_type %>
     <% if notification.opened_at == nil %>
-      <strong>your
-        <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %>
-      </strong>.
+      <% if (notification.target_type != "Followed") || (notification.target_type != "UnFollowed") %>
+        <strong>your
+          <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %>
+        </strong>.
+      <% end %>
     <% else %>
-      your <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %>
+      <% if admin_user %>
+        <% if (notification.target_type != "Followed") || (notification.target_type != "UnFollowed") %>
+          <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %> of
+          <%= link_to notification.des.name, user_path(notification.des_id) %>
+        <% else %>
+          You
+        <% end %>
+      <% else %>
+        <% if (notification.target_type == "Followed") || (notification.target_type == "UnFollowed") %>
+          <%= link_to notification.des.name, user_path(notification.des_id) %>
+        <% else %>
+          your <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %>
+        <% end %>
+      <% end %>
     <% end %>
     <br />
     <small class="text-muted"><%= notification.created_at %></small>
