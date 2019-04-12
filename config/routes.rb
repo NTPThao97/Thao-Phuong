@@ -17,13 +17,14 @@ Rails.application.routes.draw do
   end
   resources :notifications, only: [:index, :destroy]
   resources :decentralizations, only: [:index, :edit, :update, :destroy]
-  resources :reports, only: [:index]
-  resources :relationships,       only: [:create, :destroy]
+  resources :reports, only: [:index, :destroy, :show]
+  resources :relationships, only: [:create, :destroy]
 
   get "/sign_up" , to: "users#new"
-  post "/sign_up" , to: "users#create"
+  # post "/sign_up" , to: "users#create"
   get "/sign_in" , to: "sessions#new"
   post "/sign_in" , to: "sessions#create"
+  delete "/log_out",  to: "sessions#destroy"
 
   post "/tinymce_assets", to: "tinymce_assets#create"
 

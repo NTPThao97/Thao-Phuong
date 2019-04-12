@@ -1,5 +1,9 @@
 class ReportsController < ApplicationController
-  before_action :new_notifications_count, :notifications_limit, :reports, only: [:new]
+  before_action :new_notifications_count, :notifications_limit, :reports, only: [:new, :index, :show]
+  def index;  end
+  def show
+    @report = Report.find_by(id: params[:id])
+  end
 
   def new
     @report = Report.new
@@ -14,7 +18,6 @@ class ReportsController < ApplicationController
         format.html{redirect_to root_path}
         format.js
       end
-
     end
   end
 

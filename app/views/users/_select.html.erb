@@ -1,0 +1,28 @@
+<% if log_in? %>
+  <% if current_user == @user %>
+    <ul class="pull-right panel-settings panel-button-tab-right">
+      <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+        <em class="fa fa-cogs"></em>
+      </a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li>
+            <ul class="dropdown-settings">
+              <li>
+              <%= link_to "UploadAvatar", "", data: {toggle: "modal", target: "#myModal", file: "my file 1"}, class: 'rename, btn btn-danger' %>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Edit Imformation", "", data: {toggle: "modal", target: "#myModal1", file: "my file 1"}, class: 'rename, btn btn-danger'%>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Edit Bio", "", data: {toggle: "modal", target: "#myModal", file: "my file 1"}, class: 'rename, btn btn-danger' %>
+              </li>
+              <li class="divider"></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  <% end %>
+<% end %>

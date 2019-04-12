@@ -1,16 +1,16 @@
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
   <div class="profile-sidebar">
-    <% if @current_user.avatar.attached? %>
+    <% if current_user.avatar.attached? %>
       <div class="profile-userpic">
-        <%= image_tag @current_user.avatar  %>
+        <%= image_tag current_user.avatar  %>
       </div>
     <% else %>
       <div class="profile-userpic">
         <%= image_tag "" %>
       </div>
     <% end %>
-    <%= hidden_field :id, @current_user.id , id: "user_id" %>
-    <div class="profile-usertitle-name"><%=@current_user.name%></div>
+    <%= hidden_field :id, current_user.id , id: "user_id" %>
+    <div class="profile-usertitle-name"><%= current_user.name%></div>
     <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
     <div class="clear"></div>
   </div>
@@ -25,7 +25,7 @@
       <%= link_to  t("button_labels.home") , root_path %>
     </li>
     <li>
-      <%= link_to  t("button_labels.profile") , user_path(@current_user) %>
+      <%= link_to  t("button_labels.profile") , user_path(current_user) %>
     </li>
     <li>
       <%= link_to t("button_labels.create_post "), new_post_path %>
@@ -37,7 +37,7 @@
       <%= link_to "Activity Log", "#" %>
     </li>
     <li>
-      <%= link_to t("button_labels.log_out"), sign_in_path %>
+      <%= link_to t("button_labels.log_out"), log_out_path, method: :delete %>
     </li>
   </ul>
 </div><!--/.sidebar-->

@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @users = User.all
     @report = Report.new
     @posts = @user.posts.order_created_at
+    UpdateNotificationService.new(params).perform if params[:notification_id]
   end
 
   def new
@@ -25,11 +26,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new user_params
-    if @user.save
-      flash[:success] = "Well come " + @user.name + " to your Blog"
-      log_in @user
-      redirect_to user_url(@user)
+    user = User.new user_params
+    if user_id = session[:user_id]
+      flash[:success] = "Well come " + user.name + " to your Blog"
+      log_in user
+      redirect_to user_url(user)
     else
       redirect_to sign_up_path
     end
@@ -45,6 +46,20 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to users_path
+  end
+
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follow'
   end
 
   private

@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  attr_accessor :remember_token
   before_save {self.email = email.downcase}
   has_many :posts, dependent: :destroy
   has_many :comments
@@ -32,11 +33,16 @@ class User < ApplicationRecord
     end
   end
 
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
+
   def authenticated? attribute, token
     digest = send("#{attribute}_digest")
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
-    end
+  end
 
   def create_password_reset_digest
     self.password_reset_token = User.new_token
@@ -54,6 +60,10 @@ class User < ApplicationRecord
 
   def following?(orther_user)
     following.include?(orther_user)
+  end
+
+  def forget
+    update_attribute(:remember_digest, nil)
   end
 
 end

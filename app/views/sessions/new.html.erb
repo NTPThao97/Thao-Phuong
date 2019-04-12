@@ -14,9 +14,10 @@
               <%= f.text_field :password, class: "form-control", placeholder: "Password",type: "password" %>
             </div>
             <div class="checkbox">
-              <label>
-                <input name="remember" type="checkbox" value="Remember Me"><%= t("text.remember")%>
-              </label>
+              <%= f.label :remember_me, class: "checkbox inline" do %>
+                <%= f.check_box :remember_me %>
+                <span><%= t("text.remember")%></span>
+              <% end %>
             </div>
             <%= f.submit t("button_labels.sign_in"), class: "btn btn-primary" %>
             </fieldset>
