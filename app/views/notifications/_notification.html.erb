@@ -10,25 +10,36 @@
     <%= notification.target_type %>
     <% if notification.opened_at == nil %>
       <% if admin_user %>
-        <strong><%= link_to notification.des.name, user_path(notification.des.id, notification_id: notification.id)%></strong>
+        <strong>
+          <% if (notification.target_type == "Followed") or (notification.target_type == "UnFollowed") %>
+            <%= link_to notification.des_type, user_path(notification.url, notification_id: notification.id) %> of
+          <% else %>
+            <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %> of
+        <% end %>
+          <%= link_to notification.des.name, user_path(notification.des_id) %></strong>
       <% else %>
         <strong>your
-          <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %>
+          <% if (notification.target_type == "Followed") or (notification.target_type == "UnFollowed") %>
+            <%= link_to notification.des_type, user_path(notification.url, notification_id: notification.id) %>
+          <% else %>
+            <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %>
+          <% end %>
         </strong>.
       <% end %>
     <% else %>
       <% if admin_user %>
         <% if (notification.target_type == "Followed") or (notification.target_type == "UnFollowed") %>
-          of <%= link_to notification.des_type, user_path(notification.url, notification_id: notification.id) %>
+          <%= link_to notification.des_type, user_path(notification.url, notification_id: notification.id) %> of
           <% else %>
-          of <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %>
+          <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %> of
         <% end %>
         <%= link_to notification.des.name, user_path(notification.des_id) %>
       <% else %>
+        your
         <% if (notification.target_type == "Followed") or (notification.target_type == "UnFollowed") %>
-          your <%= link_to notification.des_type, user_path(notification.url, notification_id: notification.id) %>
+          <%= link_to notification.des_type, user_path(notification.url, notification_id: notification.id) %>
         <% else %>
-          your <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %>
+          <%= link_to notification.des_type, post_path(notification.url, notification_id: notification.id) %>
         <% end %>
       <% end %>
     <% end %>

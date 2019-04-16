@@ -1,3 +1,5 @@
 class UserSupport
-  @user = Decentralization.find_by(id: user.user_type)
+  def user_types
+    @user_types = Decentralization.pluck(:name, :id)
+  end
 end

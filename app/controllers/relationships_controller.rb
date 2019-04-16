@@ -13,7 +13,7 @@ class RelationshipsController < ApplicationController
   def destroy
     @user = Relationship.find(params[:id]).followed
     current_user.unfollow(@user)
-    CreateNotificationService.new(target_id: current_user.id, des_id: @user.id, target_type: "UnFollowed", des_type: " ", url: @user.id).create_notification
+    CreateNotificationService.new(target_id: current_user.id, des_id: @user.id, target_type: "UnFollowed", des_type: "Account", url: @user.id).create_notification
     respond_to do |format|
       format.html { redirect_to @user}
       format.js

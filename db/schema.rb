@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 2019_04_12_042009) do
   create_table "decentralizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "name"
     t.text "describe"
-    t.integer "number_acount"
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -116,7 +115,7 @@ ActiveRecord::Schema.define(version: 2019_04_12_042009) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest", limit: 200
-    t.boolean "status"
+    t.integer "status"
     t.string "remember_digest"
   end
 

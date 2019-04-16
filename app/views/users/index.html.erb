@@ -19,7 +19,6 @@
                   <th>Email</th>
                   <th>User Type</th>
                   <th>Status</th>
-                  <th>Activity</th>
                   <th></th>
                 </tr>
               </thead>
@@ -28,36 +27,51 @@
                 <tr>
                   <td>
                     <div class="profile-userpic">
-                      <%= image_tag @current_user.avatar  %>
+                      <%= image_tag user.avatar  %>
                     </div>
                   </td>
                   <td><%= link_to user.name , user_path(user) %></td>
                   <td><%= user.email %></td>
                   <td>
-                    <div class="form-group">
-                      <select class="form-control">
-                        <option selected="selected"><%= Decentralization.find_by(id: user.user_type).name %></option>
-                        <%= @decentralizations.each do |f|%>
-                          <option value = "<%= f.id %>" ><%= f.name %></option>
-                        <% end %>
-                      </select>
-                  </div>
+                      <%= form_for user do |f| %>
+                      <div class="form-group">
+                          <%= f.select :user_type, @support.user_types, {}, class: "form-control", id: "sel1" %>
+                        </div>
+                        <%= f.submit "Save" %>
+                      <% end %>
                   </td>
-                  <% if user.status == true %>
                   <td>
-                    <div class="profile-usertitle-status">
-                      <span class="indicator label-success"></span>Online
-                    </div>
+                    <% if user.status == 1 %>
+                      <div class="profile-usertitle-status">
+                        <span class="indicator label-success"></span>Online
+                      </div>
+                    <% elsif  user.status == 2 %>
+                      <div class="profile-usertitle-status">
+                        <span class="badge"></span>Offline
+                      </div>
+                    <% elsif  user.status == 3 %>
+                      <div class="profile-usertitle-status">
+                        <span class="badge"></span>Chua xac nhan email
+                      </div>
+                    <% elsif  user.status == 4 %>
+                      <div class="profile-usertitle-status">
+                        <span class="badge"></span>Blocked
+                      </div>
+                    <% end %>
                   </td>
+                  <td>
+                  <% if user.status == 4 %>
+                    <%= form_for user do |f| %>
+                      <%= f.hidden_field :status, value: "2" %>
+                      <%= f.submit "UnBlock", class: "btn", data: {confirm: t("text.confirm")} %>
+                    <% end %>
                   <% else %>
-                  <td>
-                    <div class="profile-usertitle-status">
-                      <span class="badge"></span>Offline
-                    </div>
-                  </td>
+                    <%= form_for user do |f| %>
+                      <%= f.hidden_field :status, value: "4" %>
+                      <%= f.submit "Block", class: "btn", data: {confirm: t("text.confirm")} %>
+                    <% end %>
                   <% end %>
-                  <td></td>
-                  <td><%= link_to t("button_labels.block") , user, method: :delete, data: {confirm: t("text.confirm")} %></td>
+                  </td>
                 </tr>
               <% end %>
               </tbody>

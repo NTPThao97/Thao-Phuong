@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   resources :reports, only: [:index, :destroy, :show]
   resources :relationships, only: [:create, :destroy]
 
+  resources :activity_logs, only: [:index, :destroy]
+
   get "/sign_up" , to: "users#new"
   # post "/sign_up" , to: "users#create"
   get "/sign_in" , to: "sessions#new"

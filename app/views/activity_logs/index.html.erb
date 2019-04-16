@@ -2,12 +2,12 @@
 <div class="panel panel-container">
   <div class="row">
     <div class="col-md-12">
-      <h1>Notifications</h1>
-      <% @notifications.each do |notification| %>
+      <h1>Logs</h1>
+      <% @logs.each do |log| %>
         <li>
-          <%= render notification %>
+          <%= render log %>
         </li>
-        <%= link_to t("button_laybels.delete"), notification, method: :delete  %>
+        <%= link_to t("button_laybels.delete"), log, method: :delete  %>
       <% end%>
       <li class="divider"></li>
     </div>

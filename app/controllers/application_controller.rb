@@ -14,6 +14,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def load_decentralizations
+    @decentralizations = Decentralization.select("decentralizations.*, count(users.id) as number_account").joins("inner JOIN users on decentralizations.id = users.user_type").group("users.user_type")
+  end
+
+  def activitylogs
+    if log_in?
+      @logs = Notification.where("target_type != 'Reported'").where("target_id = #{current_user.id}").where("status = true").order_by_created
+    end
+  end
+
   private
 
   def set_locale

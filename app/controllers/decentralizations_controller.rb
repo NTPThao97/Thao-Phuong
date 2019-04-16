@@ -1,8 +1,6 @@
 class DecentralizationsController < ApplicationController
   before_action :find_decentralization, only: [:update, :destroy]
-  def index
-    @decenralizations = Decentralization.all
-  end
+  def index;  end
 
   def new
     @decentralization = Decentralization.new
@@ -41,4 +39,5 @@ class DecentralizationsController < ApplicationController
   def find_decentralization
     @decentralization = Decentralization.find(params[:id]) if params[:id]
   end
+
 end
