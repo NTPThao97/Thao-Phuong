@@ -1,0 +1,22 @@
+<div class="dropdown-messages-box">
+  <div class="profile-userpic">
+    <%= image_tag activity_log.target.avatar , class: "pull-left" %>
+  </div>
+  <div class="message-body">
+    <small class="pull-right"><%= time_ago_in_words(activity_log.created_at)%></small>
+    <strong>
+      You
+    </strong>
+    <%= activity_log.target_type %>
+    <% if (activity_log.target_type == "Followed") or (activity_log.target_type == "UnFollowed") %>
+      <%= link_to activity_log.des_type, user_path(activity_log.url) %> of
+    <% elsif (activity_log.target_type == "Reported") or (activity_log.des_type == "Post") %>
+      <%= link_to activity_log.des_type, post_path(activity_log.url) %> of
+    <% elsif (activity_log.target_type == "Reported") or (activity_log.des_type == "Account")%>
+      <%= link_to activity_log.des_type, post_path(activity_log.url) %> of
+    <% end %>
+    <%= link_to activity_log.des.name, user_path(activity_log.des_id) %>.
+    <br />
+    <small class="text-muted"><%= activity_log.created_at %></small>
+  </div>
+</div>

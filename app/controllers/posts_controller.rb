@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
   before_action :load_support, only: [:index, :new, :edit]
-  before_action :new_notifications_count, :notifications_limit, :reports, :notifications_opened_at, only: [:index, :show, :new, :edit]
+  before_action :new_notifications_count, :notifications_limit, :reports, only: [:index, :show, :new, :edit]
 
   def index;  end
 

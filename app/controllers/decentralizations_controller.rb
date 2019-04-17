@@ -33,7 +33,7 @@ class DecentralizationsController < ApplicationController
   private
 
   def decentralization_params
-    params.require(:decentralizations).permit :name, :describe, :number_acount, :active
+    params.require(:decentralizations).permit :name, :describe, :number_account, :active
   end
 
   def find_decentralization

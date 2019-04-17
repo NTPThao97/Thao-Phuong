@@ -2,12 +2,6 @@
 
 one:
   name: MyString
-  describe: MyString
-  number_account: 1
-  active: false
 
 two:
   name: MyString
-  describe: MyString
-  number_account: 1
-  active: false

@@ -1,27 +1,53 @@
 <div class="dropdown-messages-box">
-  <div class="profile-userpic">
-    <%= image_tag report.target.avatar , class: "pull-left" %>
-  </div>
+  <% if current_user.avatar.attached? %>
+      <div class="profile-userpic">
+        <%= image_tag report.target.avatar  %>
+      </div>
+    <% else %>
+      <div class="profile-userpic">
+        <%= image_tag "" %>
+      </div>
+    <% end %>
   <div class="message-body">
     <small class="pull-right"><%= time_ago_in_words(report.created_at)%></small>
     <strong>
       <%= link_to report.target.name, user_path(report.target.id) %>
     </strong> Reported
+    <% if report.opened_at == nil %>
+    <strong>
       <% if admin_user %>
         <% if report.des_type == "Post" %>
           <%= link_to report.des_type, post_path(report.url, report_id: report.id) %>
         <% else %>
-          Acount
+          <%= link_to report.des_type, user_path(report.url, report_id: report.id) %>
         <% end %>
          of <%= link_to report.des.name, user_path(report.des_id, report_id: report.id) %>
       <% else %>
         your
         <% if report.des_type == "Account" %>
+          <%= link_to report.des_type, user_path(report.url, report_id: report.id) %>
+        <% else %>
+          <%= link_to report.des_type, post_path(report.url, report_id: report.id) %>
+        <% end %>
+      <% end %>
+    </strong>
+    <% else %>
+      <% if admin_user %>
+        <% if report.des_type == "Post" %>
           <%= link_to report.des_type, post_path(report.url, report_id: report.id) %>
         <% else %>
           <%= link_to report.des_type, user_path(report.url, report_id: report.id) %>
         <% end %>
+         of <%= link_to report.des.name, user_path(report.des_id, report_id: report.id) %>
+      <% else %>
+        your
+        <% if report.des_type == "Account" %>
+          <%= link_to report.des_type, user_path(report.url, report_id: report.id) %>
+        <% else %>
+          <%= link_to report.des_type, post_path(report.url, report_id: report.id) %>
+        <% end %>
       <% end %>
+    <% end %>
     <br />
     <small class="text-muted"><%= report.created_at %></small>
   </div>

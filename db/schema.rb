@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_12_042009) do
+ActiveRecord::Schema.define(version: 2019_04_17_085854) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -41,52 +41,49 @@ ActiveRecord::Schema.define(version: 2019_04_12_042009) do
     t.index ["descendant_id"], name: "comment_desc_idx"
   end
 
-  create_table "comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "post_id"
-    t.string "content", limit: 200
+    t.integer "user_id"
+    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "parent_id"
   end
 
   create_table "decentralizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "name"
-    t.text "describe"
+    t.string "name"
+    t.string "describe"
+    t.integer "number_account"
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "target_type", null: false
-    t.bigint "target_id", null: false
-    t.integer "des_id", null: false
-    t.datetime "opened_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "target_id"
+    t.string "target_type"
+    t.integer "des_id"
     t.string "des_type"
     t.integer "url"
+    t.datetime "opened_at"
     t.boolean "status"
-    t.integer "report"
-    t.index ["des_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
-    t.index ["target_type", "target_id"], name: "index_notifications_on_target_type_and_target_id"
-  end
-
-  create_table "post_types", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", limit: 200
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "posts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title", limit: 2000
+  create_table "post_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "title", limit: 4294967295
     t.text "content", limit: 4294967295
-    t.integer "user_id"
-    t.integer "status"
     t.integer "post_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -107,16 +104,16 @@ ActiveRecord::Schema.define(version: 2019_04_12_042009) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", limit: 100
-    t.string "email", limit: 50
-    t.string "avatar", limit: 100
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
     t.integer "user_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "password_digest", limit: 200
+    t.string "avatar"
     t.integer "status"
     t.string "remember_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

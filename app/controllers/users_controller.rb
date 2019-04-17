@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :verify_authenticity_token
   before_action :find_user, only: [:show, :edit, :update, :destroy, :following, :followers]
-  before_action :new_notifications_count, :notifications_limit, :reports, :load_support, :load_decentralizations, :notifications_opened_at, only: [:index, :show, :edit]
+  before_action :new_notifications_count, :notifications_limit, :reports, :load_support, :load_decentralizations, only: [:index, :show, :edit]
 
   def index
     if log_in?
@@ -19,6 +19,8 @@ class UsersController < ApplicationController
     @report = Report.new
     @posts = @user.posts.order_created_at
     UpdateNotificationService.new(params).perform if params[:notification_id]
+    @report = Report.find_by(id: params[:report_id])
+    @report.update opened_at: Time.current if params[:report_id]
   end
 
   def new
@@ -31,7 +33,7 @@ class UsersController < ApplicationController
       flash[:success] = "Well come " + user.name + " to your Blog"
       log_in user
       @decentralization = Decentralization.find_by(id: user.user_type)
-      @decentralization.update number_acount: @decentralization.number_acount + 1
+      @decentralization.update number_account: @decentralization.number_account.to_i + 1
       redirect_to user_url(user)
     else
       redirect_to sign_up_path
