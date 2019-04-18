@@ -209,3 +209,12 @@ span.picture {
   width: auto;
   margin-left: 0;
 }
+.list{
+  margin-top: 19px;
+  list-style-type: none;
+}
+
+#overflow{
+  height: 200px;
+  overflow: scroll;
+}

@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :load_support, only: [:index, :new, :edit]
   before_action :new_notifications_count, :notifications_limit, :reports, only: [:index, :show, :new, :edit]
 
-  def index;  end
+  def index; end
 
   def show
       @user = @current_user if log_in?

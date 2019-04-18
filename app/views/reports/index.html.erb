@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-md-12">
       <h1>Reports</h1>
+      <%= paginate @reports %>
       <% @reports.each do |report| %>
         <li>
           <%= render report %>
@@ -10,6 +11,7 @@
         <%= link_to t("button_laybels.delete"), report, method: :delete  %>
         <%= link_to "View", report_path(report.id), remote: true , data: {toggle: "modal", target: "#myModal2", file: "my file 1"}, class: 'rename' %>
       <% end%>
+      <%= paginate @reports %>
       <li class="divider"></li>
     </div>
   </div>

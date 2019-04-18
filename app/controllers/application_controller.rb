@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
       if admin_user
         @reports_count = Report.where("opened_at IS NULL").where("target_id != #{current_user.id}").order_by_created
         @reports_limit = Report.where("target_id != #{current_user.id}").order_by_created.limit(8)
-        @reports = Report.order_by_created
+        @reports = Report.order_by_created.page(params[:page]).per(2)
       end
     end
   end

@@ -3,12 +3,14 @@
   <div class="row">
     <div class="col-md-12">
       <h1>Logs</h1>
+      <%= paginate @activity_logs %>
       <% @activity_logs.each do |activity_log| %>
-        <li>
+        <li class="list">
           <%= render "activity_log", activity_log: activity_log %>
         </li>
         <%= link_to t("button_laybels.delete"), activity_log, method: :delete  %>
       <% end%>
+      <%= paginate @activity_logs %>
       <li class="divider"></li>
     </div>
   </div>

@@ -18,21 +18,22 @@
    </h3>
    <br>
    <%= link_to t("button_labels.edit"), edit_post_path(  post) %>
-   <% if @current_user && admin_user %>
+   <% if @current_user || admin_user %>
      <%= link_to t("button_labels.delete"), post, method: :delete, data: {confirm: t("text.confirm")}%>
     <% end %>
     <% if @current_user != post.user%>
      <%= link_to "Report", new_post_report_path(post), data: {toggle: "modal", target: "#myModal", file: "my file 1"}, class: 'rename' %>
     <% end %>
    <%= t("text.posted")%>
-   <%= time_ago_in_words( post.created_at) %>.
+   <%= time_ago_in_words(post.created_at) %>.
   </span>
    <span class="content">
     <div class="overflow">
       <%=  post.content.html_safe  %>
     </div>
     <u>
-      <%= link_to button_text, post_path(  post) %>
+      <%= link_to button_text, post_path(post) %>
     </u>
    </span>
 </li>
+<%= render "reports/new", obj: post, user_id: post.user_id %>

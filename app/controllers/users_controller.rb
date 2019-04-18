@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @users = @user.following
     @followers = @user.followers
     @report = Report.new
-    @posts = @user.posts.order_created_at
+    @posts = @user.posts.order_created_at.page(params[:page]).per(2)
     UpdateNotificationService.new(params).perform if params[:notification_id]
     @report = Report.find_by(id: params[:report_id])
     @report.update opened_at: Time.current if params[:report_id]

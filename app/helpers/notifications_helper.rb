@@ -21,9 +21,9 @@ module NotificationsHelper
   def notifications
     if log_in?
       if admin_user
-        @notifications = Notification.where("target_type != 'Reported'").where("status = true").where("target_id != #{current_user.id}").order_by_created
+        @notifications = Notification.where("target_type != 'Reported'").where("status = true").where("target_id != #{current_user.id}").order_by_created.page(params[:page]).per(10)
       else
-        @notifications = Notification.where("des_id = #{current_user.id}").where("target_id != #{current_user.id}").where("status = true").order_by_created
+        @notifications = Notification.where("des_id = #{current_user.id}").where("target_id != #{current_user.id}").where("status = true").order_by_created.page(params[:page]).per(10)
       end
     end
   end

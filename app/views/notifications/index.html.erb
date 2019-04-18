@@ -3,12 +3,14 @@
   <div class="row">
     <div class="col-md-12">
       <h1>Notifications</h1>
+      <%= paginate @notifications %>
       <% @notifications.each do |notification| %>
-        <li>
+        <li class="list">
           <%= render notification %>
         </li>
         <%= link_to t("button_laybels.delete"), notification, method: :delete  %>
       <% end%>
+      <%= paginate @notifications %>
       <li class="divider"></li>
     </div>
   </div>

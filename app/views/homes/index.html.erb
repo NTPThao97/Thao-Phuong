@@ -1,12 +1,8 @@
 <% if log_in? %>
   <%= render "posts/index", posts: @posts%>
-  <%= @posts.each do |post| %>
-    <%= render "reports/new", obj: post, user_id: post.user_id %>
-  <% end %>
 <% else %>
   <h1>
     <%= link_to t("button_labels.sign_in") , sign_in_path %>
     <%= t("text.text1")%>
   </h1>
 <% end %>
-
