@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   resources :activity_logs, only: [:index, :destroy]
+  resources :account_activations, only: [:edit]
 
   get "/sign_up" , to: "users#new"
   # post "/sign_up" , to: "users#create"

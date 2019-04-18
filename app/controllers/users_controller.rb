@@ -28,13 +28,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new user_params
-    if user.save
-      flash[:success] = "Well come " + user.name + " to your Blog"
-      log_in user
-      @decentralization = Decentralization.find_by(id: user.user_type)
+    @user = User.new user_params
+    if @user.save
+      @user.send_activation_email
+      flash[:info] = "Please check your email to activate your account or click here."
+      @decentralization = Decentralization.find_by(id: @user.user_type)
       @decentralization.update number_account: @decentralization.number_account.to_i + 1
-      redirect_to user_url(user)
+      redirect_to root_url
     else
       redirect_to sign_up_path
     end
