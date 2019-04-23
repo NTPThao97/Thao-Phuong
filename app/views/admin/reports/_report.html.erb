@@ -1,0 +1,36 @@
+<div class="dropdown-messages-box">
+  <% if current_user.avatar.attached? %>
+      <div class="profile-userpic">
+        <%= image_tag report.target.avatar  %>
+      </div>
+    <% else %>
+      <div class="profile-userpic">
+        <%= image_tag "" %>
+      </div>
+    <% end %>
+  <div class="message-body">
+    <small class="pull-right"><%= time_ago_in_words(report.created_at)%></small>
+    <strong>
+      <%= link_to report.target.name, admin_user_path(report.target.id) %>
+    </strong> Reported
+    <% if report.opened_at == nil %>
+      <strong>
+        <% if report.des_type == "Post" %>
+          <%= link_to report.des_type, admin_post_path(report.url, report_id: report.id) %>
+        <% else %>
+          <%= link_to report.des_type, admin_user_path(report.url, report_id: report.id) %>
+        <% end %>
+         of <%= link_to report.des.name, admin_user_path(report.des_id, report_id: report.id) %>
+      </strong>
+    <% else %>
+      <% if report.des_type == "Post" %>
+        <%= link_to report.des_type, admin_post_path(report.url, report_id: report.id) %>
+      <% else %>
+        <%= link_to report.des_type, admin_user_path(report.url, report_id: report.id) %>
+      <% end %>
+       of <%= link_to report.des.name, admin_user_path(report.des_id, report_id: report.id) %>
+    <% end %>
+    <br />
+    <small class="text-muted"><%= report.created_at %></small>
+  </div>
+</div>

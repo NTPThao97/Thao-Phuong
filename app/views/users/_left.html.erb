@@ -11,5 +11,4 @@
 <% end %>
 <h4 style="text-align: center;"><strong><%= @user.name %></strong></h4>
 <%= link_to "Report", new_user_report_path(@user), data: {toggle: "modal", target: "#myModal", file: "my file 1"}, class: 'rename, btn btn-danger' if @user != current_user %>
-<%= link_to "Block", new_user_report_path(@user), data: {toggle: "modal", target: "#myModal", file: "my file 1"}, class: 'rename, btn btn-danger' if @user != current_user %>
 <br><br>

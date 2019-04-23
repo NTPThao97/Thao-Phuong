@@ -1,0 +1,8 @@
+<% if log_in? %>
+<p>hi</p>
+<% else %>
+  <h1>
+    <%= link_to t("button_labels.sign_in") , admin_log_in_path %>
+    <%= t("text.text1")%>
+  </h1>
+<% end %>

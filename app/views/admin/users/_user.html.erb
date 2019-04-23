@@ -1,0 +1,28 @@
+<div class="col-md-3">
+  <div>
+    <% if user.avatar.attached? %>
+      <%= image_tag user.avatar, class: "img-circle, imagefriend"%>
+    <% else %>
+      <%= image_tag " ", class: "img-circle, profile-userpic, imagefriend"%>
+    <% end %>
+    <div class="profile-usertitle-name"><%=link_to user.name, admin_user_path(user)%></div>
+    <% if user.status == 1 %>
+      <div class="profile-usertitle-status">
+        <span class="indicator label-success"></span>Online
+      </div>
+    <% elsif  user.status == 2 %>
+      <div class="profile-usertitle-status">
+        <span class="badge"></span>Offline
+      </div>
+    <% elsif  user.status == 3 %>
+      <div class="profile-usertitle-status">
+        <span class="badge"></span>Chua xac nhan email
+      </div>
+    <% elsif  user.status == 4 %>
+      <div class="profile-usertitle-status">
+        <span class="badge"></span>Blocked
+      </div>
+    <% end %>
+    <div class="clear"></div>
+  </div>
+</div>

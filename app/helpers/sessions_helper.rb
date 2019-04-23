@@ -28,14 +28,8 @@ module SessionsHelper
 
   def log_out
     current_user.update status: 2
-    forget(current_user)
     session.delete :user_id
     @current_user = nil
-  end
-
-  def admin_user
-    return current_user.user_type == 1
-    flash[:warning] = "m"
   end
 
   def forget(user)

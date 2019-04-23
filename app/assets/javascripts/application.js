@@ -14,7 +14,6 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree ./lib
-//= require_tree .
 tinyMCE.init({
   selector: 'textarea.tinymce',
   toolbar: 'image'

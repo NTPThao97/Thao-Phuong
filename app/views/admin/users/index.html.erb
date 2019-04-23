@@ -1,0 +1,88 @@
+<div class="panel panel-container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body tabs">
+          <ul class="nav nav-tabs">
+            <li class="active"><%= link_to "User Managerment", "#User_management", data: { toggle: "tab"} %></li>
+            <li><%= link_to "User Decentralization", "#User_decentralization", data: { toggle: "tab"} %></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade in active" id="User_management">
+            <strong><h1>USER MANAGERMENT</h1></strong>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Avatar</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>User Type</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @users.each do |user| %>
+                <tr>
+                  <td>
+                    <div class="profile-userpic">
+                      <%= image_tag user.avatar  %>
+                    </div>
+                  </td>
+                  <td><%= link_to user.name , admin_user_path(user) %></td>
+                  <td><%= user.email %></td>
+                  <td>
+                      <%= form_for user do |f| %>
+                      <div class="form-group">
+                          <%= f.select :user_type, @support.user_types, {}, class: "form-control", id: "sel1" %>
+                        </div>
+                        <%= f.submit "Save" %>
+                      <% end %>
+                  </td>
+                  <td>
+                    <% if user.status == 1 %>
+                      <div class="profile-usertitle-status">
+                        <span class="indicator label-success"></span>Online
+                      </div>
+                    <% elsif  user.status == 2 %>
+                      <div class="profile-usertitle-status">
+                        <span class="badge"></span>Offline
+                      </div>
+                    <% elsif  user.status == 3 %>
+                      <div class="profile-usertitle-status">
+                        <span class="badge"></span>Chua xac nhan email
+                      </div>
+                    <% elsif  user.status == 4 %>
+                      <div class="profile-usertitle-status">
+                        <span class="badge"></span>Blocked
+                      </div>
+                    <% end %>
+                  </td>
+                  <td>
+                  <% if user.status == 4 %>
+                    <%= form_for user do |f| %>
+                      <%= f.hidden_field :status, value: "2" %>
+                      <%= f.submit "UnBlock", class: "btn", data: {confirm: t("text.confirm")} %>
+                    <% end %>
+                  <% else %>
+                    <%= form_for user do |f| %>
+                      <%= f.hidden_field :status, value: "4" %>
+                      <%= f.submit "Block", class: "btn", data: {confirm: t("text.confirm")} %>
+                    <% end %>
+                  <% end %>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+            </div>
+            <div class="tab-pane fade" id="User_decentralization">
+              <%= render "admin/decentralizations/index"%>
+              <%= render "admin/decentralizations/edit" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

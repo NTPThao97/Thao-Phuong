@@ -1,0 +1,35 @@
+<div class="dropdown-messages-box">
+  <div class="profile-userpic">
+    <%= image_tag notification.target.avatar , class: "pull-left" %>
+  </div>
+  <div class="message-body">
+    <small class="pull-right"><%= time_ago_in_words(notification.created_at)%></small>
+    <strong>
+      <%= link_to notification.target_name, admin_user_path(notification.target_id) %>
+    </strong>
+    <%= notification.target_type %>
+    <% if notification.opened_at == nil %>
+      <strong>
+        <% if (notification.target_type == "Followed") or (notification.target_type == "UnFollowed") %>
+          <%= link_to notification.des_type, admin_user_path(notification.url, notification_id: notification.id) %> of
+        <% elsif (notification.target_type == "Reported") and (notification.des_type == "Account")  %>
+          <%= link_to notification.des_type, admin_user_path(notification.url, notification_id: notification.id) %> of
+        <% else %>
+          <%= link_to notification.des_type, admin_post_path(notification.url, notification_id: notification.id) %> of
+        <% end %>
+        <%= link_to notification.des.name, admin_user_path(notification.des_id) %>
+      </strong>.
+    <% else %>
+      <% if (notification.target_type == "Followed") or (notification.target_type == "UnFollowed") %>
+        <%= link_to notification.des_type, admin_user_path(notification.url, notification_id: notification.id) %> of
+      <% elsif (notification.target_type == "Reported") and (notification.des_type == "Account")  %>
+        <%= link_to notification.des_type, admin_user_path(notification.url, notification_id: notification.id) %> of
+      <% else %>
+        <%= link_to notification.des_type, admin_post_path(notification.url, notification_id: notification.id) %> of
+      <% end %>
+      <%= link_to notification.des.name, admin_user_path(notification.des_id) %>
+    <% end %>
+    <br />
+    <small class="text-muted"><%= notification.created_at %></small>
+  </div>
+</div>

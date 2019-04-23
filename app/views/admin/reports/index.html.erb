@@ -1,0 +1,19 @@
+<div class="panel panel-container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Reports</h1>
+      <%= paginate @reports %>
+      <% @reports.each do |report| %>
+        <li>
+          <%= render report %>
+        </li>
+        <%= link_to t("button_laybels.delete"), admin_report_path(report), method: :delete  %>
+        <%= link_to "View", admin_report_path(report.id), remote: true , data: {toggle: "modal", target: "#myModal2", file: "my file 1"}, class: 'rename' %>
+      <% end%>
+      <li class="divider"></li>
+      <%= paginate @reports %>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>

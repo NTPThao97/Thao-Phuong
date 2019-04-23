@@ -3,79 +3,21 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#"><span>Sun</span>Blog</a>
       <% if log_in? %>
-        <% if admin_user %>
-          <ul class="nav navbar-top-links navbar-right">
-            <li class="dropdown", id="noti_Button">
-              <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-              <em class="fa fa-bell"></em>
-              <span class="label label-danger", id= "noti_Counter">
-                  <%= @new_notifications_count.count %>
-              </span>
-              </a>
-              <ul class="dropdown-menu dropdown-messages", id= "notifications">
-                <li>
-                  <%= render "notifications/show" %>
-                </li>
-                <li class="divider"></li>
-              </ul>
-            </li>
-            <li class="dropdown", id="noti_Button">
-              <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-              <em class="fa fa-envelope"></em>
-              <span class="label label-danger", id= "noti_Counter">
-                  <%= @reports_count.count %>
-              </span>
-              </a>
-              <ul class="dropdown-menu dropdown-messages", id= "notifications">
-                <li>
-                  <%= render "reports/show" %>
-                </li>
-                <li class="divider"></li>
-              </ul>
-            </li>
-            <li class="dropdown", id="noti_Button">
-              <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                <em class="fa fa-navicon"></em>
-              </a>
-              <ul class="dropdown-menu dropdown" >
-                <li class="divider"></li>
-                <li>
-                  <%= link_to "User management", users_path%>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to "Report Management", reports_path %>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to "Statistical Management", "#" %>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to "Post Type Management", post_types_path %>
-                </li>
-                <li class="divider"></li>
-              </ul>
-            </li>
-          </ul>
-        <% else %>
-          <ul class="nav navbar-top-links navbar-right">
-            <li class="dropdown", id="noti_Button">
-              <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-              <em class="fa fa-bell"></em>
-              <span class="label label-danger", id= "noti_Counter">
-                  <%= @new_notifications_count.count %>
-              </span>
-              </a>
-              <ul class="dropdown-menu dropdown-messages", id= "notifications">
-                <li>
-                  <%= render "notifications/show" %>
-                </li>
-                <li class="divider"></li>
-              </ul>
-            </li>
-          </ul>
-        <% end %>
+        <ul class="nav navbar-top-links navbar-right">
+          <li class="dropdown", id="noti_Button">
+            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+            <em class="fa fa-bell"></em>
+            <span class="label label-danger", id= "noti_Counter">
+                <%= @new_notifications_count.count %>
+            </span>
+            </a>
+            <ul class="dropdown-menu dropdown-messages", id= "notifications">
+              <li>
+                <%= render "notifications/show" %>
+              </li>
+              <li class="divider"></li>
+            </ul>
+          </li>
         </ul>
       <% else %>
         <ul class="nav navbar-top-links navbar-right">
@@ -83,5 +25,5 @@
         </ul>
       <% end %>
     </div>
-  </div><!-- /.container-fluid -->
+  </div>
 </nav>

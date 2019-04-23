@@ -1,0 +1,7 @@
+<% @reports_limit.each do |report| %>
+  <%= render report %>
+<% end %>
+<li class="divider"></li>
+<li>
+  <strong><%= link_to "All Reports", admin_reports_path , class: "all-button, fa fa-inbox " %></strong>
+</li>

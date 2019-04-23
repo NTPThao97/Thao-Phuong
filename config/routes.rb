@@ -16,14 +16,11 @@ Rails.application.routes.draw do
     resources :notifications, only: [:update]
   end
   resources :notifications, only: [:index, :destroy]
-  resources :decentralizations, only: [:index, :edit, :update, :destroy]
-  resources :reports, only: [:index, :destroy, :show]
   resources :relationships, only: [:create, :destroy]
 
   resources :activity_logs, only: [:index, :destroy]
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
-  resources :post_types, only: [:index, :new, :create, :edit, :update, :destroy]
 
   get "/sign_up" , to: "users#new"
   # post "/sign_up" , to: "users#create"
@@ -32,5 +29,20 @@ Rails.application.routes.draw do
   delete "/log_out",  to: "sessions#destroy"
 
   post "/tinymce_assets", to: "tinymce_assets#create"
+
+  namespace :admin do
+    resources :active_storage_blobs
+    root "homes#index"
+    get "/log_in", to: "sessions#new"
+    post "/log_in", to: "sessions#create"
+    delete "/log_out", to: "sessions#destroy"
+    resources :reports, only: [:index, :show, :destroy]
+    resources :post_types, except: [:show]
+    resources :decentralizations, only: [:index, :edit, :update, :destroy]
+    resources :activity_logs, only: [:index, :destroy]
+    resources :notifications, only: [:index, :destroy]
+    resources :posts, only: [:index, :show, :destroy]
+    resources :users, only: [:index, :show, :destroy]
+  end
 
 end

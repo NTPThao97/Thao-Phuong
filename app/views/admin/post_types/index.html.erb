@@ -1,0 +1,23 @@
+<div class="panel panel-container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Post Managerment</h1>
+      <hr>
+      <%= link_to "Create", new_admin_post_type_path, data: {toggle: "modal", target: "#postType", file: "my file 1"}, class: 'rename, btn btn-primary' %>
+      <br><br>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @post_types %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<%= render "admin/post_types/new" , post_type: @post_type %>

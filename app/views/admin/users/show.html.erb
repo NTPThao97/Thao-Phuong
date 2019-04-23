@@ -1,0 +1,48 @@
+<div class="panel panel-container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body tabs">
+          <ul class="nav nav-tabs">
+            <li class="active"><%= link_to "Timeline", "#Timeline", data: { toggle: "tab"} %></li>
+            <li><%= link_to "About", "#About", data: { toggle: "tab"} %></li>
+            <li><%= link_to "Friends", "#Friends", data: { toggle: "tab"} %></li>
+            <li><%= link_to "Photos", "#Photos", data: { toggle: "tab"} %></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade in active" id="Timeline">
+              <div class="row">
+                <div class="col-sm-4">
+                  <%= render "admin/users/left" %>
+                  <%= render 'shared/stats' %>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="About">
+              <div class="row">
+                <div class="col-sm-4">
+                  <%= render "admin/users/left" %>
+                </div>
+                <div class="col-sm-8">
+                <%= render "admin/users/right"%>
+                </div>
+              </div>
+              <%#= link_to t("button_labels.edit"), edit_user_path(@user) %>
+            </div>
+            <div class="tab-pane fade" id="Friends">
+              <h1>All Friends</h1>
+            <%= render @users %>
+            </div>
+            <div class="tab-pane fade" id="Photos">
+            </div>
+        </div>
+      </div><!--/.panel-->
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="follow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <%= render "admin/users/show_following" %>
+</div>
+<div class="modal fade" id="follower" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <%= render "admin/users/show_follower" %>
+</div>

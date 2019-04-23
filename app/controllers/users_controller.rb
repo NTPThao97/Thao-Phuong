@@ -1,17 +1,7 @@
 class UsersController < ApplicationController
   before_action :verify_authenticity_token
   before_action :find_user, only: [:show, :edit, :update, :destroy, :following, :followers]
-  before_action :new_notifications_count, :notifications_limit, :reports, :load_support, :load_decentralizations, only: [:index, :show, :edit]
-
-  def index
-    if log_in?
-      @users = User.all
-      @user = @current_user
-      @posts = Post.order_created_at
-    else
-      redirect_to root_path
-    end
-  end
+  before_action :new_notifications_count, :notifications_limit, :load_support, only: [:show, :edit]
 
   def show
     @users = @user.following

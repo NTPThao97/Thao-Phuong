@@ -1,0 +1,42 @@
+<div class="panel panel-container">
+  <div class="row">
+    <div class="col-md-11">
+        <ol class="microposts">
+          <li id="micropost-<%= @post.id %>">
+            <% if @post.user.avatar.attached? %>
+             <div class="profile-userpic">
+              <%= image_tag User.find_by(id: @post[:user_id]).avatar  %>
+              <span class="user"><%= link_to @post.user.name, admin_user_path(@post.user) %></span>
+             </div>
+            <% else %>
+             <div class="profile-userpic">
+              <%= image_tag "" %>
+              <span class="user"><%= link_to @post.user.name, admin_user_path(@post.user) %></span>
+             </div>
+            <% end %>
+            <span class="timestamp">
+             <h3>
+              <span class="user">
+                <%= link_to @post.title, admin_post_path(@post) %>
+              </span>
+             </h3>
+             <br>
+             <%= link_to t("button_labels.delete"), admin_post_path(@post), method: :delete, data: {confirm: t("text.confirm")}%>
+             <%= t("text.posted")%>
+             <%= time_ago_in_words(@post.created_at) %>.
+            </span>
+             <span class="content">
+              <div>
+                <%=  @post.content.html_safe  %>
+              </div>
+             </span>
+          </li>
+          <span>
+            <%= render "comments/form_comment", post: @post, parent_id: nil, comment_new: @comment %>
+            <%= comments_tree_for @comments,
+                @post, @comment %>
+          </span>
+        </ol>
+    </div>
+  </div>
+</div>

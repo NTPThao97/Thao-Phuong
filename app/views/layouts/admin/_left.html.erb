@@ -1,0 +1,42 @@
+<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+  <div class="profile-sidebar">
+      <div class="profile-userpic">
+      </div>
+    <%= hidden_field :id, current_admin.id , id: "user_id" %>
+    <div class="profile-usertitle-name"><%= current_admin.name%></div>
+    <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+    <div class="clear"></div>
+  </div>
+  <div class="divider"></div>
+  <form role="search">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search">
+    </div>
+  </form>
+  <ul class="nav menu">
+    <li class="active">
+      <%= link_to  t("button_labels.home") , admin_root_path %>
+    </li>
+    <li>
+      <%= link_to  t("button_labels.profile") , admin_user_path(current_admin) %>
+    </li>
+    <li>
+      <%= link_to "User management", admin_users_path %>
+    </li>
+    <li>
+      <%= link_to "Post management", admin_posts_path %>
+    </li>
+    <li>
+      <%= link_to  "Report Management" , admin_reports_path %>
+    </li>
+    <li>
+      <%= link_to  "Post Type Management" , admin_post_types_path %>
+    </li>
+    <li>
+      <%= link_to "Activity Log", admin_activity_logs_path %>
+    </li>
+    <li>
+      <%= link_to t("button_labels.log_out"), admin_log_out_path, method: :delete %>
+    </li>
+  </ul>
+</div><!--/.sidebar-->

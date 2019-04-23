@@ -1,0 +1,11 @@
+<tr>
+  <td><%= post.id %></td>
+  <td><%= post.user.name%></td>
+  <td><%= post.title %></td>
+  <td><div id="overflow"><%= post.content.html_safe %></div></td>
+  <td><%= post.post_type.name %></td>
+  <td>
+    <%= link_to "Details", admin_post_path(post), class: "btn btn-success"%>
+    <%= link_to "Delete", admin_post_path(post), method: :delete, class: "btn btn-danger"%>
+  </td>
+</tr>

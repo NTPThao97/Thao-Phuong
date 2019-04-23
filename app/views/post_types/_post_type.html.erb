@@ -1,7 +1,0 @@
-<tr>
-  <td><%= post_type.id %></td>
-  <td><%= post_type.name%></td>
-  <td><%= link_to "Edit", edit_post_type_path(post_type), data: {toggle: "modal", target: "#editpostType", file: "my file 1"}, class: 'rename' %>/
-  <%= link_to "Delete", post_type_path(post_type), method: :delete %></td>
-</tr>
-<%= render "post_types/edit" , post_type: post_type%>

@@ -1,0 +1,11 @@
+<div class="caption">
+  <p>Bio: "Lorem ipsum donec id elit non mi porta gravida at eget metus."</p>
+</div>
+<% if @user.avatar.attached? %>
+  <%= image_tag @user.avatar, class: "img-circle, profile-userpic, imageavatar"%>
+<% else %>
+  <%= image_tag " ", class: "img-circle, profile-userpic, imageavatar"%>
+<% end %>
+<h4 style="text-align: center;"><strong><%= @user.name %></strong></h4>
+<%= link_to "Block", new_user_report_path(@user), data: {toggle: "modal", target: "#myModal", file: "my file 1"}, class: 'rename, btn btn-danger' if @user != current_user %>
+<br><br>

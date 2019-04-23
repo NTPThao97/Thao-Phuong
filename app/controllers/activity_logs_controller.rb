@@ -1,6 +1,6 @@
 class ActivityLogsController < ApplicationController
   before_action :activitylogs, only: [:index]
-  before_action :new_notifications_count, :notifications_limit, :activitylogs, :reports, only: [:index]
+  before_action :new_notifications_count, :notifications_limit, :activitylogs, only: [:index]
 
   def index;  end
 
