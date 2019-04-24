@@ -1,4 +1,5 @@
-<li id="micropost-<%= post.id %>">
+<hr>
+<div id="micropost-<%= post.id %>">
   <% if User.find_by(id: post[:user_id]).avatar.attached? %>
    <div class="profile-userpic">
     <%= image_tag User.find_by(id: post[:user_id]).avatar  %>
@@ -16,10 +17,13 @@
       <%= link_to post.title, post %>
     </span>
    </h3>
+    <span>
+      <%= link_to post.post_type.name, root_path(post_type_id: post.post_type_id) %> >
+    </span>
    <br>
    <%= link_to t("button_labels.edit"), edit_post_path(  post) %>
-   <% if @current_user  %>
-     <%= link_to t("button_labels.delete"), post, method: :delete, data: {confirm: t("text.confirm")}%>
+   <% if @current_user == post.user  %>
+     <%= link_to t("button_labels.delete"), post_path(post, post_id: post.id), method: :delete, data: {confirm: t("text.confirm")}%>
     <% end %>
     <% if @current_user != post.user %>
      <%= link_to "Report", new_post_report_path(post), data: {toggle: "modal", target: "#myModal", file: "my file 1"}, class: 'rename' %>
@@ -35,5 +39,5 @@
       <%= link_to button_text, post_path(post) %>
     </u>
    </span>
-</li>
+</div>
 <%= render "reports/new", obj: post, user_id: post.user_id %>

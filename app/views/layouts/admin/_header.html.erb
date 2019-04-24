@@ -2,19 +2,17 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#"><span>Sun</span>Blog</a>
-      <% if log_in? %>
-      <% byebug %>
         <ul class="nav navbar-top-links navbar-right">
           <li class="dropdown", id="noti_Button">
             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
             <em class="fa fa-bell"></em>
             <span class="label label-danger", id= "noti_Counter">
-                <%#= @new_notifications_count.size %>
+                <%= @new_notifications_count.size %>
             </span>
             </a>
             <ul class="dropdown-menu dropdown-messages", id= "notifications">
               <li>
-                <%#= render "admin/notifications/show" %>
+                <%= render "admin/notifications/show" %>
               </li>
               <li class="divider"></li>
             </ul>
@@ -23,23 +21,18 @@
             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
             <em class="fa fa-envelope"></em>
             <span class="label label-danger", id= "noti_Counter">
-                <%#= @reports_count.size %>
+                <%= @reports_count.size %>
             </span>
             </a>
             <ul class="dropdown-menu dropdown-messages", id= "notifications">
               <li>
-                <%#= render "admin/reports/show" %>
+                <%= render "admin/reports/show" %>
               </li>
               <li class="divider"></li>
             </ul>
           </li>
         </ul>
         <%= render "layouts/admin/left" %>
-      <% else %>
-        <ul class="nav navbar-top-links navbar-right">
-          <%#= link_to t("button_laybels.sign_in"), admin_log_in_path, class: "navbar-brand" %>
-        </ul>
-      <% end %>
     </div>
   </div>
 </nav>

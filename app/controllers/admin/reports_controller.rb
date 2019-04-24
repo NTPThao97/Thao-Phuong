@@ -1,4 +1,5 @@
 class Admin::ReportsController < Admin::BaseController
+  before_action :reports, only: [:index]
   def index;  end
   def show
     @report = Report.find_by(id: params[:id])

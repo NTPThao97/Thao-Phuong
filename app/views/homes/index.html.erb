@@ -1,8 +1,19 @@
-<% if log_in? %>
-  <%= render "posts/index", posts: @posts%>
-<% else %>
-  <h1>
-    <%= link_to t("button_labels.sign_in") , sign_in_path %>
-    <%= t("text.text1")%>
-  </h1>
-<% end %>
+<%= render "shared/left" %>
+<div class="panel panel-container">
+    <div class="nav navbar-top-links navbar-left">
+      <%= form_tag(root_path, method: :get, id: "search-form", role: "search") do %>
+        <%= text_field_tag :search_post, params[:search_post], placeholder: "Search Posts", class: "form-control" %>
+      <% end %>
+    </div>
+  <div class="row">
+    <div class="col-md-12">
+      <% if params[:search] %>
+        <%= render @searchs %>
+      <% elsif params[:search_post] %>
+        <%= render @search_posts, button_text: "View mores" %>
+      <% else %>
+        <%= render "posts/index", posts: @posts %>
+      <% end %>
+    </div>
+  </div>
+</div>

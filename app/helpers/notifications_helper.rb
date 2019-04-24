@@ -1,18 +1,12 @@
 module NotificationsHelper
   def new_notifications_count
-    if log_in?
-      @new_notifications_count = Notification.where("des_id = #{current_user.id}").where("target_id != #{current_user.id}").where("opened_at IS NULL").order_by_created
-    end
+    @new_notifications_count = Notification.check_des_id(current_user).check_target_id(current_user).check_opened_at.order_by_created
   end
   def notifications_limit
-    if log_in?
-      @notifications_limit = Notification.where("des_id = #{current_user.id}").where("target_id != #{current_user.id}").order_by_created.limit(8)
-    end
+    @notifications_limit = Notification.check_des_id(current_user).check_target_id(current_user).order_by_created.limit(8)
   end
 
   def notifications
-    if log_in?
-      @notifications = Notification.where("des_id = #{current_user.id}").where("target_id != #{current_user.id}").where("status = true").order_by_created.page(params[:page]).per(10)
-    end
+    @notifications = Notification.check_des_id(current_user).check_target_id(current_user).check_status.order_by_created.page(params[:page]).per(10)
   end
 end

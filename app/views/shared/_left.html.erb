@@ -15,11 +15,9 @@
     <div class="clear"></div>
   </div>
   <div class="divider"></div>
-  <form role="search">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search">
-    </div>
-  </form>
+  <%= form_tag(root_path, method: :get, id: "search-form", role: "search") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-control" %>
+  <% end %>
   <ul class="nav menu">
     <li class="active">
       <%= link_to  t("button_labels.home") , root_path %>

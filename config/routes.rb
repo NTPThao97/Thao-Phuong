@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     resources :activity_logs, only: [:index, :destroy]
     resources :notifications, only: [:index, :destroy]
     resources :posts, only: [:index, :show, :destroy]
-    resources :users, only: [:index, :show, :destroy]
+    resources :users, only: [:index, :update, :show, :destroy]
   end
 
 end

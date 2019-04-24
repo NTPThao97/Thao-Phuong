@@ -4,8 +4,6 @@ class Admin::ActivityLogsController < Admin::BaseController
 
   private
   def activitylogs
-    if log_in?
-      @activity_logs = Notification.where("target_id = #{current_user.id}").where("status = true").order_by_created.page(params[:page]).per(10)
-    end
+    @activity_logs = Notification.admin_check_des_id(current_admin).admin_check_status.order_by_created.page(params[:page]).per(10)
   end
 end

@@ -3,28 +3,21 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy, :following, :followers]
   before_action :new_notifications_count, :notifications_limit, :load_support, only: [:show, :edit]
 
-  def show
-    @users = @user.following
-    @followers = @user.followers
-    @report = Report.new
-    @posts = @user.posts.order_created_at.page(params[:page]).per(2)
-    UpdateNotificationService.new(params).perform if params[:notification_id]
-    @report = Report.find_by(id: params[:report_id])
-    @report.update opened_at: Time.current if params[:report_id]
-  end
-
   def new
     @user = User.new
+  end
+
+  def show
+    UpdateNotificationService.new(params).perform if params[:notification_id]
+    UpdateReportService.new(params).perform if params[:report_id]
   end
 
   def create
     @user = User.new user_params
     if @user.save
       @user.send_activation_email
-      flash[:info] = "Please check your email to activate your account or click here."
-      @decentralization = Decentralization.find_by(id: @user.user_type)
-      @decentralization.update number_account: @decentralization.number_account.to_i + 1
-      redirect_to root_url
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to @user
     else
       redirect_to sign_up_path
     end
@@ -35,10 +28,8 @@ class UsersController < ApplicationController
   def update
     @user.update user_params
     flash[:success] = "Success"
-    redirect_to users_path
+    redirect_to @user
   end
-
-  def destroy;  end
 
   def following
     render "show_follow"

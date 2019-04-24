@@ -3,16 +3,14 @@ class User < ApplicationRecord
   paginates_per 50
   before_save {self.email = email.downcase}
   before_create :create_activation_digest
+  scope :order_created_at, ->{order("created_at desc")}
   has_many :posts, dependent: :destroy
   has_many :comments
-  has_many :reports
+  has_many :reports, class_name: Report.name, foreign_key: :url, dependent: :destroy
   belongs_to :decentralization, optional: true
-  has_many :active_relationships, class_name: Relationship.name,
-                                                  foreign_key: :follower_id, dependent: :destroy
-  has_many :passive_relationships, class_name: Relationship.name,
-                                                  foreign_key: :followed_id, dependent: :destroy
-  has_many :notifications, class_name: Notification.name,
-                                                  foreign_key: :des_id, dependent: :destroy
+  has_many :active_relationships, class_name: Relationship.name, foreign_key: :follower_id, dependent: :destroy
+  has_many :passive_relationships, class_name: Relationship.name, foreign_key: :followed_id, dependent: :destroy
+  has_many :notifications, class_name: Notification.name, foreign_key: :des_id, dependent: :destroy
   has_many :following, through: :active_relationships , source: :followed
   has_many :followers ,through: :passive_relationships, source: :follower
   has_one_attached :avatar
@@ -88,5 +86,15 @@ class User < ApplicationRecord
 
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
+  end
+
+  def self.search(search)
+    if search
+      where(['name LIKE ?', "%#{search}%"]).order("created_at desc")
+      where(['email LIKE ?', "%#{search}%"]).order("created_at desc")
+      where(['email LIKE ?', "%#{search}%"]).order("created_at desc")
+    else
+      order("created_at desc")
+    end
   end
 end

@@ -6,17 +6,14 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def show
-      @user = @current_user if log_in?
-      @comment = Comment.new
-      @comments = @post.comments.hash_tree(limit_depth: 2)
-      UpdateNotificationService.new(params).perform if params[:notification_id]
-      @report = Report.find_by(id: params[:report_id])
-      @report.update opened_at: Time.current if params[:report_id]
+    @comment = Comment.new
+    @comments = @post.comments.hash_tree(limit_depth: 2)
+    UpdateNotificationService.new(params).perform if params[:notification_id]
+    UpdateReportService.new(params).perform if params[:report_id]
   end
 
   def destroy
     if @post.destroy
-      Comment.find_by(post_id: @post.id).destroy
       Notification.find_by(url: @post.id).destroy
       Report.find_by(url: @post.id).destroy
       flash[:success] = "Success!"

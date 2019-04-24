@@ -1,22 +1,17 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
   before_action :load_support, only: [:index, :new, :edit]
-  before_action :new_notifications_count, :notifications_limit, only: [:index, :show, :new, :edit]
-
-  def index; end
+  before_action :new_notifications_count, :notifications_limit, only: [:show, :new, :edit]
 
   def show
-      @user = @current_user if log_in?
       @comment = Comment.new
       @comments = @post.comments.hash_tree(limit_depth: 2)
       UpdateNotificationService.new(params).perform if params[:notification_id]
-      @report = Report.find_by(id: params[:report_id])
-      @report.update opened_at: Time.current if params[:report_id]
+      UpdateReportService.new(params).perform if params[:report_id]
   end
 
   def new
     @post = Post.new
-    @user = @current_user  if log_in?
   end
 
   def create
@@ -30,9 +25,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-    @user = @current_user  if log_in?
-  end
+  def edit;  end
 
   def update
     if @post.update post_params
@@ -46,9 +39,10 @@ class PostsController < ApplicationController
 
   def destroy
     if @post.destroy
-      Comment.find_by(post_id: @post.id).destroy
-      Notification.find_by(url: @post.id).destroy
       flash[:success] = "Success!"
+      redirect_to root_path
+    else
+      flash[:danger] = "Fails!"
       redirect_to root_path
     end
   end

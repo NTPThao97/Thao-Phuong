@@ -1,13 +1,7 @@
 class NotificationsController < ApplicationController
   before_action :new_notifications_count, :notifications_limit, :notifications, only: [:index]
 
-  def index
-  end
-
-  def show
-  end
-
-  def update;  end
+  def index;  end
 
   def destroy
     find_notification

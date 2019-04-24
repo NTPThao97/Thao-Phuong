@@ -11,7 +11,7 @@
     <% if notification.opened_at == nil %>
       <strong>
         <% if (notification.target_type == "Followed") or (notification.target_type == "UnFollowed") %>
-          <%= link_to notification.des_type, admin_user_path(notification.url, notification_id: notification.id) %> of
+          <%= link_to notification.des_type, admin_user_path(notification.des_id, notification_id: notification.id) %> of
         <% elsif (notification.target_type == "Reported") and (notification.des_type == "Account")  %>
           <%= link_to notification.des_type, admin_user_path(notification.url, notification_id: notification.id) %> of
         <% else %>
@@ -21,7 +21,7 @@
       </strong>.
     <% else %>
       <% if (notification.target_type == "Followed") or (notification.target_type == "UnFollowed") %>
-        <%= link_to notification.des_type, admin_user_path(notification.url, notification_id: notification.id) %> of
+        <%= link_to notification.des_type, admin_user_path(notification.des_id, notification_id: notification.id) %> of
       <% elsif (notification.target_type == "Reported") and (notification.des_type == "Account")  %>
         <%= link_to notification.des_type, admin_user_path(notification.url, notification_id: notification.id) %> of
       <% else %>

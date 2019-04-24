@@ -6,8 +6,6 @@ class ActivityLogsController < ApplicationController
 
   private
   def activitylogs
-    if log_in?
-      @activity_logs = Notification.where("target_id = #{current_user.id}").where("status = true").order_by_created.page(params[:page]).per(10)
-    end
+    @activity_logs = Notification.check_target_id(current_user).check_status.order_by_created.page(params[:page]).per(10)
   end
 end

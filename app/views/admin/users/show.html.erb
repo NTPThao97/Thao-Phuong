@@ -16,6 +16,23 @@
                   <%= render "admin/users/left" %>
                   <%= render 'shared/stats' %>
                 </div>
+                <div class="col-sm-8">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Account</th>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Type</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <%= render @support.posts(@user).page(params[:page]).per(2) %>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
             <div class="tab-pane fade" id="About">
@@ -31,7 +48,7 @@
             </div>
             <div class="tab-pane fade" id="Friends">
               <h1>All Friends</h1>
-            <%= render @users %>
+            <%= render @support.users(@user) %>
             </div>
             <div class="tab-pane fade" id="Photos">
             </div>

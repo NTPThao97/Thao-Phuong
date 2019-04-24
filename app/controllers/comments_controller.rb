@@ -39,8 +39,5 @@ class CommentsController < ApplicationController
   def set_comment
     @comment = Comment.find_by id: params[:id]
   end
-  # def params
-  #   params.require(:notification).permit :target_id, :des_id, :target_type, :des_type
-  # end
 
 end

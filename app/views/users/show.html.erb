@@ -30,7 +30,7 @@
                   <%= render 'shared/stats' %>
                 </div>
                 <div class="col-sm-8">
-                <%= render "posts/index", posts: @posts%>
+                <%= render "posts/index", posts: @support.posts(@user).page(params[:page]).per(2) %>
                 </div>
               </div>
             </div>
@@ -45,16 +45,15 @@
                 <%= render "users/right"%>
                 </div>
               </div>
-              <%#= link_to t("button_labels.edit"), edit_user_path(@user) %>
             </div>
             <div class="tab-pane fade" id="Friends">
-              <h1>All Friends</h1>
-            <%= render @users %>
+              <h3><i class="fa fa-users fa-2x"></i><strong>All Friends</strong></h3>
+            <%= render @support.users(@user) %>
             </div>
             <div class="tab-pane fade" id="Photos">
             </div>
         </div>
-      </div><!--/.panel-->
+      </div>
     <% end %>
     </div>
   </div>

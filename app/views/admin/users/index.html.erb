@@ -22,7 +22,7 @@
                 </tr>
               </thead>
               <tbody>
-                <% @users.each do |user| %>
+                <% @support.users_index.each do |user| %>
                 <tr>
                   <td>
                     <div class="profile-userpic">
@@ -32,7 +32,7 @@
                   <td><%= link_to user.name , admin_user_path(user) %></td>
                   <td><%= user.email %></td>
                   <td>
-                      <%= form_for user do |f| %>
+                      <%= form_for [:admin, user], method: :patch do |f| %>
                       <div class="form-group">
                           <%= f.select :user_type, @support.user_types, {}, class: "form-control", id: "sel1" %>
                         </div>

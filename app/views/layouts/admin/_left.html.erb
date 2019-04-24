@@ -1,7 +1,14 @@
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
   <div class="profile-sidebar">
+    <% if current_user.avatar.attached? %>
       <div class="profile-userpic">
+        <%= image_tag current_user.avatar  %>
       </div>
+    <% else %>
+      <div class="profile-userpic">
+        <%= image_tag "" %>
+      </div>
+    <% end %>
     <%= hidden_field :id, current_admin.id , id: "user_id" %>
     <div class="profile-usertitle-name"><%= current_admin.name%></div>
     <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>

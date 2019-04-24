@@ -8,8 +8,13 @@ class Admin::DecentralizationsController < Admin::BaseController
 
   def create
     @decentralization = Decentralization.build decentralization_params
-    @decentralization.save
-    redirect_to decentralizations_path
+    if @decentralization.save
+      flash[:success] = "Success!"
+      redirect_to admin_decentralizations_path
+    else
+      flash[:danger] = "Fails!"
+      redirect_to admin_decentralizations_path
+    end
   end
 
   def edit
@@ -18,16 +23,14 @@ class Admin::DecentralizationsController < Admin::BaseController
   def update
     @decentralization.update active: params[:active]
     respond_to do |format|
-        format.html {redirect_to users_path}
+        format.html {redirect_to admin_users_path}
         format.js
       end
-    # @decenralization.update decentralization_params
-    # redirect_to decenralizations_path
   end
 
   def destroy
     @decentralization.destroy
-    redirect_to decentralizations_path
+    redirect_to admin_decentralizations_path
   end
 
   private
