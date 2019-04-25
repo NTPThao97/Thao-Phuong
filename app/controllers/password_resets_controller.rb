@@ -1,5 +1,6 @@
 class PasswordResetsController < ApplicationController
   before_action :get_user, :check_expiration, :valid_user, only: [:edit, :update]
+  skip_before_action :new_notifications_count, :notifications_limit
   def new;  end
 
   def create

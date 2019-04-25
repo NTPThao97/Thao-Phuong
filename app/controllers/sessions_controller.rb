@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :check_log_in, :new_notifications_count, :notifications_limit
+  before_action :check_log_out, only: [:new, :create]
   def new;  end
 
   def create

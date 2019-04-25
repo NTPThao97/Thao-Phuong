@@ -1,4 +1,4 @@
-class UpdateNotificationService
+class UpdateReportService
 attr_accessor :report
 
   def initialize params

@@ -2,9 +2,9 @@ $('#calendar').datepicker({
 		});
 
 !function ($) {
-    $(document).on("click","ul.nav li.parent > a ", function(){          
-        $(this).find('em').toggleClass("fa-minus");      
-    }); 
+    $(document).on("click","ul.nav li.parent > a ", function(){
+        $(this).find('em').toggleClass("fa-minus");
+    });
     $(".sidebar span.icon").find('em:first').addClass("fa-plus");
 }
 
@@ -28,3 +28,20 @@ $(document).on('click', '.panel-heading span.clickable', function(e){
 		$this.find('em').removeClass('fa-toggle-down').addClass('fa-toggle-up');
 	}
 })
+$(".active-check").click(function(activeClick){
+  var active_id = $(activeClick.target).closest('tr').find('.active-id').html();
+  var active = activeClick.target.checked;
+debugger
+  $.ajax(
+  {
+    url: `admin/decentralizations/${active_id}`,
+    method: 'patch',
+    data: {
+      active_id,
+      active
+    },
+    beforeSend: function(xhr) {
+      xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+    },
+  });
+});

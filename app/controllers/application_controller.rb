@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include CommentsHelper
   include NotificationsHelper
   before_action :set_locale
+  before_action :check_log_in, :new_notifications_count, :notifications_limit
 
   private
 

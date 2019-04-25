@@ -13,6 +13,8 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree ./lib
+//= require Chart.bundle
+//= require chartkick
 $(document).ready(function () {
 
         // ANIMATEDLY DISPLAY THE NOTIFICATION COUNTER.

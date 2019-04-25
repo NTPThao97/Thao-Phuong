@@ -91,8 +91,6 @@ class User < ApplicationRecord
   def self.search(search)
     if search
       where(['name LIKE ?', "%#{search}%"]).order("created_at desc")
-      where(['email LIKE ?', "%#{search}%"]).order("created_at desc")
-      where(['email LIKE ?', "%#{search}%"]).order("created_at desc")
     else
       order("created_at desc")
     end

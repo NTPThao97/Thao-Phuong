@@ -1,8 +1,8 @@
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
   <div class="profile-sidebar">
-    <% if current_user.avatar.attached? %>
+    <% if current_admin.avatar.attached? %>
       <div class="profile-userpic">
-        <%= image_tag current_user.avatar  %>
+        <%= image_tag current_admin.avatar  %>
       </div>
     <% else %>
       <div class="profile-userpic">
@@ -15,11 +15,6 @@
     <div class="clear"></div>
   </div>
   <div class="divider"></div>
-  <form role="search">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search">
-    </div>
-  </form>
   <ul class="nav menu">
     <li class="active">
       <%= link_to  t("button_labels.home") , admin_root_path %>

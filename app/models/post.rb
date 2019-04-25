@@ -8,10 +8,9 @@ class Post < ApplicationRecord
   scope :order_created_at,  -> {order("created_at desc")}
   paginates_per 50
 
-  def self.search(search_post)
-    if search_post
-      where("title LIKE ?", "%#{search_post.upcase}%").order_created_at
-      where("content LIKE ?", "%#{search_post.upcase}%").order_created_at
+  def self.search(post_type_id)
+    if post_type_id
+      where(post_type_id: post_type_id).order_created_at
     else
       order_created_at
     end

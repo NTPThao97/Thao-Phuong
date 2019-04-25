@@ -22,6 +22,7 @@ gem 'tinymce-rails'
 gem 'tinymce-rails-imageupload'
 gem 'closure_tree'
 gem 'kaminari'
+gem "chartkick"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

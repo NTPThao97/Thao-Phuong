@@ -11,6 +11,8 @@
         <%= render @searchs %>
       <% elsif params[:search_post] %>
         <%= render @search_posts, button_text: "View mores" %>
+      <% elsif params[:post_type_id]%>
+        <%= render @posts_types, button_text: "View mores" %>
       <% else %>
         <%= render "posts/index", posts: @posts %>
       <% end %>

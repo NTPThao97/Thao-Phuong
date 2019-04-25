@@ -1,5 +1,5 @@
 class Admin::SessionsController < Admin::BaseController
-  skip_before_action :admin_check_log_in
+  skip_before_action :admin_check_log_in, :new_notifications_count, :notifications_limit, :reports_count, :reports_limit
   before_action :admin_check_log_out, only: [:new, :create]
   def new;  end
 
@@ -9,7 +9,6 @@ class Admin::SessionsController < Admin::BaseController
       if user.activated?
         if user.user_type == 1
           log_in user
-          params[:session][:remember_me] == '1' ? remember(user) : forget(user)
           redirect_to admin_user_path(user)
         else
           flash[:danger] = "Ban khong co quyen truy cap!"

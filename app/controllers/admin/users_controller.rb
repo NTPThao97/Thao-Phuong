@@ -4,7 +4,8 @@ class Admin::UsersController < Admin::BaseController
   before_action :load_support, only: [:index, :show]
   before_action :load_decentralizations, only: [:index]
 
-  def index;  end
+  def index
+  end
 
   def show
     UpdateNotificationService.new(params).perform if params[:notification_id]

@@ -1,7 +1,7 @@
 <tr>
   <td><%= post.id %></td>
   <td><%= post.user.name%></td>
-  <td><%= post.title %></td>
+  <td><%= post.title %><hr> Created <%= time_ago_in_words(post.created_at) %>.</td>
   <td><div id="overflow"><%= post.content.html_safe %></div></td>
   <td><%= post.post_type.name %></td>
   <td>

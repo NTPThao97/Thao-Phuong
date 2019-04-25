@@ -2,6 +2,9 @@
   <div class="row">
     <div class="col-md-12">
       <h2>Post Managerment</h2>
+      <%= form_tag(admin_posts_path, method: :get, id: "search-form", role: "search") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-control" %>
+      <% end %>
       <table class="table table-bordered">
         <thead>
           <tr>

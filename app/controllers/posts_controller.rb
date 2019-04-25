@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
   before_action :load_support, only: [:index, :new, :edit]
-  before_action :new_notifications_count, :notifications_limit, only: [:show, :new, :edit]
 
   def show
       @comment = Comment.new

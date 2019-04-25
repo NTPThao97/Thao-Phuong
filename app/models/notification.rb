@@ -4,6 +4,7 @@ class Notification < ApplicationRecord
   scope :order_by_created, ->{order created_at: :desc}
   scope :check_des_id, ->(current_user){where "des_id = #{current_user.id}"}
   scope :check_target_id, ->(current_user){where "target_id != #{current_user.id}"}
+  scope :check_target_id_activity, ->(current_user){where "target_id = #{current_user.id}"}
   scope :check_opened_at, ->{where "opened_at IS NULL" }
   scope :check_status, ->{where "status = true"}
   scope :admin_check_des_id, ->(current_admin){where "des_id = #{current_admin.id}"}

@@ -10,10 +10,10 @@
     <%= activity_log.target_type %>
     <% if (activity_log.target_type == "Followed") or (activity_log.target_type == "UnFollowed") %>
       <%= link_to activity_log.des_type, user_path(activity_log.url) %> of
-    <% elsif (activity_log.target_type == "Reported") or (activity_log.des_type == "Post") %>
+    <% elsif (activity_log.target_type == "Reported") && (activity_log.des_type == "Post") %>
       <%= link_to activity_log.des_type, post_path(activity_log.url) %> of
-    <% elsif (activity_log.target_type == "Reported") or (activity_log.des_type == "Account")%>
-      <%= link_to activity_log.des_type, post_path(activity_log.url) %> of
+    <% elsif (activity_log.target_type == "Reported") && (activity_log.des_type == "Account")%>
+      <%= link_to activity_log.des_type, user_path(activity_log.des_id) %> of
     <% end %>
     <%= link_to activity_log.des.name, user_path(activity_log.des_id) %>.
     <br />

@@ -38,4 +38,16 @@ module SessionsHelper
     cookies.delete(:remember_token)
   end
 
+  def check_log_in
+    return if log_in?
+    flash[:warning] = "You must log in!"
+    redirect_to sign_in_path
+  end
+
+  def check_log_out
+    return if !log_in?
+    flash[:warning] = "You must log in!"
+    redirect_to root_path
+  end
+
 end

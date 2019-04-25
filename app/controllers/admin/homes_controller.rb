@@ -1,3 +1,11 @@
 class Admin::HomesController < Admin::BaseController
-  def index;  end
+  before_action :load_support, only: [:index]
+  def index
+    @users = User.all
+  end
+
+  private
+  def load_support
+    @support = StatistionSupport.new
+  end
 end

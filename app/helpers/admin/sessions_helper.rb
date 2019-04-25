@@ -28,13 +28,13 @@ module Admin::SessionsHelper
   def admin_check_log_in
     return if log_in?
     flash[:danger] = "You Must Log In First!!"
-    redirect_to admin_log_in_url
+    redirect_to admin_log_in_path
   end
 
   def admin_check_log_out
     return if !log_in?
     flash[:warning] = "You should Log Out do this"
-    redirect_to admin_root_url
+    redirect_to admin_root_path
   end
 
     def admin_user

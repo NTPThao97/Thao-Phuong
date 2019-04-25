@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :verify_authenticity_token
   before_action :find_user, only: [:show, :edit, :update, :destroy, :following, :followers]
-  before_action :new_notifications_count, :notifications_limit, :load_support, only: [:show, :edit]
+  before_action :load_support, only: [:show, :edit]
+  skip_before_action :check_log_in, :new_notifications_count, :notifications_limit, only: [:new, :create]
 
   def new
     @user = User.new
