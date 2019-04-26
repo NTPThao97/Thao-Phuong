@@ -29,7 +29,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <%= render @support.posts(@user).page(params[:page]).per(2) %>
+                      <%= render @support.posts(@user, current_admin).page(params[:page]).per(2) %>
                     </tbody>
                   </table>
                 </div>

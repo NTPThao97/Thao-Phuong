@@ -6,19 +6,19 @@
       <%= image_tag " ", class: "img-circle, profile-userpic, imagefriend"%>
     <% end %>
     <div class="profile-usertitle-name"><%=link_to user.name, admin_user_path(user)%></div>
-    <% if user.status == 1 %>
+    <% if user.status == "online" %>
       <div class="profile-usertitle-status">
         <span class="indicator label-success"></span>Online
       </div>
-    <% elsif  user.status == 2 %>
+    <% elsif  user.status == "offline" %>
       <div class="profile-usertitle-status">
         <span class="badge"></span>Offline
       </div>
-    <% elsif  user.status == 3 %>
+    <% elsif  user.status == "unactived" %>
       <div class="profile-usertitle-status">
         <span class="badge"></span>Chua xac nhan email
       </div>
-    <% elsif  user.status == 4 %>
+    <% elsif  user.status == "blocked" %>
       <div class="profile-usertitle-status">
         <span class="badge"></span>Blocked
       </div>

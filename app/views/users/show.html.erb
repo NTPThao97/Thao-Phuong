@@ -1,14 +1,15 @@
 <%= render "shared/left"%>
+<%= render "shared/show_noti" %>
 <div class="panel panel-container">
   <div class="row">
     <div class="col-md-12">
-    <% if @user.status == 4 %>
+    <% if @user.status == "blocked" %>
       <div class="panel panel-warning">
         <div class="panel-heading"><strong style="color: black">Warning</strong>
           <span class="pull-right clickable panel-toggle"><em class="fa fa-toggle-up"></em></span></div>
         <div class="panel-body">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui pharetra molestie. Fusce et dui urna.</p>
-          <% if @current_user == @user %>
+          <% if current_user.status == "blocked" %>
             <%= link_to "Lien he voi admin" , "#"%>
           <% end %>
         </div>
@@ -30,7 +31,7 @@
                   <%= render 'shared/stats' %>
                 </div>
                 <div class="col-sm-8">
-                <%= render "posts/index", posts: @support.posts(@user).page(params[:page]).per(2) %>
+                <%= render "posts/index", posts: @support.posts(@user, current_user).page(params[:page]).per(2) %>
                 </div>
               </div>
             </div>

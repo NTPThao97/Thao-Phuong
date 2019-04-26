@@ -7,7 +7,7 @@ class Admin::SessionsController < Admin::BaseController
     user = User.find_by email: params[:session][:email].downcase
     if user && user.authenticate(params[:session][:password])
       if user.activated?
-        if user.user_type == 1
+        if user.user_type == "admin"
           log_in user
           redirect_to admin_user_path(user)
         else

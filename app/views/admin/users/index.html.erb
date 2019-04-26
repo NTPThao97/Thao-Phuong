@@ -37,40 +37,40 @@
                   <td>
                       <%= form_for [:admin, user], method: :patch do |f| %>
                       <div class="form-group">
-                          <%= f.select :user_type, @support.user_types, {}, class: "form-control", id: "sel1" %>
+                          <%= f.select :user_type, options_for_select([[user.user_type, user.user_type],["Admin", :admin],["User", :user]]), {}, class: "form-control", id: "sel1" %>
                         </div>
                         <%= f.submit "Save" %>
                       <% end %>
                   </td>
                   <td>
-                    <% if user.status == 1 %>
+                    <% if user.status == "online" %>
                       <div class="profile-usertitle-status">
                         <span class="indicator label-success"></span>Online
                       </div>
-                    <% elsif  user.status == 2 %>
+                    <% elsif  user.status == "offline" %>
                       <div class="profile-usertitle-status">
                         <span class="badge"></span>Offline
                       </div>
-                    <% elsif  user.status == 3 %>
+                    <% elsif  user.status == "unactived" %>
                       <div class="profile-usertitle-status">
                         <span class="badge"></span>Chua xac nhan email
                       </div>
-                    <% elsif  user.status == 4 %>
+                    <% elsif  user.status == "blocked" %>
                       <div class="profile-usertitle-status">
                         <span class="badge"></span>Blocked
                       </div>
                     <% end %>
                   </td>
                   <td>
-                  <% if user.status == 4 %>
+                  <% if user.status == "blocked" %>
                     <%= form_for [:admin, user] do |f| %>
-                      <%= f.hidden_field :status, value: "2" %>
-                      <%= f.submit "UnBlock", class: "btn", data: {confirm: t("text.confirm")} %>
+                      <%= f.hidden_field :status, value: :offline %>
+                      <%= f.submit "UnBlock", class: "btn btn-warning", data: {confirm: t("text.confirm")} %>
                     <% end %>
                   <% else %>
                     <%= form_for [:admin, user] do |f| %>
-                      <%= f.hidden_field :status, value: "4" %>
-                      <%= f.submit "Block", class: "btn", data: {confirm: t("text.confirm")} %>
+                      <%= f.hidden_field :status, value: :blocked %>
+                      <%= f.submit "Block", class: "btn btn-danger", data: {confirm: t("text.confirm")} %>
                     <% end %>
                   <% end %>
                   </td>

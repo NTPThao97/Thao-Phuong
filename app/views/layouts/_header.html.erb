@@ -2,24 +2,10 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#"><span>Sun</span>Blog</a>
-      <% if log_in? %>
+      <% if !log_in? %>
         <ul class="nav navbar-top-links navbar-right">
-          <li class="dropdown", id="noti_Button">
-            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-            <em class="fa fa-bell"></em>
-            <span class="label label-danger", id= "noti_Counter">
-                <%= @new_notifications_count.count %>
-            </span>
-            </a>
-            <ul class="dropdown-menu dropdown-messages", id= "notifications">
-              <li>
-                <%= render "notifications/show" %>
-              </li>
-              <li class="divider"></li>
-            </ul>
-          </li>
+          <%= link_to t("button_laybels.sign_in"), sign_in_path, class: "navbar-brand" %>
         </ul>
-      <% else %>
         <ul class="nav navbar-top-links navbar-right">
           <%= link_to t("button_laybels.sign_up"), sign_up_path, class: "navbar-brand" %>
         </ul>

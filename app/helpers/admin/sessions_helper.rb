@@ -2,7 +2,7 @@ module Admin::SessionsHelper
 
   def log_in user
     session[:admin_id] = user.id
-    user.update status: 1
+    user.update status: :online
   end
 
   def log_in?
@@ -20,7 +20,7 @@ module Admin::SessionsHelper
   end
 
   def log_out
-    current_admin.update status: 2
+    current_admin.update status: :offline
     session.delete :admin_id
     @current_admin = nil
   end
@@ -38,7 +38,7 @@ module Admin::SessionsHelper
   end
 
     def admin_user
-      return current_admin.user_type == 1
+      return current_admin.user_type == "admin"
       flash[:warning] = "Ban khong co quyen truy cap!"
     end
 

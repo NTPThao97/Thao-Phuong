@@ -22,6 +22,15 @@
              </h3>
              <br>
              <%= link_to t("button_labels.delete"), admin_post_path(@post), method: :delete, data: {confirm: t("text.confirm")}%>
+             <% if @post.status == "public" %>
+              <span data-toggle="tooltip" data-placement="top" title="Shared with: public" class="fa fa-globe" aria-hidden="true"></span>
+            <% elsif @post.status == "private" %>
+              <span data-toggle="tooltip" data-placement="top" title="Shared with: private" class="fa fa-users" aria-hidden="true"></span>
+            <% elsif @post.status == "only_me"%>
+              <span data-toggle="tooltip" data-placement="top" title="Shared with: only me" class="fa fa-user" aria-hidden="true"></span>
+            <% else %>
+              <span data-toggle="tooltip" data-placement="top" title="Shared with: other" class="fa fa-cog" aria-hidden="true"></span>
+            <% end %>
              <%= t("text.posted")%>
              <%= time_ago_in_words(@post.created_at) %>.
             </span>

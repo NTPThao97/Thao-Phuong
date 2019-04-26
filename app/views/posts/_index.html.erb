@@ -4,11 +4,9 @@
     <div class="col-md-11">
       <br>
       <% if posts.any? %>
-        <%#= paginate posts %>
         <ol class="microposts">
           <%= render posts, button_text: t("button_labels.read_more") %>
         </ol>
-        <%#= paginate posts %>
       <% end %>
     </div>
   </div>

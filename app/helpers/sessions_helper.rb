@@ -1,7 +1,7 @@
 module SessionsHelper
   def log_in user
     session[:user_id] = user.id
-    user.update status: 1
+    user.update status: :online
   end
 
   def log_in?
@@ -27,7 +27,7 @@ module SessionsHelper
   end
 
   def log_out
-    current_user.update status: 2
+    current_user.update status: :offline
     session.delete :user_id
     @current_user = nil
   end

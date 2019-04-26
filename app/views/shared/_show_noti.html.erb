@@ -1,0 +1,23 @@
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><span>Sun</span>Blog</a>
+      <ul class="nav navbar-top-links navbar-right">
+        <li class="dropdown", id="noti_Button">
+          <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+          <em class="fa fa-bell"></em>
+          <span class="label label-danger", id= "noti_Counter">
+              <%= @new_notifications_count.count %>
+          </span>
+          </a>
+          <ul class="dropdown-menu dropdown-messages", id= "notifications">
+            <li>
+              <%= render "notifications/show" %>
+            </li>
+            <li class="divider"></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

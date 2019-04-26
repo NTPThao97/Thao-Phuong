@@ -61,3 +61,6 @@ $(document).ready(function () {
               $('#myInput').focus()
             })
     });
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});

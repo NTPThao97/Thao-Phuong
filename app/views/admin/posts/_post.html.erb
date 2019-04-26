@@ -1,7 +1,19 @@
 <tr>
   <td><%= post.id %></td>
   <td><%= post.user.name%></td>
-  <td><%= post.title %><hr> Created <%= time_ago_in_words(post.created_at) %>.</td>
+  <td>
+    <%= post.title %><hr>
+    <% if post.status == "public" %>
+      <span data-toggle="tooltip" data-placement="top" title="Shared with: public" class="fa fa-globe" aria-hidden="true"></span>
+    <% elsif post.status == "private" %>
+      <span data-toggle="tooltip" data-placement="top" title="Shared with: private" class="fa fa-users" aria-hidden="true"></span>
+    <% elsif post.status == "only_me"%>
+      <span data-toggle="tooltip" data-placement="top" title="Shared with: only me" class="fa fa-user" aria-hidden="true"></span>
+    <% else %>
+      <span data-toggle="tooltip" data-placement="top" title="Shared with: other" class="fa fa-cog" aria-hidden="true"></span>
+    <% end %>
+    Created <%= time_ago_in_words(post.created_at) %>.
+  </td>
   <td><div id="overflow"><%= post.content.html_safe %></div></td>
   <td><%= post.post_type.name %></td>
   <td>

@@ -1,4 +1,5 @@
 <%= render "shared/left"%>
+<%= render "shared/show_noti" %>
 <div class="panel panel-container">
   <div class="row">
     <div class="col-xs-2 col-xs-offset-1 col-sm-2 col-sm-offset-2 col-md-8 col-md-offset-2">
@@ -18,6 +19,10 @@
               <div class="form-group">
                 <%= f.label :content %>
                 <%= f.text_area :content,placeholder: post.content, class: "tinymce", rows: 10, cols: 10 %>
+              </div>
+              <div class="form-group">
+                <%= f.label :status %>
+                <%= f.select :status, options_for_select([["Public", :public],["Private", :private], ["Only me", :only_me]]), {}, class: "form-control", id: "sel1" %>
               </div>
               <%= f.submit button_text, class: "btn btn-primary" %>
               <%= link_to t("button_labels.previous"), root_path, class: "btn btn-primary" %>

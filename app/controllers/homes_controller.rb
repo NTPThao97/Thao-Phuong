@@ -1,9 +1,14 @@
 class HomesController < ApplicationController
+  skip_before_action :check_log_in, :new_notifications_count, :notifications_limit
   def index
-    @posts = Post.all.order_created_at
-    @search_posts = Post.search(params[:search_post])
-    @searchs = User.search(params[:search])
-    @posts_types = Post.search(params[:post_type_id]) if params[:post_type_id]
+    if log_in?
+      load_support
+    else
+      @post_publics = Post.where(status: "public").order_created_at
+    end
   end
-
+  private
+  def load_support
+    @support = PostSupport.new
+  end
 end

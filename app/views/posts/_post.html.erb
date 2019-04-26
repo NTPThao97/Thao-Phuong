@@ -21,18 +21,29 @@
       <%= link_to post.post_type.name, root_path(post_type_id: post.post_type_id) %> >
     </span>
    <br>
-   <%= link_to t("button_labels.edit"), edit_post_path(post) if current_user == post.user %>
-   <% if current_user == post.user  %>
-     <%= link_to t("button_labels.delete"), post_path(post, post_id: post.id), method: :delete, data: {confirm: t("text.confirm")}%>
+  <% if log_in? %>
+    <%= render "reports/new", obj: post, user_id: post.user_id %>
+    <%= link_to t("button_labels.edit"), edit_post_path(post) if current_user == post.user %>
+      <% if current_user == post.user  %>
+        <%= link_to t("button_labels.delete"), post_path(post, post_id: post.id), method: :delete, data: {confirm: t("text.confirm")}%>
+      <% end %>
+      <% if current_user != post.user %>
+        <%= link_to "Report", new_post_report_path(post), data: {toggle: "modal", target: "#myModal", file: "my file 1"}, class: 'rename' %>
+      <% end %>
+  <% end %>
+    <% if post.status == "public" %>
+      <span data-toggle="tooltip" data-placement="top" title="Shared with: public" class="fa fa-globe" aria-hidden="true"></span>
+    <% elsif post.status == "private" %>
+      <span data-toggle="tooltip" data-placement="top" title="Shared with: private" class="fa fa-users" aria-hidden="true"></span>
+    <% elsif post.status == "only_me"%>
+      <span data-toggle="tooltip" data-placement="top" title="Shared with: only me" class="fa fa-user" aria-hidden="true"></span>
+    <% else %>
+      <span data-toggle="tooltip" data-placement="top" title="Shared with: other" class="fa fa-cog" aria-hidden="true"></span>
     <% end %>
-    <% if current_user != post.user %>
-     <%= link_to "Report", new_post_report_path(post), data: {toggle: "modal", target: "#myModal", file: "my file 1"}, class: 'rename' %>
-    <% end %>
-   <%= t("text.posted")%>
-   <%= time_ago_in_words(post.created_at) %>.
+    <%= t("text.posted")%> <%= time_ago_in_words(post.created_at) %>.
   </span>
    <span class="content">
-    <div class="overflow">
+    <div>
       <%=  post.content.html_safe  %>
     </div>
     <u>
@@ -40,4 +51,3 @@
     </u>
    </span>
 </div>
-<%= render "reports/new", obj: post, user_id: post.user_id %>

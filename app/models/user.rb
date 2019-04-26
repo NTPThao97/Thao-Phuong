@@ -20,6 +20,10 @@ class User < ApplicationRecord
   validates :email, presence: true , uniqueness: true,
   format: {with: VALID_EMAIL_REGEX}
   validates :password, length: {minimum: 8, maximum: 20}, allow_nil: true
+  enum status: {online: 1, offline: 2, unactived: 3, blocked: 4}, _prefix: :status
+  enum user_type: [:admin, :user]
+
+
 
   class << self
     def digest string
@@ -88,11 +92,11 @@ class User < ApplicationRecord
     UserMailer.account_activation(self).deliver_now
   end
 
-  def self.search(search)
+  def self.search search
     if search
       where(['name LIKE ?', "%#{search}%"]).order("created_at desc")
     else
-      order("created_at desc")
+      nil
     end
   end
 end

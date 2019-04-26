@@ -1,21 +1,28 @@
-<%= render "shared/left" %>
-<div class="panel panel-container">
-    <div class="nav navbar-top-links navbar-left">
-      <%= form_tag(root_path, method: :get, id: "search-form", role: "search") do %>
-        <%= text_field_tag :search_post, params[:search_post], placeholder: "Search Posts", class: "form-control" %>
-      <% end %>
-    </div>
-  <div class="row">
-    <div class="col-md-12">
-      <% if params[:search] %>
-        <%= render @searchs %>
-      <% elsif params[:search_post] %>
-        <%= render @search_posts, button_text: "View mores" %>
-      <% elsif params[:post_type_id]%>
-        <%= render @posts_types, button_text: "View mores" %>
-      <% else %>
-        <%= render "posts/index", posts: @posts %>
-      <% end %>
+<% if log_in? %>
+  <%= render "shared/left" %>
+  <div class="panel panel-container">
+      <div class="nav navbar-top-links navbar-left">
+        <%= form_tag(root_path, method: :get, id: "search-form", role: "search") do %>
+          <%= text_field_tag :search_posts, params[:search_posts], placeholder: "Search Posts", class: "form-control" %>
+        <% end %>
+      </div>
+    <div class="row">
+      <div class="col-md-12">
+        <% if params[:search] %>
+          <%= render @support.searchs(params[:search]) %>
+        <% elsif params[:search_posts] %>
+          <%= render @support.search_posts(params[:search_posts]), button_text: "View mores" %>
+        <% elsif params[:post_type_id]%>
+          <%= render @support.posts_types(params[:post_type_id]), button_text: "View mores"%>
+        <% else %>
+          <%= render "posts/index", posts: @support.posts(current_user)  %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+<% else %>
+  <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+    <img src="https://d25tv1xepz39hi.cloudfront.net/2016-01-31/files/1045-3.jpg" alt="Chicago" width="220px" height="600px">
+  </div>
+  <%= render "posts/index", posts: @post_publics %>
+<% end %>
