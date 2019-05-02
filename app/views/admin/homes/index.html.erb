@@ -29,7 +29,7 @@
       </div>
     </div>
   </div>
-  <%= render "admin/homes/post_overview", post_year: @support.post_month%>
+  <%= render "admin/homes/overview", post_month: @support.post_month, user_month: @support.user_month%>
   <div class="row justify-content-md-center">
     <div class="col-md-12">
       <div class="panel-heading">
@@ -41,19 +41,19 @@
             <th>#</th>
             <th>Type Post</th>
             <th>Count Post</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
+        <% @support.post_table.each do |post| %>
           <tr>
             <td></td>
-            <td></td>
-            <td></td>
-            <td><%= link_to "View details" , "#"%></td>
+            <td><%= post.name %></td>
+            <td><%=  post.count %></td>
           </tr>
+        <% end %>
         </tbody>
       </table>
     </div>
   </div>
-  <%#= pie_chart @users.group(:user_type).count %>
+  <%= link_to "DOWNLOAD PDF", admin_root_path(format: :pdf), class: "btn" %>
 </div>

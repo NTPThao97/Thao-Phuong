@@ -23,6 +23,13 @@ gem 'tinymce-rails-imageupload'
 gem 'closure_tree'
 gem 'kaminari'
 gem "chartkick"
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'ransack'
+gem "devise"
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-facebook"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

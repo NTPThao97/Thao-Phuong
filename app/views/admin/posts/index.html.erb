@@ -5,6 +5,7 @@
       <%= form_tag(admin_posts_path, method: :get, id: "search-form", role: "search") do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-control" %>
       <% end %>
+      <%= link_to "DOWNLOAD PDF", admin_posts_path(format: :pdf), class: "btn" %>
       <table class="table table-bordered">
         <thead>
           <tr>
