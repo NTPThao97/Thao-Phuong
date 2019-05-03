@@ -1,53 +1,45 @@
 <hr>
 <div id="micropost-<%= post.id %>">
-  <% if User.find_by(id: post[:user_id]).avatar.attached? %>
-   <div class="profile-userpic">
-    <%= image_tag User.find_by(id: post[:user_id]).avatar  %>
-    <span class="user"><%= link_to post.user.name, post.user %></span>
-   </div>
-  <% else %>
-   <div class="profile-userpic">
-    <%= image_tag "" %>
-    <span class="user"><%= link_to post.user.name, post.user %></span>
-   </div>
-  <% end %>
-  <span class="timestamp">
-   <h3>
-    <span class="user">
-      <%= link_to post.title, post %>
-    </span>
-   </h3>
-    <span>
-      <%= link_to post.post_type.name, root_path(post_type_id: post.post_type_id) %> >
-    </span>
-   <br>
-  <% if log_in? %>
-    <%= render "reports/new", obj: post, user_id: post.user_id %>
-    <%= link_to t("button_labels.edit"), edit_post_path(post) if current_user == post.user %>
-      <% if current_user == post.user  %>
-        <%= link_to t("button_labels.delete"), post_path(post, post_id: post.id), method: :delete, data: {confirm: t("text.confirm")}%>
+    <span class="timestamp">
+      <h3>
+        <span class="user">
+          <%= link_to post.title, post %>
+        </span>
+      </h3>
+      <span>
+        <%= link_to post.post_type.name, root_path(post_type_id: post.post_type_id) %>:
+        <span class="user"><%= link_to post.user.name, post.user %></span>
+      </span>
+      <br>
+      <% if post.status == "public" %>
+        <span data-toggle="tooltip" data-placement="top" title="<%= t("text.shared_public")%>" class="fa fa-globe" aria-hidden="true"></span>
+      <% elsif post.status == "private" %>
+        <span data-toggle="tooltip" data-placement="top" title="<%= t("text.shared_private")%>" class="fa fa-users" aria-hidden="true"></span>
+      <% elsif post.status == "only_me"%>
+        <span data-toggle="tooltip" data-placement="top" title="<%= t("text.shared_only")%>" class="fa fa-user" aria-hidden="true"></span>
+      <% else %>
+        <span data-toggle="tooltip" data-placement="top" title="<%= t("text.shared_other")%>" class="fa fa-cog" aria-hidden="true"></span>
       <% end %>
-      <% if current_user != post.user %>
-        <%= link_to "Report", new_post_report_path(post), data: {toggle: "modal", target: "#myModal", file: "my file 1"}, class: 'rename' %>
-      <% end %>
-  <% end %>
-    <% if post.status == "public" %>
-      <span data-toggle="tooltip" data-placement="top" title="Shared with: public" class="fa fa-globe" aria-hidden="true"></span>
-    <% elsif post.status == "private" %>
-      <span data-toggle="tooltip" data-placement="top" title="Shared with: private" class="fa fa-users" aria-hidden="true"></span>
-    <% elsif post.status == "only_me"%>
-      <span data-toggle="tooltip" data-placement="top" title="Shared with: only me" class="fa fa-user" aria-hidden="true"></span>
-    <% else %>
-      <span data-toggle="tooltip" data-placement="top" title="Shared with: other" class="fa fa-cog" aria-hidden="true"></span>
+      <%= t("text.posted")%> <%= time_ago_in_words(post.created_at) %>.
+    </span>
+  <div class="content">
+    <% if log_in? %>
+      <ul class="panel-settings panel-button-tab-right">
+        <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+          <em class="fa fa-cogs"></em>
+        </a>
+          <ul class="dropdown-menu dropdown-menu-left">
+              <%= link_to t("button_labels.edit"), edit_post_path(post),
+                class: "btn btn-primary" if current_user == post.user %>
+              <%= link_to t("button_labels.delete"), post_path(post, post_id: post.id), method: :delete,
+                data: {confirm: t("text.confirm")}, class: "btn btn-primary" if current_user == post.user %>
+              <%= link_to t("button_labels.report"), new_post_report_path(post), data: {toggle: "modal", target: "#myModal"},
+                class: "btn btn-danger" if current_user != post.user %>
+              <%= render "reports/new", obj: post, user_id: post.user_id %>
+          </ul>
+        </li>
+      </ul>
     <% end %>
-    <%= t("text.posted")%> <%= time_ago_in_words(post.created_at) %>.
-  </span>
-   <span class="content">
-    <div>
-      <%=  post.content.html_safe  %>
-    </div>
-    <u>
-      <%= link_to button_text, post_path(post) %>
-    </u>
-   </span>
+    <%=  post.content.html_safe  %>
+  </div>
 </div>

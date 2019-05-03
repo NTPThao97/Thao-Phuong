@@ -1,6 +1,6 @@
 <div class="panel panel-default ">
   <div class="panel-heading">
-    Imformation
+    <%= t("text.info")%>
     <ul class="pull-right panel-settings panel-button-tab-right">
       <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
         <em class="fa fa-cogs"></em>
@@ -31,7 +31,7 @@
         <div class="timeline-badge"><i class="glyphicon glyphicon-pushpin"></i></div>
         <div class="timeline-panel">
           <div class="timeline-heading">
-            <h4 class="timeline-title">Name</h4>
+            <h4 class="timeline-title"><%= t("users.activerecord.attributes.name")%></h4>
           </div>
           <div class="timeline-body">
             <p><%= @user.name %></p>
@@ -42,7 +42,7 @@
         <div class="timeline-badge primary"><i class="glyphicon glyphicon-link"></i></div>
         <div class="timeline-panel">
           <div class="timeline-heading">
-            <h4 class="timeline-title">Email</h4>
+            <h4 class="timeline-title"><%= t("users.activerecord.attributes.email")%></h4>
           </div>
           <div class="timeline-body">
             <p><%= @user.email %></p>

@@ -8,7 +8,4 @@ class PostSupport
   def posts_types post_type_id
     @posts_types = Post.search_type(post_type_id) if post_type_id
   end
-  def search_post (params)
-    @q = Post.order_created_at.ransack(params)
-  end
 end

@@ -5,9 +5,8 @@
         <%= render "users/form_user", _name: @user.name, _email: @user.email, _password: @user.password, _password_confirmation: @user.password_confirmation, name: t("text.name"), email: t("text.email"), password: t("text.password"), password_confirmation: t("text.password_confirm"), avatar: t("text.avatar"), header: t("button_labels.update")%>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t("button_labels.close")%></button>
       </div>
     </div>
   </div>
 </div>
-

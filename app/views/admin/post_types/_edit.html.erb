@@ -7,11 +7,11 @@
               <%= f.label :name %>
               <%= f.text_field :name, placeholder: post_type.name %>
             </div>
-          <%= f.submit "Update", class: "btn" %>
+          <%= f.submit t("button_labels.update"), class: "btn" %>
         <% end %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%=  t("button_labels.close")%></button>
       </div>
     </div>
   </div>

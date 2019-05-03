@@ -1,1 +1,7 @@
-<%= render "users/form_user", name: t("text.name"), email: t("text.email"), password: t("text.password"), password_confirmation: t("text.password_confirm"), _name: "", _email: "", _password: "", _password_confirmation: "", avatar: t("text.avatar"), header: t("button_labels.create")%>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-body">
+      <%= render "users/form_user", name: t("text.name"), email: t("text.email"), password: t("text.password"), password_confirmation: t("text.password_confirm"), _name: "", _email: "", _password: "", _password_confirmation: "", avatar: t("text.avatar"), header: t("button_labels.create")%>
+    </div>
+  </div>
+</div>

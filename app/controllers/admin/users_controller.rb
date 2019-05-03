@@ -5,20 +5,6 @@ class Admin::UsersController < Admin::BaseController
   before_action :load_decentralizations, only: [:index]
 
   def index
-    respond_to do |format|
-      format.html
-      format.pdf do
-          render pdf: "Users Management",
-          page_size: 'A4',
-          template: "admin/users/index.html.erb",
-          layout: "pdf.html.erb",
-          orientation: "Landscape",
-          encoding: 'UTF-8',
-          lowquality: true,
-          zoom: 1,
-          dpi: 75
-      end
-    end
   end
 
   def show

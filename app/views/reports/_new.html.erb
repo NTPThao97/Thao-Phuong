@@ -2,26 +2,26 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <div class="panel-heading">New Report</div>
+        <div class="panel-heading"><%= t("text.new_report")%></div>
           <div class="panel-body">
             <%= form_for [obj, Report.new] do |f| %>
               <fieldset>
                 <div class="form-group">
-                  <%= f.label :content %>
-                  <%= f.text_area :content, class: "form-control",placeholder: "Content..." %>
+                  <%= f.label :content, t("activerecord.attributes.content") %>
+                  <%= f.text_area :content, class: "form-control",placeholder: t("text.content") %>
                 </div>
                 <%= f.hidden_field :target_id, value: @current_user.id %>
                 <%= f.hidden_field :des_id, value: user_id %>
                 <%= f.hidden_field :url, value: obj.id %>
                 <%= f.select :des_type, options_for_select(["Post", "Account"]) , {}, class: "form-control" %>
                 <br>
-                <%= f.submit "Create", class: "btn btn-primary" %>
+                <%= f.submit t("button_labels.create"), class: "btn btn-primary" %>
                 </fieldset>
             <% end %>
           </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t("text.close")%></button>
       </div>
     </div>
   </div>

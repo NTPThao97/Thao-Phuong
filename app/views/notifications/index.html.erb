@@ -3,7 +3,7 @@
 <div class="panel panel-container">
   <div class="row">
     <div class="col-md-12">
-      <h1>Notifications</h1>
+      <h1><%= t("text.all_noti")%></h1>
       <%= paginate @notifications %>
       <% @notifications.each do |notification| %>
         <li class="list">

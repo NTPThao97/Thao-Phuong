@@ -2,6 +2,7 @@ vi:
   activerecord:
     model:   Post
     attributes:
+      account: Tai khoan
       title:   Tieu de
       post_type:  Loai bai viet
       content:  Noi dung

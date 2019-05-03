@@ -1,11 +1,11 @@
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-body">
-      <h1>Following</h1>
+      <h1><%= t("text.following")%></h1>
       <%= render @support.users(@user) %>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal"><%= t("text.close")%></button>
     </div>
   </div>
 </div>

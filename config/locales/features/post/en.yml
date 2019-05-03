@@ -2,6 +2,7 @@ en:
   activerecord:
     model: Post
     attributes:
+      account: Account
       title: Title
       post_type: Post type
       content: Content

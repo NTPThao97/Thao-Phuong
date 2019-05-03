@@ -1,13 +1,5 @@
-<%= render "shared/left"%>
-<div class="panel panel-container">
-  <div class="row">
-    <div class="col-md-11">
-      <br>
-      <% if posts.any? %>
-        <ol class="microposts">
-          <%= render posts, button_text: t("button_labels.read_more") %>
-        </ol>
-      <% end %>
-    </div>
-  </div>
-</div>
+<% if posts.any? %>
+  <ol class="microposts">
+    <%= render posts, button_text: t("button_labels.read_more") %>
+  </ol>
+<% end %>

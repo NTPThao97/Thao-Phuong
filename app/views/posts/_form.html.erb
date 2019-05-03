@@ -9,19 +9,19 @@
           <%= form_with model: post do |f| %>
             <fieldset>
               <div class="form-group">
-                <%= f.label :title %>
+                <%= f.label :title, t("activerecord.attributes.title") %>
                 <%= f.text_field :title, placeholder: title , class: "form_control" %>
               </div>
               <div class="form-group">
-                <%= f.label :post_type_id, for: "sel1" %>
+                <%= f.label :post_type_id, t("activerecord.attributes.post_type") %>
                 <%= f.select :post_type_id, support.post_types, {}, class: "form-control", id: "sel1" %>
               </div>
               <div class="form-group">
-                <%= f.label :content %>
+                <%= f.label :content, t("activerecord.attributes.content")%>
                 <%= f.text_area :content,placeholder: post.content, class: "tinymce", rows: 10, cols: 10 %>
               </div>
               <div class="form-group">
-                <%= f.label :status %>
+                <%= f.label :status, t("activerecord.attributes.status") %>
                 <%= f.select :status, options_for_select([["Public", :public],["Private", :private], ["Only me", :only_me]]), {}, class: "form-control", id: "sel1" %>
               </div>
               <%= f.submit button_text, class: "btn btn-primary" %>

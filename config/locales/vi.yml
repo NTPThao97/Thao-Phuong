@@ -4,7 +4,9 @@ vi:
     update: Cap nhat
     delete: Xoa
     edit: Sua
-    sign_in: Dang Nhap
+    close: Dong
+    details: Chi tiet
+    sign_in: Dang nhap
     sign_up: Dang Ki
     language_en: Tieng Anh
     language_vi: Tieng Viet
@@ -18,10 +20,13 @@ vi:
     notify: Thong bao
     log_out: Dang xuat
     create_post: Tao bai viet moi
+    report: Bao cao
   text:
     comment: Da binh luan
     confirm: Ban co chac chan khong?
     posted: Da dang
+    posts: Tat ca bai dang
+    users: Tat ca nguoi dung
     remember: Ghi nho tai khoan
     text: Form chua
     text2: Ban da co tai khoan
@@ -33,6 +38,50 @@ vi:
     email: Tai khoan email
     avatar: Anh dai dien
     title: Tieu de...
+    user_decen: Quyen truy cap
+    overview: Tong quat
+    overview_month: Theo thang
+    overview_day: Theo ngay
+    overview_post_type: Theo loai bai dang
+    table_post_overview: Bang thong ke bai dang
+    type_post: Loai bai dang
+    count_post: So bai dang
+    pdf: Tai ve dang pdf
+    all_noti: Tat ca thong bao
+    post_type_manage: Quan li loai bai dang
+    name: Ten
+    post_manage: Quan li bai dang
+    search_users: Tim kiem nguoi dung
+    shared_public: "Chia se: cong khai"
+    shared_private: "Chia se: ban be"
+    shared_only: "Chia se: chi minh toi"
+    shared_other: "Chia se: khac"
+    new_post_day: Bai dang moi trong ngay
+    new_user_day: Nguoi dung moi trong ngay
+    new_report_day: Bao cao moi trong ngay
+    detail_report: Chi tiet bao cao
+    reports: Tat ca bao cao
+    block: Khoa
+    info: Thong tin
+    followers: Nguoi theo doi ban
+    following: Dang theo doi
+    online: Dang hoat dong
+    offline: Khong hoat dong
+    unactive_email: Chua xac nhan tai khoan
+    blocked: Tai khoan bi khoa
+    user_manage: Quan li nguoi dung
+    about: Thong tin chi tiet
+    friend: Ban be
+    photo: Anh
+    activity_log: Nhat ki hoat dong
+    report_manege: Quan li bao cao
+    new_report: Tao moi bao cao
+    forgot_pass: Quen mat khau
+    new_user: Tao moi tai khoan?
+    activate: Xac nhan
+    contact_admin: Lien he voi admin
+    time_line: Dong thoi gian
+    search_posts: Tim kiem bai dang
   datetime:
     distance_in_words:
       about_x_hours:

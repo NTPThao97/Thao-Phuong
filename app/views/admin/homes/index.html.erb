@@ -3,48 +3,48 @@
     <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
       <div class="panel panel-teal panel-widget border-right">
         <div class="row no-padding"><em class="fa fa-xl fa-comments color-blue"></em>
-          <%= render "admin/homes/new_noti", temp: @support.post_day.size, router: admin_posts_path, name: "New Posts in Day" %>
+          <%= render "admin/homes/new_noti", temp: @support_statis.post_day.size, router: admin_posts_path, name: t("text.new_post_day") %>
         </div>
       </div>
     </div>
     <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
       <div class="panel panel-orange panel-widget border-right">
         <div class="row no-padding"><em class="fa fa-xl fa-users color-orange"></em>
-          <%= render "admin/homes/new_noti", temp: @support.user_day.size, router: admin_users_path, name: "New Users in Day" %>
+          <%= render "admin/homes/new_noti", temp: @support_statis.user_day.size, router: admin_users_path, name: t("text.new_user_day") %>
         </div>
       </div>
     </div>
     <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
       <div class="panel panel-red panel-widget border-right">
         <div class="row no-padding"><em class="fa fa-xl fa-bolt color-red"></em>
-          <%= render "admin/homes/new_noti", temp: @support.report_day.size, router: admin_reports_path, name: "New Reports in Day" %>
+          <%= render "admin/homes/new_noti", temp: @support_statis.report_day.size, router: admin_reports_path, name: t("text.new_report_day") %>
         </div>
       </div>
     </div>
     <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
       <div class="panel panel-black panel-widget">
         <div class="row no-padding"><em class="fa fa-xl fa-search color-teal"></em>
-          <%= render "admin/homes/new_noti", temp: "29.09K", router: admin_reports_path, name: "New Posts in Day"%>
+          <%= render "admin/homes/new_noti", temp: "29.09K", router: admin_reports_path, name: t("text.new_post_day") %>
         </div>
       </div>
     </div>
   </div>
-  <%= render "admin/homes/overview", post_month: @support.post_month, user_month: @support.user_month%>
+  <%= render "admin/homes/overview", post_month: @support_statis.post_month, user_month: @support_statis.user_month%>
   <div class="row justify-content-md-center">
     <div class="col-md-12">
       <div class="panel-heading">
-        Table Posts Overview
+        <%= t("text.table_post_overview")%>
       </div>
       <table class="table table-bordered">
         <thead>
           <tr>
             <th>#</th>
-            <th>Type Post</th>
-            <th>Count Post</th>
+            <th><%= t("text.type_post")%></th>
+            <th><%= t("text.count_post")%></th>
           </tr>
         </thead>
         <tbody>
-        <% @support.post_table.each do |post| %>
+        <% @support_statis.post_table.each do |post| %>
           <tr>
             <td></td>
             <td><%= post.name %></td>
@@ -55,5 +55,5 @@
       </table>
     </div>
   </div>
-  <%= link_to "DOWNLOAD PDF", admin_root_path(format: :pdf), class: "btn" %>
+  <%= link_to t("text.pdf"), admin_exports_path(link: "admin/homes/index.html.erb", name: "Statistion management", format: :pdf), class: "btn" %>
 </div>

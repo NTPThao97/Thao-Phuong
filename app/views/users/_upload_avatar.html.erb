@@ -4,14 +4,14 @@
       <div class="modal-body">
         <%= form_for user do |f| %>
             <div class="form-group">
-              <%= f.label :avatar %>
+              <%= f.label :avatar, t("users.activerecord.attributes.avatar")%>
               <%= f.file_field :avatar %>
             </div>
-          <%= f.submit "Upload", class: "btn" %>
+          <%= f.submit t("button_labels.update"), class: "btn" %>
         <% end %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t("button_labels.close") %></button>
       </div>
     </div>
   </div>

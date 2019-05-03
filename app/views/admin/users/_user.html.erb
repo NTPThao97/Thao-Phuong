@@ -8,19 +8,19 @@
     <div class="profile-usertitle-name"><%=link_to user.name, admin_user_path(user)%></div>
     <% if user.status == "online" %>
       <div class="profile-usertitle-status">
-        <span class="indicator label-success"></span>Online
+        <span class="indicator label-success"></span><%= t("text.online")%>
       </div>
     <% elsif  user.status == "offline" %>
       <div class="profile-usertitle-status">
-        <span class="badge"></span>Offline
+        <span class="badge"></span><%= t("text.offline")%>
       </div>
     <% elsif  user.status == "unactived" %>
       <div class="profile-usertitle-status">
-        <span class="badge"></span>Chua xac nhan email
+        <span class="badge"></span><%= t("text.unactive_email")%>
       </div>
     <% elsif  user.status == "blocked" %>
       <div class="profile-usertitle-status">
-        <span class="badge"></span>Blocked
+        <span class="badge"></span><%= t("text.blocked")%>
       </div>
     <% end %>
     <div class="clear"></div>

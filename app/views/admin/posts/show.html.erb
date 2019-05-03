@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-11">
         <ol class="microposts">
-        <%= link_to "DOWNLOAD PDF", admin_post_path(@post, format: :pdf), class: "btn" %>
+        <%= link_to t("text.pdf"), admin_post_path(@post, format: :pdf), class: "btn" %>
           <li id="micropost-<%= @post.id %>">
             <% if @post.user.avatar.attached? %>
              <div class="profile-userpic">
@@ -24,13 +24,13 @@
              <br>
              <%= link_to t("button_labels.delete"), admin_post_path(@post), method: :delete, data: {confirm: t("text.confirm")}%>
              <% if @post.status == "public" %>
-              <span data-toggle="tooltip" data-placement="top" title="Shared with: public" class="fa fa-globe" aria-hidden="true"></span>
+              <span data-toggle="tooltip" data-placement="top" title="<%= t("text.shared_public")%>" class="fa fa-globe" aria-hidden="true"></span>
             <% elsif @post.status == "private" %>
-              <span data-toggle="tooltip" data-placement="top" title="Shared with: private" class="fa fa-users" aria-hidden="true"></span>
+              <span data-toggle="tooltip" data-placement="top" title="<%= t("text.shared_private")%>" class="fa fa-users" aria-hidden="true"></span>
             <% elsif @post.status == "only_me"%>
-              <span data-toggle="tooltip" data-placement="top" title="Shared with: only me" class="fa fa-user" aria-hidden="true"></span>
+              <span data-toggle="tooltip" data-placement="top" title="<%= t("text.shared_only")%>" class="fa fa-user" aria-hidden="true"></span>
             <% else %>
-              <span data-toggle="tooltip" data-placement="top" title="Shared with: other" class="fa fa-cog" aria-hidden="true"></span>
+              <span data-toggle="tooltip" data-placement="top" title="<%= t("text.shared_other")%>" class="fa fa-cog" aria-hidden="true"></span>
             <% end %>
              <%= t("text.posted")%>
              <%= time_ago_in_words(@post.created_at) %>.

@@ -9,19 +9,19 @@
           </ul>
           <div class="tab-content">
             <div class="tab-pane fade in active" id="User_management">
-            <strong><h1>USER MANAGERMENT</h1></strong>
+            <strong><h1><%= t("text.user_manage")%></h1></strong>
             <%= form_tag(admin_users_path, method: :get, id: "search-form", role: "search") do %>
-              <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-control mr-sm-2" %>
+              <%= text_field_tag :search, params[:search], placeholder: t("text.search_users"), class: "form-control mr-sm-2" %>
             <% end %>
-            <%= link_to "DOWNLOAD PDF", admin_users_path(format: :pdf), class: "btn" %>
+            <%= link_to t("text.pdf"), admin_exports_path(link: "admin/users/index.html.erb", name: "User Management", format: :pdf), class: "btn" %>
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>Avatar</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>User Type</th>
-                  <th>Status</th>
+                  <th><%= t("users.activerecord.attributes.avatar")%></th>
+                  <th><%= t("users.activerecord.attributes.name")%></th>
+                  <th><%= t("users.activerecord.attributes.email")%></th>
+                  <th><%= t("users.activerecord.attributes.user_type")%></th>
+                  <th><%= t("users.activerecord.attributes.status")%></th>
                   <th></th>
                 </tr>
               </thead>
@@ -46,19 +46,19 @@
                   <td>
                     <% if user.status == "online" %>
                       <div class="profile-usertitle-status">
-                        <span class="indicator label-success"></span>Online
+                        <span class="indicator label-success"></span><%= t("text.online")%>
                       </div>
                     <% elsif  user.status == "offline" %>
                       <div class="profile-usertitle-status">
-                        <span class="badge"></span>Offline
+                        <span class="badge"></span><%= t("text.offline")%>
                       </div>
                     <% elsif  user.status == "unactived" %>
                       <div class="profile-usertitle-status">
-                        <span class="badge"></span>Chua xac nhan email
+                        <span class="badge"></span><%= t("text.unactive_email")%>
                       </div>
                     <% elsif  user.status == "blocked" %>
                       <div class="profile-usertitle-status">
-                        <span class="badge"></span>Blocked
+                        <span class="badge"></span><%= t("text.blocked")%>
                       </div>
                     <% end %>
                   </td>
@@ -66,12 +66,12 @@
                   <% if user.status == "blocked" %>
                     <%= form_for [:admin, user] do |f| %>
                       <%= f.hidden_field :status, value: :offline %>
-                      <%= f.submit "UnBlock", class: "btn btn-warning", data: {confirm: t("text.confirm")} %>
+                      <%= f.submit t("button_labels.unblock"), class: "btn btn-warning", data: {confirm: t("text.confirm")} %>
                     <% end %>
                   <% else %>
                     <%= form_for [:admin, user] do |f| %>
                       <%= f.hidden_field :status, value: :blocked %>
-                      <%= f.submit "Block", class: "btn btn-danger", data: {confirm: t("text.confirm")} %>
+                      <%= f.submit t("button_labels.block"), class: "btn btn-danger", data: {confirm: t("text.confirm")} %>
                     <% end %>
                   <% end %>
                   </td>

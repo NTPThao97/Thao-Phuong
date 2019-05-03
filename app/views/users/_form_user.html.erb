@@ -5,26 +5,26 @@
       <%= render "shared/error_messages" %>
       <fieldset>
         <div class="form-group">
-          <%= f.label name %>
+          <%= f.label name, t("users.activerecord.attributes.name")%>
           <%= f.text_field :name, placeholder: _name,  class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label email %>
+          <%= f.label email, t("users.activerecord.attributes.email")%>
           <%= f.text_field :email, placeholder: _email ,class: "form-control",placeholder: "E-mail", type: "email" %>
         </div>
         <div class="form-group">
-          <%= f.label password %>
+          <%= f.label password, t("users.activerecord.attributes.password")%>
           <%= f.text_field :password, placeholder: _password ,class: "form-control", placeholder: "Password",type: "password" %>
         </div>
         <div class="form-group">
-          <%= f.label password_confirmation %>
+          <%= f.label password_confirmation, t("users.activerecord.attributes.password_confirmation") %>
           <%= f.text_field :password_confirmation, placeholder: _password_confirmation ,class: "form-control", placeholder: "Password", type: "password" %>
         </div>
         <div class="form-group">
-          <%= f.label avatar %>
+          <%= f.label avatar, t("users.activerecord.attributes.avatar") %>
           <%= f.file_field :avatar %>
         </div>
-        <%= f.hidden_field :user_type, value: "2" %>
+        <%= f.hidden_field :user_type, value: :user %>
         <% if log_in?%>
           <%= f.submit t("button_labels.update"), class: "btn btn-primary" %>
         <% else %>

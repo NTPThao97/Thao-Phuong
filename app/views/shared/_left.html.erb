@@ -12,12 +12,12 @@
       <% end %>
       <%= hidden_field :id, current_user.id , id: "user_id" %>
       <div class="profile-usertitle-name"><%= current_user.name%></div>
-      <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+      <div class="profile-usertitle-status"><span class="indicator label-success"></span><%= t("text.online")%></div>
       <div class="clear"></div>
     </div>
     <div class="divider"></div>
     <%= form_tag(root_path, method: :get, id: "search-form", role: "search") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-control" %>
+      <%= text_field_tag :search, params[:search], placeholder: t("text.search_users"), class: "form-control" %>
     <% end %>
     <ul class="nav menu">
       <li class="active">
@@ -27,13 +27,13 @@
         <%= link_to  t("button_labels.profile") , user_path(current_user) %>
       </li>
       <li>
-        <%= link_to t("button_labels.create_post "), new_post_path %>
+        <%= link_to t("button_labels.create_post"), new_post_path %>
       </li>
       <li>
         <%= link_to  t("button_labels.notify") , notifications_path %>
       </li>
       <li>
-        <%= link_to "Activity Log", activity_logs_path %>
+        <%= link_to t("text.activity_log"), activity_logs_path %>
       </li>
       <li>
         <%= link_to t("button_labels.log_out"), log_out_path, method: :delete %>

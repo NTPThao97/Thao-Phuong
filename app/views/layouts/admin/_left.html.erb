@@ -23,19 +23,19 @@
       <%= link_to  t("button_labels.profile") , admin_user_path(current_admin) %>
     </li>
     <li>
-      <%= link_to "User management", admin_users_path %>
+      <%= link_to t("text.user_manage"), admin_users_path %>
     </li>
     <li>
-      <%= link_to "Post management", admin_posts_path %>
+      <%= link_to t("text.post_manage"), admin_posts_path %>
     </li>
     <li>
-      <%= link_to  "Report Management" , admin_reports_path %>
+      <%= link_to  t("text.report_manage") , admin_reports_path %>
     </li>
     <li>
-      <%= link_to  "Post Type Management" , admin_post_types_path %>
+      <%= link_to  t("text.post_type_manage"), admin_post_types_path %>
     </li>
     <li>
-      <%= link_to "Activity Log", admin_activity_logs_path %>
+      <%= link_to t("text.activity_log"), admin_activity_logs_path %>
     </li>
     <li>
       <%= link_to t("button_labels.log_out"), admin_log_out_path, method: :delete %>

@@ -4,6 +4,10 @@ en:
     update: Update
     delete: Delete
     edit: Edit
+    close: Close
+    follow: Follow
+    unfollow: UnFollow
+    details: Details
     sign_in: Sign In
     sign_up: Sign Up
     language_en: English
@@ -18,21 +22,69 @@ en:
     notify: Notifications
     log_out: Log Out
     create_post: Create Post
+    report: Report
+    block: Block
+    unblock: UnBlock
   text:
-    comment: "Commented"
+    comment: Commented
     confirm: Are you sure?
     posted: Posted
+    posts: Posts
+    users: Users
     remember: Remember me
     text: The form contains
     text2: You had account
     text1: to welcome your Blog
     content: Content...
     password: Password
-    password_confirm: Password Confirmation
+    password_confirm: Password confirmation
     name: User
     email: Email
     avatar: Avatar
     title: Title...
+    overview: Overview
+    user_decen: Users decentralization
+    overview_month: Overview in month
+    overview_day: Overview in day
+    overview_post_type: By post type
+    table_post_overview: Table Posts Overview
+    type_post: Type Post
+    count_post: Count Post
+    pdf: DOWNLOAD PDF
+    all_noti: All Notifications
+    post_type_manage: Post Type Managerment
+    name: Name
+    post_manage: Posts Managerment
+    search_users: Search Users
+    shared_public: "Shared with: public"
+    shared_private: "Shared with: private"
+    shared_only: "Shared with: only you"
+    shared_other: "Shared with: other"
+    new_post_day: New Posts in Day
+    new_user_day: New Users in Day
+    new_report_day: New Reports in Day
+    detail_report: Detail Report
+    reports: Reports
+    info: Information
+    followers: Followers
+    following: Following
+    online: Online
+    offline: Offline
+    unactive_email: Not Active
+    blocked: Blocked
+    user_manage: Users Management
+    about: About
+    friend: Friends
+    photo: Photos
+    activity_log: Activity Log
+    report_manege: Reports Management
+    new_report: New Report
+    forgot_pass: Forgot password
+    new_user: New user?
+    activate: Activate
+    contact_admin: Contact with admin
+    time_line: Time line
+    search_posts: Search Posts
   datetime:
     distance_in_words:
       about_x_hours:

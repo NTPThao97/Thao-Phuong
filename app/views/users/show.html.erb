@@ -10,7 +10,7 @@
         <div class="panel-body">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui pharetra molestie. Fusce et dui urna.</p>
           <% if current_user.status == "blocked" %>
-            <%= link_to "Lien he voi admin" , "#"%>
+            <%= link_to t("text.contact_admin") , "#"%>
           <% end %>
         </div>
       </div>
@@ -18,10 +18,10 @@
       <div class="panel panel-default">
         <div class="panel-body tabs">
           <ul class="nav nav-tabs">
-            <li class="active"><%= link_to "Timeline", "#Timeline", data: { toggle: "tab"} %></li>
-            <li><%= link_to "About", "#About", data: { toggle: "tab"} %></li>
-            <li><%= link_to "Friends", "#Friends", data: { toggle: "tab"} %></li>
-            <li><%= link_to "Photos", "#Photos", data: { toggle: "tab"} %></li>
+            <li class="active"><%= link_to t("text.time_line"), "#Timeline", data: { toggle: "tab"} %></li>
+            <li><%= link_to t("text.about"), "#About", data: { toggle: "tab"} %></li>
+            <li><%= link_to t("text.friend"), "#Friends", data: { toggle: "tab"} %></li>
+            <li><%= link_to t("text.photo"), "#Photos", data: { toggle: "tab"} %></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane fade in active" id="Timeline">
@@ -48,7 +48,7 @@
               </div>
             </div>
             <div class="tab-pane fade" id="Friends">
-              <h3><i class="fa fa-users fa-2x"></i><strong>All Friends</strong></h3>
+              <h3><i class="fa fa-users fa-2x"></i><strong><%= t("button_labels.list")%></strong></h3>
             <%= render @support.users(@user) %>
             </div>
             <div class="tab-pane fade" id="Photos">

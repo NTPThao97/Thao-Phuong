@@ -1,7 +1,7 @@
 <div class="panel panel-container">
   <div class="row">
     <div class="col-md-12">
-      <h1>Reports</h1>
+      <h1><%= t("text.reports")%></h1>
       <%= paginate @reports %>
       <hr>
       <% @reports.each do |report| %>
@@ -9,7 +9,7 @@
           <%= render report %>
         </li>
         <%= link_to t("button_laybels.delete"), admin_report_path(report), method: :delete  %>
-        <%= link_to "Details", admin_report_path(report), remote: true , data: {toggle: "modal", target: "#myModal", file: "my file 1"} %>
+        <%= link_to t("button_laybels.details"), admin_report_path(report), remote: true , data: {toggle: "modal", target: "#myModal", file: "my file 1"} %>
         <hr>
       <% end%>
       <%= paginate @reports %>

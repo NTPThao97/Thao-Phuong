@@ -1,7 +1,7 @@
 <tr>
   <td><%= post_type.id %></td>
   <td><%= post_type.name%></td>
-  <td><%= link_to "Edit", edit_admin_post_type_path(post_type), data: {toggle: "modal", target: "#editpostType", file: "my file 1"}, class: 'rename' %>/
-  <%= link_to "Delete", admin_post_type_path(post_type), method: :delete %></td>
+  <td><%= link_to t("button_lables.edit"), edit_admin_post_type_path(post_type), data: {toggle: "modal", target: "#editpostType"} %>/
+  <%= link_to t("button_lables.delete"), admin_post_type_path(post_type), method: :delete %></td>
 </tr>
 <%= render "admin/post_types/edit" , post_type: post_type%>

@@ -20,16 +20,19 @@ class UsersController < ApplicationController
       flash[:info] = "Please check your email to activate your account."
       redirect_to @user
     else
-      redirect_to sign_up_path
+      render :new
     end
   end
 
   def edit; end
 
   def update
-    @user.update user_params
-    flash[:success] = "Success"
-    redirect_to @user
+    if @user.update user_params
+      flash[:success] = "Success"
+      redirect_to @user
+    else
+      render :edit
+    end
   end
 
   def following

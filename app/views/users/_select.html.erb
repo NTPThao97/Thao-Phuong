@@ -8,15 +8,15 @@
           <li>
             <ul class="dropdown-settings">
               <li>
-              <%= link_to "UploadAvatar", "", data: {toggle: "modal", target: "#uploadAvatar", file: "my file 1"}, class: 'rename, btn btn-danger' %>
+              <%= link_to t("button_labels.update"), "", data: {toggle: "modal", target: "#uploadAvatar", file: "my file 1"}, class: 'rename, btn btn-danger' %>
               </li>
               <li class="divider"></li>
               <li>
-                <%= link_to "Edit Imformation", "", data: {toggle: "modal", target: "#myModal1", file: "my file 1"}, class: 'rename, btn btn-danger'%>
+                <%= link_to t("button_labels.edit")+" "+t("text.info"), "", data: {toggle: "modal", target: "#myModal1", file: "my file 1"}, class: 'rename, btn btn-danger'%>
               </li>
               <li class="divider"></li>
               <li>
-                <%= link_to "Edit Bio", "", data: {toggle: "modal", target: "#editBio", file: "my file 1"}, class: 'rename, btn btn-danger' %>
+                <%= link_to t("button_labels.edit")+" Bio", "", data: {toggle: "modal", target: "#editBio", file: "my file 1"}, class: 'rename, btn btn-danger' %>
               </li>
               <li class="divider"></li>
             </ul>

@@ -1,11 +1,17 @@
 vi:
-  activerecord:
+  users:
+    activerecord:
       model:   User
       attributes:
         user:   Người dùng
         name:   Tên
         email:   Địa chỉ mail
         show:   Xem chi tiết
+        password: Mat khau
+        avatar: Anh dai dien
+        user_type: Loai nguoi dung
+        password_confirmation: Xac nhan mat khau
+        status: Tinh trang
         edit:   Chinh sửa
         destroy:   Xóa
         new_user:   Thêm người dùng

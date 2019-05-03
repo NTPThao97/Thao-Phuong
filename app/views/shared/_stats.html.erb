@@ -1,10 +1,10 @@
 <% @user ||= current_user %>
 <div class="stats">
-  <%= link_to "following","",  data: {toggle: "modal", target: "#follow", file: "my file 1"}, class: 'rename , btn btn-default' %>
+  <%= link_to t("text.following"),"",  data: {toggle: "modal", target: "#follow", file: "my file 1"}, class: 'rename , btn btn-default' %>
   <strong id="following" class="stat">
     <%= @user.following.count %>
   </strong>
-  <%= link_to "followers", "",  data: {toggle: "modal", target: "#follower", file: "my file 1"}, class: 'rename , btn btn-default'%>
+  <%= link_to t("text.followers"), "",  data: {toggle: "modal", target: "#follower", file: "my file 1"}, class: 'rename , btn btn-default'%>
   <strong id="followers" class="stat">
     <%= @user.followers.count %>
   </strong>

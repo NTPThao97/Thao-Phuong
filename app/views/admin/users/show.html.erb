@@ -4,10 +4,10 @@
       <div class="panel panel-default">
         <div class="panel-body tabs">
           <ul class="nav nav-tabs">
-            <li class="active"><%= link_to "Timeline", "#Timeline", data: { toggle: "tab"} %></li>
-            <li><%= link_to "About", "#About", data: { toggle: "tab"} %></li>
-            <li><%= link_to "Friends", "#Friends", data: { toggle: "tab"} %></li>
-            <li><%= link_to "Photos", "#Photos", data: { toggle: "tab"} %></li>
+            <li class="active"><%= link_to t("text.time_line"), "#Timeline", data: { toggle: "tab"} %></li>
+            <li><%= link_to t("text.about"), "#About", data: { toggle: "tab"} %></li>
+            <li><%= link_to t("text.friend"), "#Friends", data: { toggle: "tab"} %></li>
+            <li><%= link_to t("text.photo"), "#Photos", data: { toggle: "tab"} %></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane fade in active" id="Timeline">
@@ -21,10 +21,10 @@
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Account</th>
-                        <th>Title</th>
-                        <th>Content</th>
-                        <th>Type</th>
+                        <th><%= t("users.activerecord.attributes.account")%></th>
+                        <th><%= t("activerecord.attributes.title")%></th>
+                        <th><%= t("activerecord.attributes.content")%></th>
+                        <th><%= t("activerecord.attributes.post_type")%></th>
                         <th></th>
                       </tr>
                     </thead>
@@ -47,7 +47,7 @@
               <%#= link_to t("button_labels.edit"), edit_user_path(@user) %>
             </div>
             <div class="tab-pane fade" id="Friends">
-              <h1>All Friends</h1>
+              <h1><%= t("button_labels.list")%></h1>
             <%= render @support.users(@user) %>
             </div>
             <div class="tab-pane fade" id="Photos">

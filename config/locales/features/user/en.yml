@@ -6,6 +6,11 @@ en:
         user:   Users
         name:   Name
         email:   Email
+        avatar: Avatar
+        user_type: User Type
+        status: Status
+        password: Password
+        password_confirmation: Password Confirmation
         show:   Show
         edit:   Edit
         destroy:   Destroy

@@ -4,20 +4,20 @@
   <td>
     <%= post.title %><hr>
     <% if post.status == "public" %>
-      <span data-toggle="tooltip" data-placement="top" title="Shared with: public" class="fa fa-globe" aria-hidden="true"></span>
+      <span data-toggle="tooltip" data-placement="top" title="<%= t("text.shared_public")%>" class="fa fa-globe" aria-hidden="true"></span>
     <% elsif post.status == "private" %>
-      <span data-toggle="tooltip" data-placement="top" title="Shared with: private" class="fa fa-users" aria-hidden="true"></span>
+      <span data-toggle="tooltip" data-placement="top" title="<%= t("text.shared_private")%>" class="fa fa-users" aria-hidden="true"></span>
     <% elsif post.status == "only_me"%>
-      <span data-toggle="tooltip" data-placement="top" title="Shared with: only me" class="fa fa-user" aria-hidden="true"></span>
+      <span data-toggle="tooltip" data-placement="top" title="<%= t("text.shared_only")%>" class="fa fa-user" aria-hidden="true"></span>
     <% else %>
-      <span data-toggle="tooltip" data-placement="top" title="Shared with: other" class="fa fa-cog" aria-hidden="true"></span>
+      <span data-toggle="tooltip" data-placement="top" title="<%= t("text.shared_other")%>" class="fa fa-cog" aria-hidden="true"></span>
     <% end %>
     Created <%= time_ago_in_words(post.created_at) %>.
   </td>
   <td><div id="overflow"><%= post.content.html_safe %></div></td>
   <td><%= post.post_type.name %></td>
   <td>
-    <%= link_to "Details", admin_post_path(post), class: "btn btn-success"%>
-    <%= link_to "Delete", admin_post_path(post), method: :delete, class: "btn btn-danger"%>
+    <%= link_to t("button_labels.details"), admin_post_path(post), class: "btn btn-success"%>
+    <%= link_to t("button_labels.delete"), admin_post_path(post), method: :delete, class: "btn btn-danger"%>
   </td>
 </tr>

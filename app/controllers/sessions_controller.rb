@@ -23,13 +23,13 @@ class SessionsController < ApplicationController
       end
     else
       flash[:danger] = "Invalid email/password combination"
-      redirect_to sign_in_path
+      render :new
     end
   end
 
   def destroy
     log_out if log_in?
-    redirect_to sign_in_path
+    redirect_to root_path
   end
 
 end

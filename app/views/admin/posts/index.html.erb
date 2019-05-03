@@ -1,19 +1,19 @@
 <div class="panel panel-container">
   <div class="row">
     <div class="col-md-12">
-      <h2>Post Managerment</h2>
+      <h2><%= t("text.post_manage")%></h2>
       <%= form_tag(admin_posts_path, method: :get, id: "search-form", role: "search") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search Users", class: "form-control" %>
+        <%= text_field_tag :search, params[:search], placeholder:  t("text.search_users"), class: "form-control" %>
       <% end %>
-      <%= link_to "DOWNLOAD PDF", admin_posts_path(format: :pdf), class: "btn" %>
+      <%= link_to t("text.pdf"), admin_exports_path(link: "admin/posts/index.html.erb", name: "Posts Management", format: :pdf), class: "btn" %>
       <table class="table table-bordered">
         <thead>
           <tr>
             <th>#</th>
-            <th>Account</th>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Type</th>
+            <th><%= t("activerecord.attributes.account")%></th>
+            <th><%= t("activerecord.attributes.title")%></th>
+            <th><%= t("activerecord.attributes.content")%></th>
+            <th><%= t("activerecord.attributes.post_type")%></th>
             <th></th>
           </tr>
         </thead>
