@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       if user.activated?
           if user.status == "blocked"
-            flash[:warning] = "Your account is blocked. Contact to Admin."
+            flash[:warning] = t("text.blocked_user")
             redirect_to sign_in_path
           else
             log_in user
@@ -16,13 +16,13 @@ class SessionsController < ApplicationController
             redirect_to user
           end
       else
-        message  = "Account not activated. "
-        message += "Check your email for the activation link."
+        message  = t("text.un_active")
+        message += t("text.email")
         flash[:warning] = message
         redirect_to root_path
       end
     else
-      flash[:danger] = "Invalid email/password combination"
+      flash[:danger] = t("text.check_user")
       render :new
     end
   end
@@ -31,5 +31,4 @@ class SessionsController < ApplicationController
     log_out if log_in?
     redirect_to root_path
   end
-
 end

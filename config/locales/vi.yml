@@ -82,6 +82,20 @@ vi:
     contact_admin: Lien he voi admin
     time_line: Dong thoi gian
     search_posts: Tim kiem bai dang
+    active: Tai khoan da duoc xac nhan!
+    unactive: Loi link xac nhan roi!
+    not_found: Khong tim thay!
+    sent_email: Vui long kiem tra mail de dat lai mat khau
+    not_found_email: Khong tim thay email
+    error: Khong duoc de trong
+    pass_reset: Mat khau da duoc dat lai.
+    pass_reset_ex: Het han dat lai mat khau.
+    success: Thanh cong.
+    fails: Loi.
+    blocked_user: Tai khoan da bi khoa. Lien he admin.
+    un_active: Tai khoan chua xac nhan.
+    check_email: Kiem tra mail de xac nhan tai khoan.
+    check_user: Mat khau hoac email chua dung.
   datetime:
     distance_in_words:
       about_x_hours:

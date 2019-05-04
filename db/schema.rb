@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_26_023141) do
+ActiveRecord::Schema.define(version: 2019_05_04_023711) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2019_04_26_023141) do
     t.string "des_type"
     t.integer "url"
     t.datetime "opened_at"
-    t.boolean "status"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2019_04_26_023141) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "status"
+    t.string "images"
   end
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

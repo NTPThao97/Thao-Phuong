@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   before_action :check_log_in, :new_notifications_count, :notifications_limit
 
   private
-
   def set_locale
     locale = params[:locale].to_s.strip.to_sym
     I18n.locale = I18n.available_locales.include?(locale) ?

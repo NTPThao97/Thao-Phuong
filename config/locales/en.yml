@@ -85,6 +85,20 @@ en:
     contact_admin: Contact with admin
     time_line: Time line
     search_posts: Search Posts
+    active: Account activated!
+    unactive: Invalid activation link
+    not_found: Not Found
+    sent_email: Email sent with password reset instructions
+    not_found_email: Email address not found
+    error: can't be empty
+    pass_reset: Password has been reset.
+    pass_reset_ex: Password reset has expired.
+    success: Success.
+    fails: Fails.
+    blocked_user: "Your account is blocked. Contact to Admin."
+    un_active: Account not activated.
+    check_email: Check your email for the activation link.
+    check_user: Invalid email/password combination
   datetime:
     distance_in_words:
       about_x_hours:

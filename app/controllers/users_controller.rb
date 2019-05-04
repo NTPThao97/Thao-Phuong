@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       @user.send_activation_email
-      flash[:info] = "Please check your email to activate your account."
+      flash[:info] = t("text.check_email")
       redirect_to @user
     else
       render :new
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update user_params
-      flash[:success] = "Success"
+      flash[:success] = t("text.success")
       redirect_to @user
     else
       render :edit
@@ -56,5 +56,4 @@ class UsersController < ApplicationController
   def load_support
     @support = UserSupport.new
   end
-
 end

@@ -1,13 +1,11 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
-  paginates_per 50
   before_save {self.email = email.downcase}
   before_create :create_activation_digest
-  scope :order_created_at, ->{order("created_at desc")}
+  belongs_to :decentralization, optional: true
   has_many :posts, dependent: :destroy
   has_many :comments
   has_many :reports, class_name: Report.name, foreign_key: :url, dependent: :destroy
-  belongs_to :decentralization, optional: true
   has_many :active_relationships, class_name: Relationship.name, foreign_key: :follower_id, dependent: :destroy
   has_many :passive_relationships, class_name: Relationship.name, foreign_key: :followed_id, dependent: :destroy
   has_many :notifications, class_name: Notification.name, foreign_key: :des_id, dependent: :destroy
@@ -15,6 +13,7 @@ class User < ApplicationRecord
   has_many :followers ,through: :passive_relationships, source: :follower
   has_one_attached :avatar
   has_secure_password
+  paginates_per 50
   validates :name , presence: true , length: {minimum: 5}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true , uniqueness: true,
@@ -22,8 +21,7 @@ class User < ApplicationRecord
   validates :password, length: {minimum: 8, maximum: 20}, allow_nil: true
   enum status: {online: 1, offline: 2, unactived: 3, blocked: 4}, _prefix: :status
   enum user_type: [:admin, :user]
-
-
+  scope :order_created_at, ->{order("created_at desc")}
 
   class << self
     def digest string

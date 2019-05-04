@@ -5,7 +5,7 @@ class NotificationsController < ApplicationController
 
   def destroy
     find_notification
-    @notification.update status: false
+    @notification.update status: :remove
     redirect_to notifications_path
   end
 

@@ -2,7 +2,7 @@
   <div class="panel-heading"><%= header %></div>
   <div class="panel-body">
     <%= form_for @user do |f| %>
-      <%= render "shared/error_messages" %>
+      <%= render "shared/error_messages", error: @user %>
       <fieldset>
         <div class="form-group">
           <%= f.label name, t("users.activerecord.attributes.name")%>

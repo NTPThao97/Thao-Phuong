@@ -13,7 +13,6 @@ class CommentsController < ApplicationController
     else
       @comment = Comment.new comment_params
     end
-
     if @comment.save
       CreateNotificationService.new(target_id: @comment.user_id, des_id: @comment.post.user_id, target_type: "Commented", des_type: "Post", url: @comment.post_id, report: "").create_notification
       respond_to do |format|
@@ -39,5 +38,4 @@ class CommentsController < ApplicationController
   def set_comment
     @comment = Comment.find_by id: params[:id]
   end
-
 end

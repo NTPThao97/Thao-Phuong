@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
-  before_action :load_support, only: [:index, :new, :edit]
+  before_action :load_support, only: [:index, :new, :update, :create, :edit]
 
   def show
       @comment = Comment.new
@@ -16,11 +16,11 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build post_params
     if @post.save
-      flash[:success] = "Post created success!"
+      flash[:success] = t("text.success")
       redirect_to root_path
     else
-      flash[:warning] = "Fails"
-      redirect_to root_path
+      flash[:warning] = t("text.fails")
+      render :new
     end
   end
 
@@ -28,28 +28,27 @@ class PostsController < ApplicationController
 
   def update
     if @post.update post_params
-      flash[:success] = "Update is success!"
+      flash[:success] =  t("text.success")
       redirect_to root_path
     else
-      flash[:warning] = "Fails"
-      redirect_to root_path
+      flash[:warning] =  t("text.fails")
+      render :edit
     end
   end
 
   def destroy
     if @post.destroy
-      flash[:success] = "Success!"
-      redirect_to root_path
+      flash[:success] = t("text.success")
     else
-      flash[:danger] = "Fails!"
-      redirect_to root_path
+      flash[:danger] = t("text.fails")
     end
+    redirect_to root_path
   end
 
   private
 
   def post_params
-    params.require(:post).permit :title, :content, :post_type_id, :status
+    params.require(:post).permit :title, :content, :post_type_id, :status, :images
   end
 
   def find_post
@@ -59,5 +58,4 @@ class PostsController < ApplicationController
   def load_support
     @support = PostSupport.new
   end
-
 end

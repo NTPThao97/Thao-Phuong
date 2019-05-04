@@ -6,7 +6,8 @@
       <div class="login-panel panel panel-default">
         <div class="panel-heading"><%= header %></div>
         <div class="panel-body">
-          <%= form_with model: post do |f| %>
+          <%= form_for post do |f| %>
+            <%= render "shared/error_messages", error: post %>
             <fieldset>
               <div class="form-group">
                 <%= f.label :title, t("activerecord.attributes.title") %>
@@ -14,15 +15,19 @@
               </div>
               <div class="form-group">
                 <%= f.label :post_type_id, t("activerecord.attributes.post_type") %>
-                <%= f.select :post_type_id, support.post_types, {}, class: "form-control", id: "sel1" %>
+                <%= f.select :post_type_id, options_for_select(support.post_types), {}, class: "form-control"%>
               </div>
               <div class="form-group">
                 <%= f.label :content, t("activerecord.attributes.content")%>
-                <%= f.text_area :content,placeholder: post.content, class: "tinymce", rows: 10, cols: 10 %>
+                <%= f.text_area :content, placeholder: post.content, class: "tinymce", rows: 10, cols: 10 %>
               </div>
               <div class="form-group">
                 <%= f.label :status, t("activerecord.attributes.status") %>
                 <%= f.select :status, options_for_select([["Public", :public],["Private", :private], ["Only me", :only_me]]), {}, class: "form-control", id: "sel1" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :images %>
+                <%= f.file_field :images %>
               </div>
               <%= f.submit button_text, class: "btn btn-primary" %>
               <%= link_to t("button_labels.previous"), root_path, class: "btn btn-primary" %>
