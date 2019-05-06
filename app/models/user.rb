@@ -95,8 +95,7 @@ class User < ApplicationRecord
     UserMailer.account_activation(self).deliver_now
   end
 
-  def posts
-    following_ids =  Relationship.select("followed_id").following(self)
-    Post.where("user_id = #{self.id} or status = 1 or (status = 2 and user_id IN (#{following_ids.to_sql}))").order_created_at
+  def posts_home
+    Post.status_private.where('posts.user_id IN (?)', following.pluck(:id).join(',')).or(Post.status_public).order_created_at
   end
 end

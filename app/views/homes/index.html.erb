@@ -15,10 +15,16 @@
             <%= paginate @users %>
             <%= render @users %>
           <% elsif params[:q] %>
-            <%= paginate @posts_search %>
-            <%= render @posts_search %>
+            <p>Your posts: </p>
+            <%= paginate @posts_search_current_users %>
+            <%= render @posts_search_current_users %>
+            <hr>
+            <p>Friend's posts: </p>
+            <%= paginate @posts_search_relations %>
+            <%= render @posts_search_relations %>
           <% else %>
-            <%= render @posts %>
+            <%= paginate @posts_homes %>
+            <%= render @posts_homes %>
           <% end %>
         </ol>
       </div>

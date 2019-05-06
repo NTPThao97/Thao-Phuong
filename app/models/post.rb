@@ -13,12 +13,8 @@ class Post < ApplicationRecord
   enum status: {public: 1, private: 2, only_me: 3}, _prefix: :status
   paginates_per 50
 
-  scope :order_created_at,  ->{order("created_at desc")}
-  scope :check_status, ->{where("status = 1 or status = 2")}
-  scope :check_status_public, ->{where(status: :public)}
-
-  def self.posts user
-    following_ids =  Relationship.select("followed_id").following(user)
-    where("user_id = #{user.id} or status = 1 or (status = 2 and user_id IN (#{following_ids.to_sql}))").order_created_at
-  end
+  scope :order_created_at, ->{order(created_at: :desc)}
+  scope :check_status, ->{where("posts.status IN (1,2)")}
+  scope :order_status, ->{order(status: :desc)}
+  scope :check_current_user, ->(current_user){where(user_id: current_user.id)}
 end
