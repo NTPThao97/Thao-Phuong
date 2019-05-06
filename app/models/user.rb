@@ -2,7 +2,9 @@ class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save {self.email = email.downcase}
   before_create :create_activation_digest
+
   belongs_to :decentralization, optional: true
+
   has_many :posts, dependent: :destroy
   has_many :comments
   has_many :reports, class_name: Report.name, foreign_key: :url, dependent: :destroy
@@ -12,6 +14,7 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships , source: :followed
   has_many :followers ,through: :passive_relationships, source: :follower
   has_one_attached :avatar
+
   has_secure_password
   paginates_per 50
   validates :name , presence: true , length: {minimum: 5}
@@ -21,7 +24,9 @@ class User < ApplicationRecord
   validates :password, length: {minimum: 8, maximum: 20}, allow_nil: true
   enum status: {online: 1, offline: 2, unactived: 3, blocked: 4}, _prefix: :status
   enum user_type: [:admin, :user]
-  scope :order_created_at, ->{order("created_at desc")}
+
+  scope :order_created_at, ->{order(created_at: :desc)}
+  scope :search_user, ->(search){where("name LIKE '%#{search}%'")}
 
   class << self
     def digest string
@@ -81,7 +86,7 @@ class User < ApplicationRecord
     self.activation_digest = User.digest(activation_token)
   end
 
-   def activate
+  def activate
     update_attribute(:activated,    true)
     update_attribute(:activated_at, Time.zone.now)
   end
@@ -90,11 +95,8 @@ class User < ApplicationRecord
     UserMailer.account_activation(self).deliver_now
   end
 
-  def self.search search
-    if search
-      where(['name LIKE ?', "%#{search}%"]).order("created_at desc")
-    else
-      nil
-    end
+  def posts
+    following_ids =  Relationship.select("followed_id").following(self)
+    Post.where("user_id = #{self.id} or status = 1 or (status = 2 and user_id IN (#{following_ids.to_sql}))").order_created_at
   end
 end

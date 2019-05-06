@@ -31,7 +31,8 @@
                   <%= render 'shared/stats' %>
                 </div>
                 <div class="col-sm-8">
-                <%= render "posts/index", posts: @support.posts(@user, current_user).page(params[:page]).per(2) %>
+                <%= paginate @support.posts(@user, current_user, params[:page]) %>
+                <%= render "posts/index", posts: @support.posts(@user, current_user, params[:page]) %>
                 </div>
               </div>
             </div>

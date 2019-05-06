@@ -2,7 +2,7 @@
   <%= render "shared/left" %>
   <div class="panel panel-container">
     <div class="nav navbar-top-links navbar-left">
-      <%= search_form_for @q, url: root_path do |f| %>
+      <%= search_form_for @q, url: root_path, default_order: :desc do |f| %>
         <%= f.label :Search_posts, t("text.search_posts")%>
         <%= f.search_field :title_or_content_or_user_name_or_post_type_name_cont %>
       <% end %>
@@ -11,10 +11,14 @@
     <div class="row">
       <div class="col-md-11">
         <ol class="microposts">
-          <% if params[:post_type_id] %>
-            <%= render @q.page(params[:page]).per(5), button_text: t("button_labels.read_more") %>
+          <% if params[:search] %>
+            <%= paginate @users %>
+            <%= render @users %>
+          <% elsif params[:q] %>
+            <%= paginate @posts_search %>
+            <%= render @posts_search %>
           <% else %>
-            <%= render @posts.page(params[:page]).per(5), button_text: t("button_labels.read_more") %>
+            <%= render @posts %>
           <% end %>
         </ol>
       </div>

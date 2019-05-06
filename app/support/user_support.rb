@@ -11,16 +11,16 @@ class UserSupport
   def followers user
     @followers = user.followers
   end
-  def posts user, current_user
+  def posts user, current_user, page
     if user == current_user
-      @posts = user.posts.order_created_at
+      @posts = user.posts.order_created_at.page(page).per(5)
     elsif current_user.following?(user)
-      @posts = user.posts.where("status = 1 or status = 2").order_created_at
+      @posts = user.posts.check_status.order_created_at.page(page).per(5)
     else
-      @posts = user.posts.where("status = 1").order_created_at
+      @posts = user.posts.check_status_public.order_created_at.page(page).per(5)
     end
   end
   def users_index
-    @users = User.order_created_at
+    @users = User.order_created_at.page(params[:page]).per(5)
   end
 end
